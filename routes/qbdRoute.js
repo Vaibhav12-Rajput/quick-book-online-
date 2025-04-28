@@ -5,20 +5,28 @@ const router = express.Router();
 const invoiceService = new InvoiceService();
 
 
-// Simple health check endpoint
-router.get('test/', (req, res) => {
-  res.send('Application Connected to QuickBooks Desktop');
+router.post('/write', async (req, res) => {
+  try {
+      // Call writeConfig and await its response
+      const result = await QuickbooksAuthService.writeConfig(req);
+      
+      // Return success response with the message from the service
+      res.status(200).send({
+          message: result,  // This is the success message returned by the service
+          data: {},         // You can add any additional data if needed
+      });
+  } catch (error) {
+      // In case of an error, return the error message
+      logger.error('Error in /write route:', error.message);
+      res.status(400).send({ error: error.message });
+  }
 });
 
 // Route to start OAuth flow
-router.get('/', async (req, res) => {
-  const appType = req.query.appType; // Assuming appType is passed as a query parameter
-  if (!appType) {
-    return res.status(400).send({ error: 'AppType is required' });
-  }
-
+router.get('/connect', async (req, res) => {
   try {
-    const result = await QuickbooksAuthService.startOauthFlow(appType);
+    const companyName = req.query.companyName;
+    const result = await QuickbooksAuthService.startOauthFlow(companyName);
     res.status(200).send({
       message: 'Connection created successfully',
       data: result,

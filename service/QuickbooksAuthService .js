@@ -1,8 +1,11 @@
 const OAuthClient = require('intuit-oauth');
 const { v4: uuidv4 } = require('uuid');
 const QuickbooksDao = require('../dao/QuickbooksDao');
+const ConfigDao = require('../dao/ConfigDao');
 const { response } = require('express');
 const logger = require('../config/logger');
+const { validationResult } = require('express-validator');
+const CommonResponsePayload = require('../payload/commonResponsePayload');
 require('dotenv').config();
 
 
@@ -23,18 +26,15 @@ const oauthClient = new OAuthClient({
 });
 
 // Start OAuth flow, save CSRF token to DB, and generate OAuth URI
-async function startOauthFlow(appType) {
-  const csrf = generateCSRFToken();
+async function startOauthFlow(companyName) {
 
-  // Save CSRF token to DB with other optional fields
-  await QuickbooksDao.insert({
-    id: uuidv4(),
-    csrf: csrf,
-    name: `CSRF-${new Date().getTime()}`,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    appType: appType // Optionally save appType if needed
-  });
+  const config = await ConfigDao.findOne({ id: companyName });
+  if (!config) {
+    logger.error(`Configuration not found for id: ${companyName}`);
+    throw new Error(`Configuration not found for id: ${companyName}`);
+  }
+  
+  const csrf = generateCSRFToken();
 
   // Generate OAuth URI with saved CSRF
   const authUri = oauthClient.authorizeUri({
@@ -69,8 +69,6 @@ async function handleCallback(authCode, state, realmId, url) {
     expiresIn: bearerTokenResponse.expires_in,
     accessToken: bearerTokenResponse.access_token,
     intuitTid: bearerTokenResponse.intuit_tid,
-    userId: bearerTokenResponse.user_id,
-    userEmail: bearerTokenResponse.user_email,
     idToken: bearerTokenResponse.id_token,
     tokenType: bearerTokenResponse.token_type,
     accessTokenLastRefreshedTime: new Date(),
@@ -82,7 +80,7 @@ async function handleCallback(authCode, state, realmId, url) {
   await QuickbooksDao.insert(quickbooksData);
 
   // Redirect to the UI page
-  const redirectUrl = process.env.REDIRECT_UI_URL || 'http://your-redirect-url.com';
+  const redirectUrl = process.env.REDIRECT_UI_URL ;
   return redirectUrl;
 }
 
@@ -112,6 +110,56 @@ async function updateAccessToken(quickBooks) {
     logger.error(`Failed to update access token for userId: ${quickBooks.userId}, email: ${quickBooks.userEmail}. Error: ${error.stack || error.message}`);
   }
 }
+async function writeConfig(req) {
+  let responsePayload;
+  const errors = validationResult(req);
 
+  // Check validation errors
+  if (!errors.isEmpty()) {
+      let responseMessage = "Validation Failed";
+      logger.error(responseMessage);
+      throw new Error(responseMessage);  // Throw error to be handled in the router
+  }
 
-module.exports = { startOauthFlow, handleCallback, updateAccessToken };
+  let companyId;
+  let companyName;
+
+  // Extract company details from the request body
+  for (const key in req.body) {
+      if (req.body.hasOwnProperty(key) && key.startsWith('company') && req.body[key]) {
+          companyId = key;  // Assuming the key is company1, company2, etc.
+          companyName = req.body[key]; // File path or name associated with the company
+      }
+  }
+
+  let config = {
+      id: companyId,
+      name: companyName,
+      terms: req.body.terms,
+      keepQBInvoiceNumber: req.body.keepQBInvoiceNumber
+  };
+
+  try {
+      // Check if the configuration already exists for the given companyId
+      const existingConfig = await ConfigDao.findOne({ Id: companyId });
+
+      if (existingConfig) {
+          // Update the existing configuration if found
+          await ConfigDao.findAndModify(existingConfig._id, config);
+          let responseMessage = "Configuration updated successfully";
+          logger.info(responseMessage);
+          return responseMessage;  // Return the success message
+      } else {
+          // Insert a new configuration if not found
+          await ConfigDao.insert(config, companyId);
+          let responseMessage = "Configuration created successfully";
+          logger.info(responseMessage);
+          return responseMessage;  // Return the success message
+      }
+  } catch (err) {
+      logger.error(err);
+      throw new Error("Something went wrong while saving the configuration.");  // Throw error to be handled in the router
+  }
+}
+
+module.exports = { startOauthFlow, handleCallback, updateAccessToken, writeConfig };
