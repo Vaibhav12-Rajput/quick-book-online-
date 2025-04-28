@@ -120,37 +120,63 @@ class InvoiceService {
     // };
 
     // Create invoice in QuickBooks using the SDK
+
     async createInvoiceInQBO(invoicePayload, customer) {
+
         const lineItems = [];
         // Add parts to the invoice
         invoicePayload.lines.forEach(line => {
             line.parts?.forEach(part => {
+
+                this.qb.findItems
+
                 lineItems.push({
                     "Amount": part.totalAmount,
                     "DetailType": "SalesItemLineDetail",
                     "SalesItemLineDetail": {
                         "ItemRef": {
-                            "value": part.itemId // Use the item ID, not the name
+                            "value": part.name
                         },
                         "UnitPrice": part.sellingPrice,
                         "Qty": part.quantity,
+                        "TaxCodeRef": {
+                            "value": part.taxCode
+                        }
                     }
                 });
             });
-            line.labors?.forEach(labor => {
+
+            // Add miscellaneous charges
+            line.miscCharges?.forEach(charge => {
                 lineItems.push({
-                    "Amount": labor.totalAmount,
-                    "DetailType": "SalesItemLineDetail",
-                    "SalesItemLineDetail": {
-                        "ItemRef": {
-                            "value": labor.itemId // Use the labor item ID
+                    Amount: charge.totalAmount,
+                    DetailType: "SalesItemLineDetail",
+                    SalesItemLineDetail: {
+                        ItemRef: {
+                            value: 23,
                         },
-                        "UnitPrice": labor.laborPerHour,
-                        "Qty": labor.hours
+                        Qty: 1, // Usually 1 for misc charges unless otherwise
+                    }
+                });
+            });
+
+            // Add disposal taxes
+            line.disposalTaxes?.forEach(tax => {
+                lineItems.push({
+                    Amount: tax.totalAmount,
+                    DetailType: "SalesItemLineDetail",
+                    SalesItemLineDetail: {
+                        ItemRef: {
+                            value: 25,
+                        },
+                        UnitPrice: tax.amount,
+                        Qty: 1, // Usually 1 for disposal/tax unless otherwise
                     }
                 });
             });
         });
+
+        
         // Create the invoice payload
         const invoice = {
             "Line": [
@@ -168,16 +194,23 @@ class InvoiceService {
                 "PostalCode": invoicePayload.from.address.zipcode,
                 "Country": invoicePayload.from.address.country
             },
-            "DueDate": invoicePayload.invoiceDate + 30, // Optional, but ensure correct format
+            "DueDate": invoicePayload.invoiceDate, // Optional, but ensure correct format
             "PONumber": invoicePayload.PONumber, // Optional, ensure it exists
         };
 
+        if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
+            invoice["TxnTaxDetail"] = {
+                "TaxLine": invoicePayload.partsTax.map(tax => ({
+                    "DetailType": "TaxLineDetail",
+                    "TaxLineDetail": {
+                        "TaxRateRef": {
+                            "value": tax.code // Reference the tax rate code
+                        },
+                    }
+                }))
+            };
+        }
 
-
-
-
-
-        // Wrap the SDK's createInvoice method in a promise
         try {
             const createdInvoice = await new Promise((resolve, reject) => {
                 // Use the SDK's createInvoice method with the callback style
