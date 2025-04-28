@@ -1,0 +1,420 @@
+2025-04-25T14:41:49.144Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:41:53.419Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.420Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.421Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.422Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.423Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.424Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.425Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.426Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.427Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:53.428Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:41:54.804Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:41:54.805Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:99:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:41:55.736Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:41:55.737Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:99:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:42:08.330Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:42:24.461Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:43:34.021Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:43:55.581Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.732Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.733Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.735Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.737Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.738Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.739Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.740Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.742Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:16.742Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: The Refresh token is missing
+    at C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:246:31
+    at new Promise (<anonymous>)
+    at OAuthClient.refreshUsingToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\node_modules\intuit-oauth\src\OAuthClient.js:245:10)
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:51)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:44:18.291Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:44:18.292Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:99:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:44:19.224Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:44:19.226Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:99:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:45:00.380Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:46:05.911Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:46:07.547Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.548Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.549Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.550Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.551Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.552Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.552Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.553Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.554Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:07.554Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:09.014Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:46:09.015Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:46:10.018Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:46:10.018Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:46:10.019Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:46:10.966Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:46:10.967Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:47:04.115Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:47:21.171Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:17.820Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:48:21.195Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:21.699Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:22.824Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:22.923Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:23.418Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:23.820Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:24.018Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:24.180Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:24.314Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:24.858Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:26.896Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:48:26.897Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:48:29.800Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:48:29.801Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:48:31.435Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:48:34.121Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:48:34.122Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:50:15.810Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:51:01.340Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:51:01.401Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:51:02.779Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:51:02.780Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Failed to get new access or refresh token
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:102:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:7)
+2025-04-25T14:51:19.730Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:51:42.995Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:51:49.267Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:52:51.584Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:52:55.058Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:53:00.490Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:53:20.193Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T14:53:23.120Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBDesktopServer-main\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T14:53:28.021Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-25T14:53:33.117Z [32minfo[39m: Access Token updated for userId: undefined, email: undefined
+2025-04-25T14:53:33.119Z [32minfo[39m: Updated QuickBooks: {"_id":"680ba149651aa19dad771b1b","id":"3fe280e0-612b-46ad-bdd9-9e7adfb0ccd2","realmId":"9341454407019038","csrf":"nystlg986m","authCode":"XAB117455932486eRzwIbIbYnfnGZbIAQfk2VPpeoXLuvIzA8B","isRefreshTokenExpired":false,"accessTokenLastRefreshedTime":"2025-04-25T14:50:49.914Z","refreshTokenExpiredTime":8726400,"refreshToken":"RT1-33-H0-1754319049rfxyorns692uggo5bq4q","expiresIn":3600,"tokenType":"bearer","accessToken":"eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..NB1qvPIZTMNRosFK7kMZ1Q.vyLNKEqfLsKXPvlDoigWw5vC45Y-5-cIkqchOZZnnoFhAN0odez6z9yhR9ydWVpYTstO2CJg-MEA9HIaACB0wnHQQ5-Mr1AsEZLmvAnTGA2nM-N8dPwIiTZ3TQu3qI0EWQEuu2amTpa1R2HH4vkR9TBKAeqzpfUIdmLhQOU3QXIeupmNqwqoJRJZ9T_6OQUu5WuK21CpAggYwxPF9K81OKqU2SKWIEHrERs1xYdYsGCAzKWHle-pc9gJSKOw3-gp88k9iseso8HKqN_Mxyw8uIt9-1ZQubkDxcpW6ITwLYO2dEvYBSQ7kJDqC27hBlGodGJYptaty8TtyKojs4tIaT3eazBV7y870UIE104GSKExwwzjejRdwPWdI5aiU_laJAl4o5lNeUC7mtmP-mi-bN_Zs_m2gS5qY-oGb9uT94hFPqS09JcNpY1RDkFdUBjvO-Ege5shRly_t-c48FSnevScRD5ThJCnjjcv5GoF1pU.KYvywyOvJZUB5gfTwxeBHg","createdAt":"2025-04-25T14:50:49.915Z","updatedAt":"2025-04-25T14:50:49.915Z","__v":0}
+2025-04-25T15:01:17.246Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-25T15:01:17.297Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBOnline\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBOnline\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-25T15:01:18.594Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:11:11.547Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:11:11.631Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBOnline\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBOnline\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-28T07:11:13.161Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:11:13.202Z [31merror[39m: Failed to update access token for userId: undefined, email: undefined. Error: Error: Refresh token is not available
+    at updateAccessToken (C:\project\quick-book-client\QBD-Integration-SmallArc\QBOnline\service\QuickbooksAuthService .js:96:13)
+    at runTask (C:\project\quick-book-client\QBD-Integration-SmallArc\QBOnline\service\refreshToken.js:11:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-28T07:11:14.348Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:15:29.549Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:16:44.454Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:16:45.742Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:16:46.631Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:17:37.028Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:17:38.393Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:17:39.314Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:18:18.206Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:18:19.471Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:18:20.367Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:18:47.464Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:18:48.795Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:18:49.697Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:22:28.603Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:22:29.880Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:27:16.526Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:27:17.877Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:27:18.817Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:28:00.215Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:48:00.071Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:48:01.363Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:48:02.539Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:48:27.015Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T07:48:28.323Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T07:48:29.209Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:40:30.886Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T08:40:32.416Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:40:34.747Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:41:23.944Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T08:41:25.335Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:41:26.212Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:50:47.657Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T08:50:49.049Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:50:50.024Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:54:04.731Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T08:54:07.000Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:54:12.920Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:55:37.710Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T08:55:38.996Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T08:55:43.863Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:15:04.616Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:15:05.975Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:15:06.873Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:16:55.819Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:16:57.153Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:16:58.022Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:22:08.015Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:22:09.395Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:22:10.366Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:26:04.784Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:26:06.089Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:26:07.016Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:27:58.728Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:28:00.111Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:28:06.120Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:35:18.295Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:35:19.717Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:35:20.739Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:44:18.305Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:44:19.687Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:44:20.682Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:46:21.595Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:46:22.947Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:46:23.862Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:49:17.493Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:49:18.806Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:49:19.670Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:55:10.405Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:55:11.779Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:55:12.684Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:56:27.418Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:56:28.797Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:56:29.716Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:56:54.199Z [32minfo[39m: Checking and updating QuickBooks credentials...
+2025-04-28T09:56:55.472Z [32minfo[39m: OAuth Refresh Token Response:
+2025-04-28T09:56:56.371Z [32minfo[39m: OAuth Refresh Token Response:

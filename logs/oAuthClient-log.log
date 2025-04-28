@@ -1,0 +1,1561 @@
+2025-04-25T10:05:33.283Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=5ad01aevqjg
+2025-04-25T10:23:28.246Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=cvmkwuuvrl
+2025-04-25T10:33:15.681Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=iippwiiv4aa
+2025-04-25T10:33:51.637Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=axp4t2smsh6
+2025-04-25T10:40:31.426Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=mcrconn3at
+2025-04-25T10:45:14.070Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=5r46932r8pv
+2025-04-25T10:52:49.441Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=fp75wtmpc7
+2025-04-25T10:54:13.893Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=5bsqusdt9ee
+2025-04-25T10:54:14.931Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=wavjfu6lyyq
+2025-04-25T11:03:58.656Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABaHr5fMHmqrtvn9o9Q3ePd7KaN9pmOtKqzYMwJ5XB6g7Hgznt&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=c3s3hw8ubor
+2025-04-25T11:04:26.601Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T11:05:39.148Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T11:08:32.114Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABaHr5fMHmqrtvn9o9Q3ePd7KaN9pmOtKqzYMwJ5XB6g7Hgznt&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=unl6g3g6od
+2025-04-25T11:09:31.842Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T12:00:08.880Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABaHr5fMHmqrtvn9o9Q3ePd7KaN9pmOtKqzYMwJ5XB6g7Hgznt&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=buc1wjoffxg
+2025-04-25T12:02:52.908Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T12:47:15.553Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T12:47:51.192Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T12:52:21.727Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T12:52:47.669Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:02:28.623Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABaHr5fMHmqrtvn9o9Q3ePd7KaN9pmOtKqzYMwJ5XB6g7Hgznt&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=uza1mguybl
+2025-04-25T13:02:53.803Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:02:53.852Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:04:32.395Z error: Create Token () threw an exception : {}
+2025-04-25T13:06:24.951Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.generateCredentials (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:53:29)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:07:08.599Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.generateCredentials (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:53:29)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:07:46.406Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.generateCredentials (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:53:29)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:08:33.000Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:10:28.144Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:10:28.393Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:10:28.444Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:12:04.775Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Content-Length": "229",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "grant_type=authorization_code&code=XAB11745583051tLuCJrdG0MZMaeNnzl5VR9bGuSP2yQGDEIuy&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:13:18.017Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Content-Length": "229",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "grant_type=authorization_code&code=XAB11745583051tLuCJrdG0MZMaeNnzl5VR9bGuSP2yQGDEIuy&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:14:17.809Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Content-Length": "229",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "grant_type=authorization_code&code=XAB11745583051tLuCJrdG0MZMaeNnzl5VR9bGuSP2yQGDEIuy&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:14:31.074Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABaHr5fMHmqrtvn9o9Q3ePd7KaN9pmOtKqzYMwJ5XB6g7Hgznt&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=wrb1i12iqg
+2025-04-25T13:21:05.717Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:53:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:21:05.789Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:53:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:34:09.712Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Content-Length": "229",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "grant_type=authorization_code&code=XAB11745587608OvYiX7dCpcCXW8e3Lz7J8iUoi7lGlwXdhDnS&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:35:17.704Z error: Create Token () threw an exception : {
+  "message": "Request failed with status code 400",
+  "name": "AxiosError",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:3166:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\node_modules\\axios\\dist\\node\\axios.cjs:4276:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handleCallback (C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\QuickbooksAuthService .js:51:25)\n    at async C:\\project\\quick-book-client\\QBD-Integration-SmallArc\\QBDesktopServer-main\\routes\\qbdRoute.js:38:25",
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic QUJhSHI1Zk1IbXFydHZuOW85UTNlUGQ3S2FOOXBtT3RLcXpZTXdKNVhCNmc3SGd6bnQ6eWFlMVFmeGdQcGo3bUZBaVlnSkZoeElqMUVqclBPR0FTR3RxMTFZQg==",
+      "User-Agent": "Intuit-OAuthClient-JS_4.2.0_Windows_NT_10.0.26100_win32",
+      "Content-Length": "229",
+      "Accept-Encoding": "gzip, compress, deflate, br"
+    },
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "data": "grant_type=authorization_code&code=XAB11745587608OvYiX7dCpcCXW8e3Lz7J8iUoi7lGlwXdhDnS&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM",
+    "method": "post",
+    "allowAbsoluteUrls": true
+  },
+  "code": "ERR_BAD_REQUEST",
+  "status": 400
+}
+2025-04-25T13:41:54.482Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=41l9ufwjqry
+2025-04-25T13:42:21.609Z info: Create Token response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..H97bHGSuRMmxrpM8WYhJNw.OXf1aL6k2LaTvIWEXzinr3HLsvnxV3jO_33SNN2ZlMGSo_2Uj3Au9elmgf1IfVSHUCMB8GsEyxkqtY11vo0MSGpidzRMhzLH5oyr_5k47UByLa5MEbvpuhUvkrLByX9PGpifXqAKvjxjS494uuBj3sy3P_Taz6dk84kBnqZo91k_VgOPagZR1c2_DEi104CLtUpy8uN4HvKmRn8BT1TrcYtmhrcAIiS_dFtnzRP1SUMTYWfDPqInfCFGc1ddCTKo33LeFu4j830WWxgIOdsYqWYKskURo-tBzoF_6MRG8OCxcqnNfj6HggGLqfnnXP62EdE1wAW0hYh6tWeYVrS8xsILl4RRHg03mlC1jg8NQe7fyJupi7J_GJKhy3usL0EzZGqjCU75QW0h3ohWJHtEIGHp0i9uf4YM0_EHuWR0Eao-KP75uaNxRdXEiicgC1s_hHylgjtgYwHQFBDIvayb-sO-yH1YJfH0JeOLiB94Neg.5DMBZcE1a8A6cumub8Fn9w",
+  "refresh_token": "RT1-89-H0-175431494195jh0u33l9pfscln7qjf",
+  "x_refresh_token_expires_in": 8726400
+}
+2025-04-25T13:57:47.635Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=9pbwu2wge9o
+2025-04-25T13:59:34.447Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=slziwhg8m4o
+2025-04-25T14:00:22.031Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=4mwiwjfqaxm
+2025-04-25T14:02:03.671Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&response_type=code&scope=com.intuit.quickbooks.accounting&state=rqnezimtb3d
+2025-04-25T14:03:05.890Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=mgxrsouw4i8
+2025-04-25T14:04:37.657Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=tqb3ejqwglr
+2025-04-25T14:04:47.760Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=gopt4owdl6i
+2025-04-25T14:05:23.585Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?response_type=code&scope=com.intuit.quickbooks.accounting&state=se5w0d0smqm
+2025-04-25T14:07:45.651Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&redirect_uri=sandbox&response_type=code&scope=com.intuit.quickbooks.accounting&state=jezoe09l9fo
+2025-04-25T14:10:03.250Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=lr3pynukjm
+2025-04-25T14:10:33.494Z info: Create Token response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-183-H0-1754316633ii6h7lnwt0q0mfe2x5ls",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..LrxTXb9kBWhnTXeC98TLfw.M3_AsDz4ixwV5lZCqg8afDG1Kg7CyGmszEV8C1i-fdjXrVFZWyaF-LL0sXF_EfwCvKoQbAfSFmnE5fZJrPzuY1f3XQIfZV_5epZ00P7HwQDCKbOf9CcqN2DC4dDCZ-wlVu7mVpkA10CizXXHgZWYJjK20iy03ly4JmCepJVGXzchcjh1ka8Vsp_1_fxORgsgj1PYs57vNoec3oNl2t8CwAVbSlQ8ExvlsW7fIPw6od5LlPZS9gZvO5V1RUVCwJRpYE8Te9gzPaYZnuro66EAr4bjs06UTH3E-b-0xHUSdIYm1qus5TeZ0XXuAWBGxgDORYHf4SHhQV49rZCXTyuwtMV1kH65VVvpgLMQf2YGWG--Vv1xpBuOJS_MmIWgBaXGvJbJ1Ga5T6aEhTPH1vLm8YQJwCwE8jhpkT5nNdg0uuCn-zSCOvJyEi9AlUqn2vAHlNAsuqWaFbOPx7Ju-KoLP0Q2h0gGdNiLxXmP4LV2wlE.VztVekIMvg5a7w2WngdqxQ",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8726400
+}
+2025-04-25T14:11:13.318Z info: Create Token response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726400,
+  "refresh_token": "RT1-34-H0-1754316673s5augmxii4d0ek1lyr2y",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..3jN9bhB8OsJgqqPrmedjZg.ZOMbVIR3QsllJjhBy7I8fsELQKcw1TrlayIuGNPUWSXUezsd6f-vnvgQwbcD81yvE-sGmsSIyV2IY95fMZDvGHwnMEJMg0E6yV1R4mLem9NlkEM91LnXlYHwoXuz3GrCg5R2r_HMHE7KfpR3UVm5hGgo56dnsXd4UBY_HRTMe6Jm6sYiE_cVUQHWVQ0uwPKY8UxeLMM0L7hAir5ik8TRiBpbEW4WOt0z14d-M0L-4WEkIkRd8f0ydoWXcOE8hETmxl1T60TC9PpBIEkTLIWD-C-2Vu2NXXhjNDLK2IHAdOfej4bqG-7VRPfbCRMH4W1Fkn0sBwVH_DULhv3upkmy3hEiiiTRRArcKN_4_36Dy8InKDqh3EJ_DgVSqDk6ARym7_Q6gyp5YVbLYX_hArHJsDbe8rvi1VzLV5M6aivPx9wwhakjp2l2dKV99EvqxqQPEwN9XCn0JeKvWZ_KYWhMwcq-KsZVfDb0yTcyKPmq3C4.8yIFoBvEf8uNINuC-r27VQ",
+  "token_type": "bearer"
+}
+2025-04-25T14:30:23.306Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.418Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.420Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.421Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.422Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.423Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.424Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.425Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.426Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.427Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:53.428Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:41:54.803Z info: Refresh usingToken () response is : {
+  "x_refresh_token_expires_in": 8724519,
+  "refresh_token": "RT1-183-H0-1754316633ii6h7lnwt0q0mfe2x5ls",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..XHStqYXxvDFUg7v_7PBzmQ.5t7CEd8Gx3o39t13wVOeeCTSAW_C9JS8H8BgeX_gXfFL9cvhsgv_mFHfviBPqRVMLRdbNZCZmPjVxh710mFQHz2_gh6xonmbvNpJxkBk_kpI5GL-H67OQS7Hw4_XpDW3_A6IX23pF0-7_SrNo7L-PUnKPtle4zfjQIi4Pw3mvGdjCru_cbQSVepR2MlgiAgECHnUTvkcOZ96zCKQ_FY_HTFmYp-8PBG-FH_PiMjb5hi2PS-lBFl_qLXtFU19lYnMhWdfM7ZVgQlPmrIiULztVfgnTaDCc5blVn-zC4AhEjQV1QZzs9AP2ADJY0a6vD6TdyCWSgoZUf0x5tfiTgLMxJkTjJRwhX_HVdGFHHHg20D_LMgYt4njFYB964T80tk0uVIeWFe-IUzdbJ8ad35t3zNNYqZSfisdDdqyDdfHOLhtwm4_kNqWjVXXB4xC_J_STXoHgxXF9E5xZ08p93lqiN7qr3ZaaU06Yv9adXLZZBw.vjbrBMkOiG_ioc2yfdryHw",
+  "token_type": "bearer",
+  "expires_in": 3600
+}
+2025-04-25T14:41:55.735Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..RpSRiqbWiW0ES1FH_n0S3Q.8iW2fQkJLF3akEucanU8m3sDNK5vyiLiWBXFHXvwHpQqwZSebyqESJDkLnplxoIq4L9jmvL8ozc_ONm1SPjamdLTQqdxquICdq2YN5NOn17Ms9y4Qu1CDU-4j0WG23cIJqZSbPAxk47Q8X3RfjtKYKaYKFb2MkL1R5ijae-KY_f9cj9bYHLwnW4asvjlU8MReDYFFOMUGuj3Pn2ow3AuqL-WsTm55iHxHOvPjzRMb2l3RJjTC-_6Q0URk3uwAypNppK7g4jt_Y5H2gk9eQ1sSsZEkP0OwZqAWBtrHfe_mPEr4pXJz2vKIAalXYz8z1T90xdbUwh6ZoHkDezrP22w1EuATiOxOyS5RzmuN2SnD41NK3iIhjbRDn9NEs1NN0gW2WTpv7ZwitLvYsLlVNQjbRxwLtT05pxHWGK4BqLyFG0wwT4ZHY_PBCPdU69GlKN3UCXFgycQ-YQSrSoVlUdigWCxv8dSOK-4r5Uj_bcGuxI.P_2WOEtHEEs5H3nH2wTPmw",
+  "refresh_token": "RT1-34-H0-1754316673s5augmxii4d0ek1lyr2y",
+  "x_refresh_token_expires_in": 8724558
+}
+2025-04-25T14:42:24.460Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:43:55.580Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.730Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.733Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.734Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.736Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.738Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.739Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.740Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.741Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.742Z error: Refresh Token () threw an exception : {}
+2025-04-25T14:44:16.831Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=s840e1ah9z
+2025-04-25T14:44:18.290Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..sQ3trzoKONUpBwWB5H6i5g.ll_NE11PV9YL8uMLBovbKLhfp-fFxxFtllrYZwP9YTi_I7CmdnwgKKprsX8cjxwJr6_ra1lf_mfA4MEOi9OUHrz518lZbKj4NhPvRFBVy2EDFp7Dg7bfDs1xX6Qj5Dv-RpbVvhCw_bNm2rGQfK9g4AT762RFEd4W1HMMTq2HdPxhDIOmuc1_htGGactsiwwIBJLP1YbJMWhuXWd43trYcDGzHBFC9VCSRM9P4qg2m9BA5t20IrGpt1bppaV28bIUC-ZOk8c6bv217HUb62WrXc4qIsh8SUw8Mf776eJRvo_kcVgI5GRooX2ZrymdNjGXeUbWaXput1K7fRpcSttJ-tQkK1SoAQISs3mYJNFkX1r4v0jmiJbhhGWW8mXXjNxcc_cPgAOTiFQ2b6AORxrHf3jaopbmey1a8UfuXp48Lv2YHmJ0CjnDxQNdT9tLzSrNXQkc7y2GkXaAxyUKnmT9LZR_B35xE56IqlwQaRSfoSo.wmAFMtCJZ52xd_ijT4s2Gw",
+  "refresh_token": "RT1-183-H0-1754316633ii6h7lnwt0q0mfe2x5ls",
+  "x_refresh_token_expires_in": 8724375
+}
+2025-04-25T14:44:19.223Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..SzBdvwtIdVH-Gnr6vQgxsw.HKWE7OfbFHhiSeqrMvd7dptUpKZ-9qnRpGHDgwN5-FVIQr_3OBYOye91wYJ6RWBkmT5mR-y_l4F26gSdDJ5gc_0IczR1u68Sl6w0sbW9JF1DkqBTsj0VDYE7Fcs6uykSK7nlYNoYDqwHPA12cBW5TvO7pOoMnKeNYtZ89q0jOdP65QdSAjnFHBYKCAhljmJUrLEcHdLsRYkg21c1pRlC60-A4OelEdqf2SYyoHPsnp5cUTszLZ9Fi3KzX5R_BZuPMYkQGFEzvB5qBS6GhSAmelnuzWLF3VsCk7LrQELk9HXgMF9imltFgRwW0gy9PNm8mXs-rfBK3_3h4elFIzfXg9ZUXOBpccsmK0thRI4Yg3unUpFLMHjBJ7PRMUt41lif7evcBD1UXcI5R_0aArJKPDNG6j3UNDkcNTlTKzsZFTWwju0iYERMh1MKoFR4cxlFkJ_ZdAjdwHSwChxg6Rfq5TPun76UrHtXQ6BfOj0xNPs.gllN-gXJQE5wokvUSFnFmw",
+  "x_refresh_token_expires_in": 8724415,
+  "refresh_token": "RT1-34-H0-1754316673s5augmxii4d0ek1lyr2y",
+  "token_type": "bearer"
+}
+2025-04-25T14:44:51.403Z info: Create Token response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726400,
+  "refresh_token": "RT1-174-H0-1754318691b4iaqqicz81rx2sc5ah0",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..UTHRpOSkl9jUzLudC1Fufg.v8f80WJj9RQq-DSPvVw0cJP-dZyQeprxRzIX7a_gkkRVMrl6iQ3xQh31Ha0kKP4rs23EbRACMqUe28I6WtZRGGywzwsssqtgoAV9X4hi7v3yJnqnpCSBuwlbjO9rUl6A4C4v6ckInQHO4OTA8_G71DlOpjUmMbm5-v5YwSZk8qK5v5_8PG27EBxmRNnQfiKbv31pjvxvaFPoNKYLX8ycMDL_9oeLkKtEhIDK_jx_kAwN_7bGyXjCAP42b0DGvTDUgNhEb5boImnuc8J3cg5L8qzxJpZvimU4az8LQNINIRTO2WoCS2sZmoqobBYnR0qKfZoLO6MkyWzPna2Q62ss1BgjHZdXuU9iwRC1wD22P9b1a9jfV9ExuhL6LUGsVmB1_XolItKlAS91G11DQ6_Whu6tQmfKVB5wUCnVMhryr4jdXbCaxBi5SUGkEhFyV8RRw1ghKC7Dhbgzqf1m9FFZ_y6L7ALPQT7kC4jmi-wCrYY.tK_WnMJqiZLYTdfgu1hd5Q",
+  "token_type": "bearer"
+}
+2025-04-25T14:46:09.014Z info: Refresh usingToken () response is : {
+  "x_refresh_token_expires_in": 8724265,
+  "refresh_token": "RT1-183-H0-1754316633ii6h7lnwt0q0mfe2x5ls",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..WOTvmvja8eT3iMhrEQqBOA.HZ0FqIQb3bywP6lsiiinU0htOJjwx8ABz2O3bToPHX1KI-4KExnYwOP2xXv8ULyYv2DtybDda16CoZHogZuARMNStHqQNlD2C8ED5nqppLlIInrK5t_is6aTVbsHiIYG48lu2PYReEwSH0Fle1Com8ItwlseELSekGkhZC9UEToRpmFv7ddcB0h9JkMhqH0E01DcrMcPpD3kVSV9HmmReTIFBSM_9StK_jNpmffwWF5Pq8jqWQm-xqTWC14dzUBUSlAr1J6PBRIk_GQi58hvlzQ8YX7mjwcxULeBLQexmeCIMBTxgjzckB4p4VNnv-HMrrsOyQOrpfCjCzqOqQxY1-mUoROFQfPOAXCQMS3tB3aWReuHPaoULkKqcMRjgrdofzWY266IKhzVIRsbBsrPTLkLhMb6DkzQI2drY18dy7iKhfBsdTBY-h3qPF4pWPgHcI6c9ZvifkvuWZVH0dbwbfXFOIncFz1k4uXhq105hf4.uRDatee4T6KK-nVgEFE8PA",
+  "token_type": "bearer",
+  "expires_in": 3600
+}
+2025-04-25T14:46:10.017Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..k0hBrQGai6xW0sTF5HarrA.KXFVzDzZKVxR_k6UfkRjkrS62P0_-1Ts9QzH1RW8Gx2nZfUXBlW0Jde2QdR0Zzqy42TLVcOVb6PXfaBUVc9C_1aZ_L7hoo2V_nDqzcM40cHIyKhrqRl9SAeeaQM4pGnEVNNCh6AMRnCY6OYhYVlzs7mnRr9BjvXaT5HOwXsWaN0me2lNbfRyWcpzIrqgaZBYevfipAiWi9oISML16c2dvIXP4KNYbHeac4VY-zngeBHlAaLSehd9jcJmoTIdZuRPP6jYNoate1RhsPyVwgWkOcAGWAv5JNZ20tK_ql07OEq5JguNSxq9vEaczghYl2p6ZEEcx-ONeYI1SiBUVsKAtq-6szj7NxnVcwLC6oB6fQbcP7zWub7CO-ZX08dzUz_44BI-zFLErscr3qDtAwMbyAQWuWwixTB5jj3Z4FyswoWNYv899DUPoahKH3Ktbrrr5q6aOBhK2bp4OvCwdqVBtEbQZb1R1kwQFs9bQByhVGA.LfQqdLDlVOPDNSnEVk_ZQQ",
+  "refresh_token": "RT1-34-H0-1754316673s5augmxii4d0ek1lyr2y",
+  "x_refresh_token_expires_in": 8724304
+}
+2025-04-25T14:46:10.965Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..UVLRepcL-70CUljXOzyv-A.Ok8e60ZB5jD5_TJ7b35fPcAhnv74QRmrMr2rYUhWqm0TA5CTbZbj2NPw7dp7Z_izbDLMCuwN9TqlHHt7jNwXlpBcplt7-x6IEf5oZcsX97AnyjE4Nw4MZueeRk9vOFtJdLKHlBZoslIJmrh-XmFOAVf2C6trlaPZQltY0CzRmRrbaKFbwYecpYZf6yW-CX-jynIlpzU4BJusn-8n6ytOPfyUPZU3O5wIDimhI5S581FbSR1aob4m5rcunlKlkxOWxs-CiGe23LmfLHgQrs7xUQbvtwXB61DjVI_yGvsC2gmFKvckzAMiaf0Krf2ifU8dN1oYxzKxHUhrIU25sh5dufqsenx1oPWpCAk3bkSMmuwuu6ElIOgHkFoGUR-rws4oq7Zs4bSw8G42-_PcRGDrae2yzu67qAKHHl81re5t717p7D19Nkh4XjsXShx1g6wZTLj-2gWoUcBCYMWuQ-DsIQe2Zb3dtSh3G2kBDOdyGn8.IR2M91g1GgS2wEyniaVE7A",
+  "refresh_token": "RT1-174-H0-1754318691b4iaqqicz81rx2sc5ah0",
+  "x_refresh_token_expires_in": 8726321
+}
+2025-04-25T14:48:26.896Z info: Refresh usingToken () response is : {
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8724127,
+  "refresh_token": "RT1-183-H0-1754316633ii6h7lnwt0q0mfe2x5ls",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..hUOVi4fODadb00p07fjDsw.xjDr8P-7auZVIKdnnWgKKar4cOa8tvKcLwlHO8sPeP55xxoNSs8ZSZP69QfLli1WDP3fr6F7jmd88ll7XLj4lfdGzcV8yHt-owLOSY6-mNHfCdGCDZYOmLgxoRoUkxn42EclruIHKQxRaHfA5PIx2aCc1F0grmEybMtOJ7nBbA1T6EnXSSiBgnDzi8D006Qg8qMnGeH1CN8JH3bIh21sZHBHHmdVirtp3Bj5e3X-Ya5mQEnuVLUSHxhL2Ii5rUxVDjZtdyLzBwmt0VXz7ZqLzF_65FVNFJSpQo8aU0rGNGC92QvrnmvetP9KwFgL5nIZvvBFUT72GiJugBH1W1ROF2FKvDqHU_HvVqTqoVCi80ozK0FC0fskFbo4l8xgaCEt1V1QlgeXcgMPit4_q2uvHgyMd1FOb3Oh5r9c67VGqJynpXWWd4iYj6NzXg9fCPnuNdVCRK21Rz-PQUFRX3slcrcK-woLRyi2fuT-5n3Mkac.BS_SmP6CsSLVJuq-PhWI_A",
+  "expires_in": 3600
+}
+2025-04-25T14:48:29.800Z info: Refresh usingToken () response is : {
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..hYoBP-O8EcNc0z5I5gR-ug.1XJB_pDG5UzMqQRX16Z0lK3hydMMS2YPtdBNTEOh9I48Z99gKjyNA3Dr30zDYgXhIonWmvjAB5fPOUlQP_Y_WGk6uFliyFlMoAMH4hGbfKoCWmpm4KRErMuB-nSLa-iQltgN7E-TdefffS-iCYPDHL9xA3E-JBf2Jbj0buGvYRUgSNA5UAb3iJB6amw6yax2nz1Oo27oRFBR6n33ZMrL3yXLxOQ4iBXStCAtG9P_5ZkQtc9WzMz4ZY7LgVRHNT0POxR08HfF17jn-VzBFbyvrEnXqQ3I1rUpiMFJvtUyYrIacxfBiff5B8pvwKiua3eu-eb-JTzxG6wazQCYyr5-aXtyRlScUQmhAmoEIoGPLPtvbcGTLYImw1VZEmmZ-CP6ul6NJ37hGpJO_K66-Eqd6h0G12vTrNAQGZjQmbOqn6H4n9Gow0jrVQ58Vud5vRBlLwgLE8McmOToCHr8AERYJ3G7wgRbpuG38fIWTRov278.1dCKdCDdLU4WrgFfDF9jbQ",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8724164,
+  "refresh_token": "RT1-34-H0-1754316673s5augmxii4d0ek1lyr2y",
+  "expires_in": 3600
+}
+2025-04-25T14:48:34.121Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726178,
+  "refresh_token": "RT1-174-H0-1754318691b4iaqqicz81rx2sc5ah0",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..30KaHmhA6NxdDmS3eeddHw.A1u9yzN0l33PNX8zKYUQpQG2TtUxG40JF7iiIzc2xiH6W37W0e-R3kxDgTRLlsHnm9Fkf4mr7YUt4YodLnGnIWfibZUIzvH-kAbrzaC8lw5K3cWxXYjFQ6O-NmizSMd6bL51pB02Rt3BlEpbf20zPX6OojKVR43XG2sTXlaAkRdTluX_wWj__T0T3Nnc3qZ5hA-pm8hqkkl9INS57jaaKy9jjdr_XP4Q9R-CNRfTDf2Szl1sJJ5RV2tAsd2rmlDqq2ipPiO7bHdqdURQWRNrrVM-FtWGn8O6azY7ehz0JgKqDo-vfYl1W327pZpMF0P1ZNR0OkDF5Qy4PvvlMZXvYeaEFEkOrEoGFzpZAPO3y88VIHSlbYdL71gNoWXiM1lYOI3o0ECUd_ausP2XT8TxuruAArqxPLrspKLnMln2H9WxFdG98x3euRXN8YxDF2SCNnVOTNBLKhwKEGWUNoKeZkAI1v40DE_zNApPuQnNGGc.CBxXkNzTLbUI22q9p0t5zQ",
+  "token_type": "bearer"
+}
+2025-04-25T14:49:01.220Z info: Create Token response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..Rpalqb7DSw8R_MbjM0GC1Q.reT8UkqRmiPqPxNDwINhCwrhxFOKHf6dvR626n5DLK8ju5QrvX4tv9zq6GIHGV-jD4k5cRJFD5oC4v8g3IyWYUJJw04A69VfvZa32Ego1o1K1_B5Ezy_uLRoXJEy_3wLuPhg9uQjE9ZhJ9s1dTQI7OdOo-SnxVvzj_TweyoUJY-n3uC-TaZrHK7VUo9O22Bq30Ph-NaWj_jOkj5Xl7udq0baeMPZGBjLLgfznKPkhPGJqC9Xhh7jdECgBr99OCtciXZQo_hodKlBhdduyqtDi0a7t-zp5Y6MKlIfxHR_4p0nhu6AvyQzFbug3fFdyrEDJiqzC8xPeszx2m_nmJdSaQvh90ij0cDiYyPadwvM3yZ6jaaOLCSQyvFdLVKg3n56Ctli_23oGF2uVnj85gvJpbw-HCGPv9eYFMorvYZ8nf4ms0LogMVjLi2f7fjRkMewR-xo4sghAzvZFEmU73bOGa4UFWoMT0PaVUofFpxjPsQ.TDIN0AoOECTLw8p_j1rEfQ",
+  "refresh_token": "RT1-7-H0-1754318940td610zpzi8aod3jna1cy",
+  "x_refresh_token_expires_in": 8726400
+}
+2025-04-25T14:50:27.185Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=nystlg986m
+2025-04-25T14:50:49.914Z info: Create Token response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-33-H0-1754319049rfxyorns692uggo5bq4q",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..DXMVv5nksXRu65j6yr3NCQ.e3phJHKQ3p5h74nWe2V9PxULhO3cRYvoC_S4vdz6Y-tp6_BlGd4Rc0I5X54kyJL2nJ1jJVNihihvfvaL4cLiqyiusOb7ai3Gny6kYrUlAV1gjqxUyBRjSgMWX8FLhfOVYDUNdczjZqI3t9VFWzIlyLmh2VUBkNxbTSuH_qf1TXm4in0mC_edGM71J0K428JtHXqn8qjBKluyoan8p6BZz_rWtGbYx7_OkjEozAc2RvoxHxZ2OaMKEzyqNHXBVGuerJGFO_gntwGDpJ4H4LWewtLeVu64rdIK72igWP1ciacQLD_eKqa7o8T6_ukHlX6c2cltcLv1j-s5EyVx1B1nnQfmEP7P5zmm2MHOmGCABfCa96Bt32heNPDrwJoYa62ej-47T4lKinQ8YumkboFqS68F_phnPB5hTOGBqn1aV_6k-tfALDJaVXC4GZx1LDQIEh4cdABdXWiy5-wGaeAp5rG3oClfj3TAPycfCxWbkAg.cOGdAJZ66qpKkZ17AOndGQ",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8726400
+}
+2025-04-25T14:51:02.778Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726387,
+  "refresh_token": "RT1-33-H0-1754319049rfxyorns692uggo5bq4q",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..1fMkX13W6LsjyfUtw2qVWA.r-oVx88Kav86w832csnlhMZX30Ru0_SXdfc1Q1UG0u38zqjDtf8uEmLVFWUIYRL_HtCj-rfNMXGq9rc4nW0OHhNpMa9y24YUQdS_2-Z5lh_1EzpiEllwzQJFttYZa_BPr54wSoOiUjPvjZ0EORVutTy8bjdAUmvuGyeZilWTIAjHuOlo9J6drd5WXzCTkGFAHMph35W4da7E9DaUuWndfr3BXnj0LAwFZdYSINNYcadQd0IJTQ_aDK9utSpvGqi3T9qUYKsuakL3AHIBgYMr49O96pHZA1M2H1T2Cf43wol29ndaCe6hSX4WEzKcJ_Siz_RPyiwDMp5zFyL_PH59ieCCwWyT1FZBUR9QoGjjPMAyANAuuy8wmdgXtmRuvciaOxOm5vYTUIpkZ7a_3pG3qqZ5nWbYKNYQAVBkgMxdosJnaPmXl_Ebz0UnsdPh3pd1KWBrXvDacLMdMHaX5PvSzINK71UOCElJMxCfklIjtlM.krU1CeMl5YLpTkstXE-lSA",
+  "token_type": "bearer"
+}
+2025-04-25T14:51:48.512Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "refresh_token": "RT1-33-H0-1754319049rfxyorns692uggo5bq4q",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..OrDAqYuSnARdMguYJNxweA.92AAY7NzYaCLy8eYeslCvMVHu3WTSr8bhy30ESe5dgTzGd9b1MxDuKDj2E8S3JteVR7ujLqBvNB82RcVPROdZY0tVC9P96HN9I9mULU_yK1cxlTgiwEasH3A0bGeg6AT3b5X7lLMSHBtV-UGlnQe6KdsDMY-WjkNTl-ld5EJE1Cg7_AS3nqV05Bvys5TyHC5NYBSHG-CrrajiBFRievm2-lUoju3_LDi2fBaIIagHyCTaLk5YzYLMzOi50SOcQMJjnCzbPf1GF_b4tjwi9SXfIepKjzVTOh-PXIgNQLskH799t01fmhmK3a3cqcJWKy1i6krmwe1RJkkmFiXnSt8oB16ybPzK4sjr6iW5GnBDq8-8VTq_PWCZAaFMXGXbp8p80xX_jocVrn-yAdi_fGTd7-lbLLP0vxReIX1K8gRcu2oEcfALtuSU-9n-4wHl5vgsg3t27V6eKapqU5ALtxeqsiYTyM7TXIuOvexO9svPII.2UtBK-soQtElQrgc5YTIYA",
+  "x_refresh_token_expires_in": 8726341
+}
+2025-04-25T14:52:59.926Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726270,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..AWWhzsL370MP3RLf_pa70A.uwKHVd-cG_bHxEVV5_2pb4X2xxgN1PLxM5YlfABPvp2aXWEbrEyfavvjXwHhKiu08UoF5ufu2JZFB4JQoDBYuBZypMZI0D_VYjKz-a8cuU0jkIvObqSMYkyQaF_uziVvoQC1y0zcWGpMg24dA0Z9yt5I6msZxL6cqHHDHqRNoKiyrgMXWSoABM1t6c3VDgG6eHCyywZmE9x7s2KVs6wDpioZ5OiAzSBYH3uIDjfL7UUFSTRN8jDy8mTLbNA6sA5AE5VthYbR4-z4D7YgVB2Z6dCcaFELhDOJwNStLiIYLS69EDWHOhMuNG8UcQtmzYyVuNTHCuiFeVB0TWn0aWxyA8mTZRJzW0bOBYgXufmnuGUlwyWOUzJ3y4I22gPv_G23B7H4QOtKFTlXKj7fTNmqG68_iNWKar7-V4JseMN0X8kkoup5uR1lyRUH31fzONdDZ5-5_LM242aN6-72Eh6H8KzGv5GrBTVs6XIZdTruLMs.iB8xudW1vMYJyB6vmLJxKg",
+  "refresh_token": "RT1-33-H0-1754319049rfxyorns692uggo5bq4q",
+  "token_type": "bearer"
+}
+2025-04-25T14:53:27.517Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726242,
+  "refresh_token": "RT1-33-H0-1754319049rfxyorns692uggo5bq4q",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..NB1qvPIZTMNRosFK7kMZ1Q.vyLNKEqfLsKXPvlDoigWw5vC45Y-5-cIkqchOZZnnoFhAN0odez6z9yhR9ydWVpYTstO2CJg-MEA9HIaACB0wnHQQ5-Mr1AsEZLmvAnTGA2nM-N8dPwIiTZ3TQu3qI0EWQEuu2amTpa1R2HH4vkR9TBKAeqzpfUIdmLhQOU3QXIeupmNqwqoJRJZ9T_6OQUu5WuK21CpAggYwxPF9K81OKqU2SKWIEHrERs1xYdYsGCAzKWHle-pc9gJSKOw3-gp88k9iseso8HKqN_Mxyw8uIt9-1ZQubkDxcpW6ITwLYO2dEvYBSQ7kJDqC27hBlGodGJYptaty8TtyKojs4tIaT3eazBV7y870UIE104GSKExwwzjejRdwPWdI5aiU_laJAl4o5lNeUC7mtmP-mi-bN_Zs_m2gS5qY-oGb9uT94hFPqS09JcNpY1RDkFdUBjvO-Ege5shRly_t-c48FSnevScRD5ThJCnjjcv5GoF1pU.KYvywyOvJZUB5gfTwxeBHg",
+  "token_type": "bearer"
+}
+2025-04-25T15:01:18.593Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-33-H0-1754319049rfxyorns692uggo5bq4q",
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..ME6Vb5BUJg51Tza8J6Jn5Q.bz_OGpPhefMLJnrl9vMbN9c-hY89Wavt-bwW9zQUNHFxUPV10QgZz4XOPAhShV7i3dNsJVuuDCk6rKRstFbBKX5VRpaOCLyb2gcVIuJ6n91Pf8OjS1w3NgN17_QV4di2_eYT1xo8sunL0DRzowgzeSoOm2eRzY0O7qNyfrWHv3--_70w48sqhbngS9-TmOlf6b8DqyASqEfPHN4fGipiUeKVcSw6k81BKVMdQWfYGqMc0dsXyxiXo6ItEIQxz54lKQlhyEZGn8Q_AOac-gaL7R0pPJElG5SzREVmpLPSeirQFck32HvRYixLAeA6L_aqRoyiW9IQdlUAqcVBTbcmQ70azWuPnNgNf6cr6ffnUTmH97D07DW-7R2T0oE-4EyJFPwLOVW5VxYwLcnZFx3oR2BSzXnscX0quKEb68MowqcLs3WX50FJbVTWGPihfKkUjuE3ClEPngLlOc5PVm3Jqaej_xm7wMS2fpH0-L7zAHo.0Ron9bWousTW0BXYTNSxPg",
+  "x_refresh_token_expires_in": 8725771
+}
+2025-04-25T15:01:35.443Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=ABEJtjZYP0v8c6wuXN2IlBmdhsc1mtCWbmdVxq3fEMYTC6S5Aj&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2Fcallback%3Fkey%3D6TdeSydza%2BtG4IuTOSckb91EXd0dNMOa3QVoTVxZkqLYAh0BYUQ1lQMmq26j%2BmwM&response_type=code&scope=com.intuit.quickbooks.accounting&state=oefhyrp6wal
+2025-04-25T15:02:00.608Z info: Create Token response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726400,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..sfRqRbuv8oUNLunazwELAQ.aNXsK7AEcar9QtftrmefG-3fMbZHogboOcZdYcvA6B9uMP3fGyuyJEuBlxvwSsoJgVewWAv4a5XgT248Iu7KC8pqZ50yp46AdD-yOPoXAV8LQLjIG6bW21BBvMYXA5oXgSI59nJSYFP6y6S6wsYVpil63GIZUbEdppZZ2Nxq0hRIqInx6QrugcKprlaOgKu8O2EfUwhSLBTprHscd6qPz73zTDBBzwvWYulwcY8Sb6qz-cCDjezdQp8HdW_H2azQaVK8NnyV6G_VaSQCKLPy8TEfQGF1WGwvLGtzffyy66ALb4fa2kxHF2fugbY8vGGp-koi3SKRtarPrW0uX529a9R9MCMt_BqsbH9Ax610lcXSNSOt9oQ3_MOl1YbkB7Z5eg9B4EemmopyGgYijSAhDqwA9LCYaRPRJivFHoiB41_A96CC8iNIarSdmUoCr-mLnV_rFkymqaM4SYOaoIXefNl0GGFCEgWt9YEpkrIipgQ.AoSC3btXoUUrE7aFEyDzoA",
+  "token_type": "bearer",
+  "refresh_token": "RT1-12-H0-1754319720mih418h0qs2cnqsbx49x"
+}
+2025-04-28T07:11:13.160Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8726400,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..prBYiYiQNzK2AdBbc0Qvcw.MrbWvgi9ntF4awBamTgJGKok1fE-KzytrMXgQY8_-ylqPakgGDoDM7nt3iIHjzNMo0W7OTlnuaEV-GlsHgtzjCyqBzxzHENaUb4kQHImuDmBKl7jiS8k0VzdWD8gTmtQtNuBpYF4IkJ6Lk1s2XvaPE9b27FXRVc97wfWWTXiNPYIgpAgtA_AjULktH47tu7mcoEubn4GcdQ8R96Fm71AHHpP38BIjIzPECG9OwI3FHTbsQ1J4tE-el6roYMRmq1wTI8snYR13biphIvvfw730NbpG-ehUgpqfeVpX0XnKjnpJLTYZEm-R4M5s3gmceXFYIsurK7ukLZ-j8SO4_2pmZvrdypmaenW-AgYbLp6kF62R4ckKP0poMIfgkVb-3gHgglXuj3PoXAAwrK_PU79HWHaBzpGuEyxQLA2lP4UdCvlw_k3KcfvpUiqJpue04mYXhHcft4PYAXH0pTct8X8qf1qfqHUE0KBRJn-9Y_0-qE.biagxKdbliLx7Z-TJlZtgg",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj"
+}
+2025-04-28T07:11:14.346Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726400,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..gRCjpRq8OTTZW0g0KE6Z8w.XRT0lFWP1vuueQgnnrUVJTunesoFVAoI5cDkZo0hWUxRcgMkoxMd8uIgOXmzzmA_hpYwdrPEW_iRH5wOIiZoANjarBtVocgFsdN9be0_Gxo-YiRuFb4AzMf3QmietG83yeM0pizGimNjuEVrKE_iU6cUQ3Bj-BeEr5oC32gJ9EUo0uUkgnpfz_KY2i56JeYYB1wKDU2TXVIAhkTFFB3xq4mK69IwYlGbtuiBzBUf3O3bkuuxt8-i8I3Y1h9-2x3hRUCszzo4YIx0zwagFua87bdR3frgPh3GdLu9VowpM4lrur79v0afjRyPydHk-_dsLNsN0xChG9qvbjGdYDlffFKI6Mv8Un76K6Ua8AL9M-cDDFlV7eAbS2jTR8bwBlUcAcVVfUe8Ir7baNs1qMAyOdxtoQex3xjtHqFz-5kh-_nlmDcPCy-EnDhRfQ-UcsgN57O8ue2EslYNAAdPcVigWgsAhRilo4W8RP1Lq-ubvKY.QpT7xSY3Eiw8bEXhzUavkg",
+  "token_type": "bearer"
+}
+2025-04-28T07:16:45.742Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..XltUhSsZAlw69y1rfX3T0Q.sxEf4bbV_1zFftcYuC--u363lXU7A_vduHUSrb3cMgNj7tAcxqiK7beigbn4dKfR1cepsBNoe-8sZcu80_0uZ4gh9ZA6jsbvvEPEpEUenw5RYoveQ6YGkcnqdbTLk4rcZ2D4HZ-eOdglRhV8TOAawC6_rIioNEbqHtlKh5YFKwI1-ywBPeojpf_lX_UpN0E4js3jgkUXBiX9PGAS1eR4JDDU80GuVVkfbCQglvCjj1pEpTb-XfVCUAQwVafz0XGZ7yzo_Udi9MCIvSic281Zc4tAOELmx2LU2lkf60FRkE4TpQ2scc2718eykvhArJazzaHVQLfGKFUZ1V-ISAiu9_Z9bNDhNRRY0Y_tqMfcIdX_QcB_AQQvAWOKCaiRIH-yJkn4RC2XU5dIBJImwWbsO9m43dOND3E0U-L_LAjOc_NOcnmzPbwFEdHfH-I5iQJntIi_u5-_uMpxA4YrJTtYmAUK407AYfRFvFVk_ShztGQ.iLV4KxZUEILeKDXpzR7EOw",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8726067
+}
+2025-04-28T07:16:46.630Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8726067,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..VJFg_b-aoo81wZwNwUFtKg.1Su_QJS3ZpCd4ekAIbrqZVFafjj3_Ou4kM61oKkQsA0_vqyhoxeruYt80GLNt1-IugQfVq1owPejRvNCiVxBtrBLUVGZwX2VsemL5IHec_Mswv20TSe2Xlh0ELNCI-Q9Yvtx_VauBQ1u1U51K_CTAfTNajLoNt8P3QpohWwbS8iEM6tLETiixs7MxyPHQzjyH95yG1HJIW1xs0mto3JmIfDsKBQOKR7yaxXPdPfS5VM1JJzLo4HAE8L5HrilELzuS43F72xZOe1FJQ7xXanPkv5Xl7hVrl6sJzQWgQF-fXmQkxkek-cj8kcCvNGAHCH_u7e5xuK2sOJK2KT94FnYUmAUFdkNTekjPHosrx2GC1icWhuDZsHKMQf-XNodGNGuob1ViAgA7MT0JAFKBicMaGA8JJNXV3MsUnhe0ADcT1HKFmg5LXVhEJaEh0-xjGSgNwSyF8VZUmwLNr7mdOwjI-8IBcuntxxkJWWUY7K0JNA.CltggEem-ZVmwUniSfTAJg",
+  "token_type": "bearer"
+}
+2025-04-28T07:17:38.393Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..wqEQBHanvBvzKcBa4UGRbg.3E3dMH6nPd3qX-05tZBTMCmGTzVIymt8S7nyYUZYlQZCnImu-vNC7Tf_tvawx4j9aWWGWjA0nFw3XP3d2BoGexAqr8DxHruQ_p3k78Iha_lKjboXnJr39cfCVY5ulhecpM49Habu7bYSQbP4OLku0MIcu5soU87e6MG4s9OEZQM1Kf50ci-NfB8O7TtpRXiCsPzzIM0WMpqC875pSD943VDVz6WLUEnu0Z9z4YLr6eQxYwjBRbpZwVDpzmK7l1Py323Sv_OJCW1Ws1T7pZ5B58JL6w5JLRGvjvxxO00oaBiJaldVb_FLltDH9S06AYoq-9gjdpv0Y-hpGSCSnYHy9OCMowpDquk1mcXa_rj_50Y3dXu1vOgqCKqRPoTbLrm86aIHqR18z1Lq8CTlK_VrcN0tq-pzZOSzKA0_duGfc0076pwnyx2d8HE9f8hHbV8QOakx4d3X89qUzKU6vHhmgt5ls1M6W8cltoadTlDsYz8.W2NVKC0PFTwcebkRE9odeA",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8726015
+}
+2025-04-28T07:17:39.313Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..nLyIhl0DgA-WMY0UQqL81w.7kU1Gs3otYFNwtlTlUR96eIHTWLzPzX06rjYO0uGem55DOt8u0XqZAA3GDShYcR7QFbUKQ8zX7JIiN6a8ttWKIC6mGDkqWC3aL_qP8PeFd9LDzwVZLksmh9QJzspHx2SqcUEZKI0XhEVFpZ5JoQ19f-K9s1a8ieoz5fHB7DXCyk0BLf5Trm7l0mG3oIyYudJjAB4R9YHN8IesRshut9TatlZco_bkQu3V-opys9t7CXufn0TlCA2-WxA0GN9tN2-q7seRPbt8WB04E-v3lRbMzCueGIdaHJ_Ysnolo8Iv4xfDWqpoWWQd9Ow-lvc1679wBA89C5Z5D5IL0Agt1WAFqjVnP9OnAOo74ZP8usut3SPDSTjAaCdvNdYQZR9LsuPugd_g6U3fCHkPZU7s4IBZpmr8m7nE4vo4M2OxJfTu0uDwvtyJQuvobsOjZbIZxG2ONVWXyywW_IJtPr11Qkn7nAwdUgaW4yseJxhObBXPhg.izAgjfl2rYN49U0NInphzw",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8726015
+}
+2025-04-28T07:18:19.470Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8725974,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..fFu5VOm695GxfVdFkyHXKw.mRBydQN5oNfHT99rjjZp6dbdfM6vLlu6ISMUPcIzcwVdaj-WCKHO2H6TSPJd3QIwtGZjnUj_2Rgv_WtvyDhKg2EZnuj47U81YHPuC-5f0HY4XpMbvTNmnBajR0pMmXqCy_plJwmNinPTvB3r6GPyFlB7HA_cXd_tiedf2u8ge9TlGJ0u-SDWlj2yT-YHzEUas_tBUtU3vroWNjU9qkKDB98aLVR2KS9GTSm77ClH7MP8ze0ByYz9zD_DPgO-ZPK0i7OykvgEYCeivh_mkHI4Q6gpPzL9CrS63pf5fOdOE3wvexydM6XcQoCRMnyohKkt2VLIwseOgoo3PMiFUOSPpzTcs_Vi2ARTjnH7Ycn_LZHn4BuMSPLUUYwwY1pMQesWxbVyIcIDSENcUGBXCPuJR9iY1zBFo7mr-IDVmJD4nIDTj9M9iaQ8pnK4V5Mw8MqtAMx9Y2MS1SDAiIAmcoBJ1O0bFwVm5itt9uKvhOhBmak.8p3SHQ0o0H8E4e94gqA8PQ",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "token_type": "bearer"
+}
+2025-04-28T07:18:20.367Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..KPkDvtl1vTEsv6s1mOcH6Q.FZJTOVn6Pl_ZdJu0Ef0K5Y2HdMdp3zXcw0OLUi212BRJhV62UliKgmH6qUu73I-2pliOd8bbTnk3bHnMvKYQq_ERuYQ2yVEDDRObjM1v_BJF5AL77lFRZVWDEn-dptLhXrzqDGzSueaYTPjAjGIg13c8qXj6ELi7S4-F03v5W_mhpyeV1sK5LKtscn-rIrpjlW_onLR85ghNiHGmXeKKQ6xtKrnpQVyHLrZizyiK0RMVMTpucc90iKcBMOA-G_HeTaZa04tlrGLd8RAeGc1Cx8onEYFsjkff4cC1vUY9I5_ecDlUhUUNRiZfulVprBZO5KqqdaWb8KjD_ujbZCWZ_LpMmUqdmnNVgGWxois7NtG-3imygEx9uevlfbkubiKZwcxLJHG3UPxgA8hC-hohcbk1ReKqRivc2m6XyufygXVQ7pokuHDlbOGeUA-wWhryjJxj2pvNg9xaoRdUgTzh3eWeixTi4VluwV57fBHRyuc.7b02CCzFn3IOFg8jeIOWEg",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "x_refresh_token_expires_in": 8725974
+}
+2025-04-28T07:18:48.794Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..KLEs9OdvzK7DQjStYQQ-Kg.0lnixeN-QYK7OGR51Obd8no2VwpaCx41P7lqFDisgLaer42Vktmy_lkXWEBgqiuapuysHBumBZoKhtY1aYDi9Iol6lbHTvveCc4fMVdJqqCjOsobG4ieEY_6VntyN3WZgiUCLU4fXtW-dzFbvhceJwTkdsWlPqs1S_-GKtTKdV9xeh-KL5AGfm8Fq-9RM0wjQZyNv_XkTGkXQ-OIhQSse6oQLpI-ZQhl5cIYm6LF6pEPtzWGgC-dUi-h03wP8joiMiS8UeyjmP1ddBL5OO6sg7wSulxvjsUGlDT3GONxeEDCVrwxocd0xP1ZTz-uHlbTwH1t2GN7Zp4ItENr8zAlhQHsTKjPCwXiShf9iK2REZO7kKtBudYy-pp3n1MpD6EQP0YYIA28MFZbqYReDyNa6zTj_0gI3nGe2MfVo_8mU-ZnQ9zaxEoSqrSkeWZYgOhNkFoSXMpxnFx3C6GGrWByp5nX_mAxny8EycBu18n2wPQ.F__F-qmvcRFCLlFUCFqbkw",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8725944
+}
+2025-04-28T07:18:49.697Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..bKOSdV0QCx9GFcAvK1CDrg.HJRhijF0QU7jIzgz0sSjkdPv1lJa-YxvkO24Vlah680VMv2RrgokcokqdkJIhC6wcJe9E8LNhcK7liW2QP1BLmzKzIABd_BhVMeqRmfucw8K7CmHOKXth7I2HPhL9PmwopgJE9RYsfD4sWAR4BpFVG_haIKIcLUP2rwXDRL3KWdq8E2SscnNseEjIckhS7eSElRT9JnsBWFlYmp5bYmCT4h4LJWKs1cnq61amTSeASUZDWYtkIlJ6K_sLZrJctSFAg2401W9VBX1Ux1rpZbsnOgsIYKy45mdNffzpcZt_WLJ0VjGf58U6oc93L5P0zDc4qHwWFtpGtckKgWdpXV5qXZvXfqpLYOL7ikUiwUR2tYMn2Fqh7qIZckykX0C0KGKxIiJVvzaO7unqrK6E0Gxg6ZsnhPt-uoLUzq-YHRCLiSglhuqoZ_0K-GpNbzE8FrLYPQ80pOsCUmun9U-nLhRUvac8TP-mLAz1hMFu13rFDk.cc95-h9ZYNVnfyCI_fNWMw",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "x_refresh_token_expires_in": 8725944
+}
+2025-04-28T07:22:29.880Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..MZX6MdqPHM5KkfY8aP-vkw.JkPMahosuGowIiy9lq1CEkoz3SUl0O_-sGMHCnTxwzoxa0Z8s7J_AamcoVGtWrd4yxJVCvxWRUVNoV8L6g4jyNglT1Qg9olrSmIJ5c6rnMEUcsD_MLOKgqCR_xq9uk0eiaB4VmcfpNxev7LoMJJ8ndwEfIcTjLhyya7t_XC3r-e6Lzaw6Ha5EVHizkgWLCmBgPSD0V7kZHTLW9Ly-wLIZALe7eURSixy5XpZImqRhreqpOZL6KG7Cbah2IB3MrmHe-30gqzOpfgmo7_Dv-DoTj1Lh2WzYcuBmE3I2qoGolB0AmltVHRibqfEuLipzIwMQ6ClauMYZg_vcOcID_0sOnf-k3NPoFCpQt7Tzm2FIeKD9ymUqajAdC_u4IIayLsMX5bfnic-21v17qNEBMmRIL_WD7hzW6yCfxQAVhHI3fSabAYSrL0S4hyCDz8WhsMokQZESHI8daUTA8N9K4dMnf2YU_JQrxJ_J5B2GZ8K__A._rfoJPIn53fdJak0t_dx6Q",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8725723
+}
+2025-04-28T07:27:17.876Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..NxeRvQ0a1Hc4fDOPgfMJIw._uN66ywxk-KExQCnW4dm2CHHpceVLGuBDPfPDDGucpAmMRNhgbJU5ZYCKGPPnP1bE6KIbzgmKXNuJjm01Mq49rAqB8ukn3xOPJG4Qp1FLqCqV54VUv7RPU0QdXbDsurI-eCdePMlDC76St3DsuWvbXPSiDbK8sYACGtxRhw1NBb3Hq-tcPTYa69pc0klSMqufQIwBRcFSqIf1AlNAFBiRSbb3tiDZARmIVO5u164nCk4gERhfJ-AFj6Lt71Z-dL4uJ24opyQzko4f_PvFcSNUNcAJaIpY2k1xSY8s-qLprZzXtfFog0o-FNf9X89cLxQ9OPHJ405OHLuIZfWoPo3dr38KuumdZcNQH8klS1RnQkJeHdOKp8IkJyRceWLJiTovww6lxtyhLwAMIyS_vMgIbixUz8aUhslkBsbI3e77MLxII_LW33U1AX6GsuUtnhnsb6JxDcYHx_YykB6zjv2yccYClfDUUnnH_p83AISO1Q.JKT5NOcatuG90--Noa9KxA",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8725435
+}
+2025-04-28T07:27:18.816Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8725435,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..R8JV2HiLGetyXkkpYmlxsw.TrEZammVp2JWGskldAHWylXgSOT3UEOQQS5uUaVi4kVnlWD2_uPBAnCYibR0rnOa9eqFId_0HCBwcBAQtsSAx-7Uh_NN_g5Qtk0RsEShO1uN7b93QQkhaWV_-nBQH7GJQXuZDd0dij_q03JiM5O9ggnSVMDl_PPu_pOGUlgyCU03V9aLNs3HLVlUk5qNC92zZPDiz0yRRyd31IGrt63714NKLp3L2c4U55ZxSAzEjYWc5ZA4euDPqiV7leq0B6UIp4rwJp7LDf3JZCgwq6y1MOjTvKbttb1VU-I_oe_O1zzL4Z2qdoq8Efp0rRg7iEwnmWehzjw9v9p9N17FB6TASK126McKHD4iai7QppiN24KFSBc3BV6Exo3NOlbyExh2P3Y_Xcy3T0tIkE9AVT0JfYbH7UiVxTNf_ONDLMP4jHrB2rvy9SFCvQg_NDotH3jePiTYBrlTjtGg_TeMfwGsgvaPsAI-Ojz0Z3039Uw8jEY.7I0BA2_TMRo1vOQ1WEUmaQ",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "token_type": "bearer"
+}
+2025-04-28T07:48:01.363Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..d1IdZk97Nc0xX3EEG1wmVQ.FPBFvMP2UX2FvsoDPe_l7XJQ-OR1c1uqqrQ8yLanAl8egMFQiYIe4WzqnYuMKzSdXoy-1Q_7qV_NfwnVtzvtQqI_OlxN6XNanT0UqF1kb9o4Xj_51VYG34GNfJAZTu49BymA8RcDAfI9J2d8nku9HjmJj613Br7XBgiI0cLf0oEuRYioaz5qoProvihze5mrcJ6Ms8z9JvndquM7kX9ODuBCyTYDSlT3O7NrCoBa3M6m1u6-PPCrwyC_ymMu0u78ITgPg_8XP2olejeFpme-576Ut_LSO9L4H0PLZ-I-Kx1itYbMYCJ3Td5yKLSIgA_Tvj1Vpp30-x-WxdYMJnytP4RV2wphmfAg2XIZ7Ikh9DV1YH0S0WsEvQsFLsxVzp5ZEGYNKBDaUJ7un1Tvc2Q5R8mYbPo4j1xY3q7f8fuJhQ37TZxm7VMg7dqKEDuT2QCkyzU5w9g4qu_-A5zzQzzNkV85sMoG-1rIbL5cq39UoPM.6gsHWcyHf8Zl93A0Gee8NA",
+  "x_refresh_token_expires_in": 8724192
+}
+2025-04-28T07:48:02.539Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..S0BUx3Txl58i0k_9ebbx8Q.A7bTjC9gs3VhGRuWZA9HDhYBKmed9TezQ4No8Vsh8skN_tDkTdEj9buoTlo59NiDM0R646Y7tlww-sCkMJ74B17QlmmI7-kQgNiXhwzKSFwomSgAPb4vOAkpjOczMRi96HdN3vibLjxK0XnaMwCPWhuZmGwqSnXHco_bCUzgnMko50heYBhgrJAg1G7WDiQXwl5IMsPt4aD3rccSAArMaHgDIMD5WVjKwQSocJBOHd-iHKMik7lyVbLeJ6-3d-AeWnDCLnTiUlQFrQ9JDqLRRd5M_WH4utZ8R-94iJvJ7sTopNGvotb5ORqf4sOp-KAPzg_N4Ta5UYW3xhPxjgadnlE3r6JxWpViULFOyFkaAdjfwP93_unHoN2jNQ_qFECw8ewZ2_GWcYpW9m185-0BjHG26y6KX4pMT2iuT3sR2u0h7RYjgJ_umIiZeSw2PdBKwW9_XjMh0yaDC2zR3ANlnrADvPhhQK3p1c_svnze4qE.iwQnSPF1mSTVyhMe8AIMIQ",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "x_refresh_token_expires_in": 8724191
+}
+2025-04-28T07:48:28.322Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..nPz384fulN-f6fHFv6fmbQ.jodHSNEfd_65y6NLLToOL0Ouab4tNwIth5D22OMZalVR-pxk5fpux3MXZ_16s97a4teD_lZTkoshK_xgFvTfSf0hOaLeOxyf9651qWqfi5Ut95Usj-bLqr74NHIA-IBhpCDcbZzT77MTS91oR3kOU4BaAguOJhxjk2MPCT7X-2jl6ENmFBSt6NPBx2f8mfgltPfUZjqeLKABMsbG1D1YndAUffDQHHzoQh2RyOxXAAbe5YvVGfDRubNF9-_8fWN1fvE04vAOf4Wr20uJr5kCPHGNgrXwWsYiiIC2UZqPl52bMEQfUg71YqZOgg04R2gipkPI2JDGDethJ_QKKoL69GgnxJ4ypa_Vpmt_g9zat014LqApG1skEJE5qEAm0kUorgukkqh6zu9BTSfHUPn6IYqw5eBetKuOXkJBgMtua8mVwhVOf5Ps86p9UDe8h4qLZoyd977x_bcSx8gSuwMfdV2IBQgWjWbmdgX7k6GQbAg.43_UZixFdcYu-jNmzdE5pQ",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8724165,
+  "token_type": "bearer"
+}
+2025-04-28T07:48:29.209Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8724165,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..MQ8AaA3Ar-SssCOgufrJ2A.dpnJ8dWoFAOUmnTwNrgdAFVI2HBNEx0wnycRQlIELiCrHwU8vMhy_A-UbU-QrYxvU-aWKOOP81_7nXV4gwXFcuSVEmQKpzCuUFkTGtfMDVYnVcm5OEWg0ADMC-hxoOlbVHVmQ1R9H2rr2v2tr_HrVteb2F0ooyeH_PFwg9T0IuK1xvnyH4WRsdxUCvElyYrydr1U40Xv88W46ll5zQ7cms7ui5zJS0mpVHi5enPUsclpOsZrCDKN4MV5KgHW0aTzVdy76LNnAZechDA6IU25rco5idQXQ66NG1Q_ViRhVubk4jT0JAWMRREliKHjccqgyXnvcWm9ZEpSP-ffDlEe4v2B7n7rT-Z5utdoc5os92RvsA7wKeedRTDvYYOTWRgH1GkkHs4lTx-1xRkBVbCYuc94brmOEhlykVZmiolatJ8fAObKDr-4pZYKBtSkHMjh9lmnD5R6YXWehTOK1T9JfN7U-wNJ88tcx75hpxH4cXA.Te2maSRGyhlnEyVAzEUhtw",
+  "token_type": "bearer"
+}
+2025-04-28T08:40:32.415Z info: Refresh usingToken () response is : {
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8721041,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..a2PgM2yAR1Bm1E8s_2TpAA.pXdMO_g8UKZnQMlucoTazotnKh9AwTlsCTty2ZrEllnZnhEWyKI6l_OeqwUGBl1FE30bQ2b8hQrSwNEHgcOTrTpsLvw6hvffP3GGZHNtdbUbMpB1MJ_ra-dlwHugBsmeS0Kop07vevuRLNK_pbHjGWluQsd6YwiEmqCAHZZsUzY9TB5ItAsAQKb2XrqrGM4WSgnhsQhb-PmHuFj7ieMGf4XGOWt5TI5qkwhKPenN65QVXlvmvDsNNa0MC3ROXw23vSIAWJLA1RsdhUkytwAA5MLDYUIg5o748YlbNrnCCAHcUWPqUXiaaJjQUzVH1H43HarecP-h5gjIHh9Qkd4ecmiw7qhY3XE0CpalQlK51KpjavrrqcgPo4T3R8q_zsO2pO_Gj8aBgNz44BEbXtXqqP2auJB_U5GCP7tyD5ghXY6-butdPcW4x0nyGyxgEZVOSLaB_5vdnJf1ib2bJNNIQpfVmmqJ9S4Y1um9gSx5KnQ.9Rk0m1WDb59Ar8GMzY065g",
+  "expires_in": 3600
+}
+2025-04-28T08:40:34.745Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..099Tiw_U1RfvbaQkUEUj7A.Yf9ZctZWk-Xnb0N8dZZt2z6c9XvHOva8FG-1yFoyqcX5DLHuEc4GQbOWny_TSBrpxvu3HQaTdLj1_FQMdb45zL-nVr36i-ssRNjSGe1Wd4X--UPg3Og59DL8jsAuzT22Ts7ma--F_4ZbkDDhXuNUljAZ4anewL-Kcem2FU7GFOFvUSofQ_YhVfW1FKYVq5CpSReAvPlmlsiC3KbAEzKPXalMMRqSoAuY5B-RcG87JkpgPOXalx9_7VDmM4FiZnF-3qQGqPz9OABztQXbf0S_o_-5Sjli0cajp3KOZtdHMRpY-AyBeQyIokbzbT5di-PFlzCWptljW9lRAjk3mDh9FAzHXDoNxCpgHvMl6bGqvic4fusL0YV2THnNj6Z5vnyOdNE6TbGyeFSX4SnOF87g6CDu6t8EY4f73YtTvAYIhX7L3S8ReQ30ys_7P__405N7UheDiOcihE8a2eoki_mk3qaohaAYrD8OlxlXVRJe2DM.7ydOog-3YSxYDO3XBxM4Ug",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8721041
+}
+2025-04-28T08:41:25.334Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8720988,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..vBEFzS_uoNBpNOr2V8Abtw.Mvczeln-AbABm2daiYP1hNlVC9ixx5rweQrHUx54fXXT9472VvBHMlOMLnnBydbwG-MEOoWx6CYYBPq00NA1PcLZ_OGLtlri1iUm8ywmJHunoobWy1kafwHwrPZtcykm_YxBoFA_UDiX9hP6oz3vNUyaBNgCHvhxmIutWTyP_ILhihsCJsbuSM1MV2dOQGPUSEovCU0tKYeTky0YYhDWBvQCOFFNXzyO33FOtd0IqAsAlBrjQlLvEdIoHxQVmpLV39stDymIVRxBgQUF-1urEUdxXE8Qbe3ROd5UL8rB0Lsr6-vQOd8u9w--6FFkDDuWz38Vs8xdUap8EPKwsW39xVvzAVgIQuk-QyeT4wvkxktg1zHG7esN1boYuSFNCGTqwRcshnCoAT98g8OTAij60SUS7AlK8z5rYlj5wm-fQe0oYbTHrOijQyIqtaQ_ckUCyFdJzbGMFQ_FaqOVDGtWEKPCivZhkQulY3FWTYH1t-s.3ICF6ElpUhNxj8RcEkV2Ig",
+  "token_type": "bearer",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj"
+}
+2025-04-28T08:41:26.211Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8720988,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..5zOfqDME1vl0Hkd3X-ZFaQ.krVMYt6wkuicRSn7tUaecrf7mmYvIStLr2G17n3vTRtCQ7nMKo5Kq0r2rSJRKDsJA_jF7xIlstw2rvU4dF1okSdFtMPfJh0HM62BAJpE8BNczo8uMgBs8y9K4hUrPjCu_PYQst__cu0Rh-StqViNOq3nq7mjItgehvPYNy7r4wHx4PReHpuf0FspqtYMCt8ONihVzzDhBJmOCndvOiTZmKpHO01uGAnewyaMCqf6j8YDQn09J2Yu1i6eNScr6EY46Okxukkf1ajO8-_1wmuLNuyboS3Rq2hvl1UKZnWyytXLjJ1bopH5PNkRCdsD52xzYNAQJAt-t1BVctih_KmKRpBHXcX3MDtaw8LfDn1XsnFLGln4ULSy52y5cdQhE2sR-_JeU7ZfS-IzdSB9qfqvgvgrf4iWy9w96geRrO1mtFaNpWBe7BIG7_AETaLwkbTzM6kq8XtbvuDyL4Qblxv3366T7Yp_f0SUqfw94BNhyWg.-z9X38XvOeWkJUUZtZvwSA",
+  "token_type": "bearer",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262"
+}
+2025-04-28T08:50:49.049Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..4g-QklK3hQwcQtghraNQVg.cEBfeta0uGN6PB0tnt2ZQ0vVegsKvUV4XjwKgCJ9SIxLkEvPfh-La39TuiySpHTeDOhRHa4LH55u5AdKyGeWR-cxceO7Zfoe9-6jSA2IFvBTKCUwa_uQXNXQJBIRIe_tpM4VHIiV4Sas9lD3oQIdhsi9Df9aBZ4S3KBcIbpyq7ZfyaD_RShXXS0KbpjLsqbkQ6aGcgPaa1Gt7j5mxKJJPir89dMGHWtOroNFQBPUF583kQWekCfqBHE4ZRWiwH3HDPQdKPaoG1GpDPxj_lrXuuEbBU-byU6QOu_HfJBz1NR-sqFMM9ap87E0kX5q03rvMI4_e4JSbAAU1-6PiC5KS3HGwXQLmwLXGkv5BcoNvgxBi7pGRyb8Tno7WVeURsx41ecS9ZcrH0hqCSdy1wYAD2n4oVjbkz5yZIB-ICVVsMK6XrMYyiDU04K6PVgK4e-_TjUPnxK-oCivkkOwojpRqZOoP1V32m7fg8WB9b4mCVs.av3Z2U3hEeUmX_t2udoliw",
+  "x_refresh_token_expires_in": 8720424
+}
+2025-04-28T08:50:50.024Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8720424,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..L8Hojkid2sBGJgYFhuyIGw.VyGMy3BrCjBH0E-FJ9S-SgQ1rgUMw_4yY2JYWcJr2rXSKYvYigvgTwSAL1G7iVxrxuRwyMG1Q6wWNi3TZEU8WK0dFUxNCJgPcIdzVhd8pynqU1TTW6CABI-YxAtg7PK3Y2ahA3fdFG7pEQTaV24_d5pCpVgb71Mo-Ngob17HORNLJ-PYuJrFrskP_a8bawb40kqiCIQo7OipyplFBI6gMwN5p0HZ5-XT9ifCBFtmoFUtMfBGgl0DHJJ7ztCFXjpa9_PivA5nJ5gEr2hVG8k1pDWfM6VzlBRF-qM2MO_jsGoERJH8KqJb2VLISchkycWP7BuQG3h4lgnmoVAvaSATtk0U5DPgGfPzWnlbmkN9sSUDUJLCQf27Qd9g8rMs6gzBmaUX-hYxevmD_HhSeHu3dWfz6FNc8t2_45N33R-zwqoTEOhghrrHzNGAvMV--sCcy5VeKhmNkvikh36bxFDjPIf93Bzh6g2kk_Mm6vsgF9A.I9kO4cjt-eYejPhE8iKRyg",
+  "token_type": "bearer",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262"
+}
+2025-04-28T08:54:06.999Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8720226,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..MoyeSUV_5qngPldLMJ-q9Q.Z_K1VhGBifVAOqRgM2eet7g4GJMQimU4tDHrM8cIdb3aImTob0zx0NE95knJU4LC8c5l2LRp0QXEgE2BzxC8y8sPQBPy4ZV14ik_pjZDp2YnAElbHyOLOAkHAVSnWN-6t9YC9r25ok8h1ZZt6k8uwtH_cMCpmE-5C5r79y5XCF-ffISfh0MdKd9NG-XIrnZygMmxP-TCIHGelrrTTYtDx6rYs_e89jqBnIZ5ZnUtjlfK4FxPtLr9mkd5UWdIlCdkE--YpbFC-kRAQa-xXIsetBecoJ5NycgwpEljhObqhApq91uFdft_1WnXpEK5DZoWjcMFvKI-Z_lN7FZwrFtNyke2qWWfSFu_0-IFtO_weNKUaZwyM-s2C_I45mvuhP9VqEWwApGoXr7zg4UKhm12RpY_OFhM9-SJfm4HdZiNRnkWxo00HgRGJXkEFCTT0O1KUvXts7TRm7FhtfMw2tq_jZdnvXpvpIUhE1yrWPvte0E.z5FM5fWtybbD1R73ngXGeQ",
+  "token_type": "bearer",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj"
+}
+2025-04-28T08:54:12.919Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8720221,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..unujmw-kn44Tk3-SL6FXcg.aU0oDGX6LjU6BPelS-vp3EZzGmgOLCrcL64HthT68pI-RM9st2rHISdaobsmq38Ew1r3mP3vNV7Caj-YWvyfj_u9Y3gZ51jGacFOA13aqVsQ0DMaGwB0MXQwGvmUO_gnHnLqgdvHIjUq_-Q2jHylzpqbXZN6Vc3u28qsRQgryR0ISEHjpMlaMeRGYJiIgs-ajmu6Owrx6FxbxmzZpjR0hBLMd__Q2jwvE82nfUCOLuKHVxR-JfM5l-QiobmhBJDnJ54tnwajTBmhNgP6rGlQAat39DM20V97r-ziPrOmF1E6O8u_aJusOm-Goo25PT_WUuXkI0M-ofgUVs-Td02VihHEbKmP8t_Zd5AZeOJdAn9z1gRX_blYxE8eZu9jmy-aQvEwljO5HakWweOGghCO-sEKlRqQS2RYtC3yClKyXE1emwpYtTdsB55vA1ptl4uc60QMyRXaVRTRzJnqdeL1WNX_wZZ6gyREeK3_vmNvTZc.RTAUw3kcubqp9HvONeOecA",
+  "token_type": "bearer"
+}
+2025-04-28T08:55:38.995Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..5HSbA4EXLcd4G6tK_0Njlw.m-BdpVtCPxbbmNlPIdAbSdNhP2xhg_0V4441XY6kRJbhDnD4JhYnxJFqcPjkrjtRT5uib6iwDgYXclKVss4l0pnPHp1ACk9pFwnBf2RDJcnaUIWxxlYiAYNge5qHXmqVoLNfZoHFc-Nn034r1e5ptdqiciMfEmG11gDtnsL8MVgP_hYcecAx7sKFHpGMxGJZXVcqxiGJ7-bRN92A9J4j-oPsCe4WTcXIeHeXeBYqHqTMbFK9GEo3kqPuTeRFi_nm0Hl1A2MYWSYK4jLRttUSHRga5P7va-6D5YClVYCAaqqkaOAE2_sm-JvgSvaz8FBpqQ1i_IE5d4-Zyu4F6dlQ-u8dgMytth-JpLyqksWQhJSlh0h4JS_U5HJSCbYVgeLblpTVS3SMCLHun9eG1LnKnsiwRNDqCaAH00BOnQpzbQd92RXrrQR6QIF1BLYmvborr-q5flgOEWw5P6FnC6orxcwJ2F35jtE368oDHDNBcq4.AXKk7CLTyovZp0Zcg-00OQ",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8720134,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj"
+}
+2025-04-28T08:55:43.863Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..f9HwZEKT0Ba_5j21lBhDzA.1bi6oS5wCr2A-0bhpp-v1Pjx3mMjRtlfHBAOwGqbUokd0ABUU_vDGHymTbSqgkxoi9q5bgkLCx9owhuJhm1n-CF4jYvODo7C8GdPHTddkPqeOAVl1zYgX14jpUR9twin4xEXPTf1RJnJgCrzE2miKgsW9lns_f06Ila2pPLMprK-_OVXhrU2gjO_v6WexwQvE9MG3TkrVHKBD11RAQLl0k2FnTkPaRiiSribx4uWz1GSly53oJBVi95nWoVmwR_s-LpvY3-2ZqtUixcWW4g6GL5tmsjmJoogdotfvSt0B8kY2abIwr7MDRuwEY6DPiJfhSRub2KKUSdIxCR3Bxjg_FgBNjVdn8YQVDk1KNqsPba_T7x0ofj17xWEI2GOVnWNYtNR84OSmiZkBtilq72VzQoUuHsmJTM8SYx2vkNZ5vKpRAl2nknypv3JoEBSb3YjMksT36ty1rPWBzOla3Kd5F7UxNmavSOCFPnK3-txaQo.ttykxFKWCaeY8vSq1vg8bA",
+  "x_refresh_token_expires_in": 8720134
+}
+2025-04-28T09:15:05.975Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8718967,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..VxVPJRykHUWQyoyMNo_TWg.JYOCeGri9A4LbC4Db1-onshnAJA5aQSLU66_HWcvO4K5O8JzECJLn1Go_uYznwXGr3MKiDbacYR1g4F9ljp_2apivHTpzpI4WD1J0Q6Qpx7hHQ1axeJ5r1aSosP6vRhkLbdC57NZP2DNf8bDxaC0xW-0nldA6mX4MCTAr1S5K29LkLxMLLtoEveD4MslyPtY8kJ42QBVdzAaETIgkhKFvWGxdTz-WG0rChstKFnrUY0Ycgioh4h9Twz_pJyWw1jZ8rPFRczKKVxohoGXEVjoP3acOP2fO4G27Rt-e_U9zomBZuvt-oeWENa1zOzaqVQ3cppB2B_ORHdSYW90eRZSAD5sxmqh-5NbXyotpsGDYA_VDxCTjY5QoWByIUXc0ECMltQOIepisBU68HOxOjDpum5b1CQMYfkpdj6elXSWLLJ_gcyhA8B_CjKmRb9M8JIn0RH6nI-CcpcDRCzYvQ1Kx3WmVZwevusfhN6cpB0Ilq8.7IgIxJ5TF6SHqqS1zPhNbA",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "token_type": "bearer"
+}
+2025-04-28T09:15:06.872Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8718967,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..9JCaSz9p9CN-KVSvmRP9BQ.SiRbSk82L_hj1U8g0pMfNIhxZiyylxLvMLGCTOM1I7u1Jx-iy9xPzlXs8l2yM7hGC7sqc4as7sImIgGagKir0q1mna_kZdvS-FqrtgbFa70RvatVd92zLltK9EEbYqomm25Pzd9UiSy3zEyMNrsXhf_usTtdCAzhdueFt3zScAfAjpGNyVyxa4KHHqtvXSFENa91KxgRjRw5TPmNfiONp1_7lLs9XFI2obNFpi3SozIMJUSXjyE3Hl5_K-W5I8mEiJTW0FYTBCAmm-WaOVCNpEWB_o3xZ3ahmGLDZlT4hu_RpmeJBAhM6Q_P38PeVJP065AmSb-krMKBt1HzT2CIHqygRhKhx46Pu05i74tPm5brpuW0S5fRhldOh2IJEtpEUthXvJWSQoSc6AqymSoCkDu0bd5B0f75JaiwfDYiXCkpGl6ctCJBCJNumPb5cqrbhSsbau9UmMHfBPd6fG8GIhJMGwdV5kpzlqAY5UaitEg.8bOasKPlOiuaAn-aDNvxAg",
+  "token_type": "bearer",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262"
+}
+2025-04-28T09:16:57.153Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..-dF4gEs2gnBuX-E2PnVa7g.eM97u_uXRrDM1q0_LxWmZGHIRPvq8k5HDseydonH7ZOnnkInBZBffIvkNCh98QlPiqs2wNXFJCGIOpy1EK3j6KitjmtBwVa-Kkpry8w5cr7R74P07bXfbxLHQw_ogBcVA4JyLEWGggFI71KBEVRUNJwVQ5JC7Igt1b243MazzoixCeosxioBaW0uQhSIjxXFbkmZdfi12AWUwtPcuUeZAkNp-pkyLsh331c90-iw-qxkUCisKG93QqF6DvHrJUAG7BrLwDrF3fx4UtZMRdUJJ8pGvzbklnXexVspPqZjltmaOaAxJDxjsyfXbOJwzK_Z0gEJKfqdNeFWmEkC0PLSbnEceT48AoWwB4BLcz5Q8VI5kJdiaOWp1jo3rmxGj4VHcTiuCB1asSjjSrDyAyD_IUZ5JnhuHAUGEhdnfCL5R_JBW6AjXe_EhkEChefJsCn_H8BFJCWyT6mypcfvp0yFgF1fmeie9cNmTtDFDxtBDcU.kR-2_up9cry0h2lFCCqTPQ",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8718856
+}
+2025-04-28T09:16:58.021Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..itIfAWI0yRGa3wroAurTNA.pUTyW4jbWD13E1i-Sorc-2OwaRHHLC55RX9M08MgLhWmw1W6Q2j2fCOnn-tbOMG_A465OzGwBs7G75cDt8TYOiJDSKeQuCamgwI598M0NkeNVSY4nQ-UuqXJty9fAaYg71yth6X51GFCTOOrhaAheRciSFO1ieQLk6n89TAy09kDr170Q6qcQV96OxPmcFVtwyFSSxIjUYfHOWJBkfC2kO0SoyWOle9DuNUqGX-aA6a6Xlbry4hbsyW04kN9lppsaRC_V-mrGGEjFjPcR2ZFrnfLrFSk24yNd-ayvFBEZKF_CGcQDsBfWCKZFeVY2HptP5vj6MlctH8tk4wNpNMAgBQKj32Y2zoIBctyL_eEYf-p0uGUhOVXkOgNDqblAcaYuVXq2V8ZpVxFJa5sYyK2NLSHByVm70yVsOxDhtmprreB_sAGHv8C8pjNpfjzhrYmlDgN8r5sFuB_ZFjYZ0Awx6kIuMnVjPjS7gRND7J3-b8.iSYBacOnMYS_f0meeXmbXg",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8718856
+}
+2025-04-28T09:22:09.394Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8718544,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..x83AWxS7bNZ0oiJ3vCeiFA._Xjxu58J84ZFE1bnUoRZZOg9k0GZmOikzQs59v0P6sKEGGzTHiXFGeZleSvUxK7ROy54Ve9n7rAgPkfn0Xr-cTXsBaTGtpQGZee9j_PEZdm_Arj3Ki3QC4xBLtP5cYxWmX9GQoDb-JqPN3hyiWqHD9vCtYksog9_eS5bgA5ALsIe2cGYJU_BVUXH0V7L7wDZjdlJGimG_o6OuENQIapuXLkssVIYOwH99GrspfDr3QlPesp_4ECExiZsGwAOS9AKd3wu7mX_u2_0UkTEnS5NBGxVLGfdAYQot5o2h_HjeHYRH_CDdu8uDnVZ1Lt9IYI5Avoi1i5N2aZO26hLF3N6gXwWYwjTaliHzRLmcQ4I3Fqu0CBdAL2oYiPZDVW4CNaJUsagPG5M5EiaYLLBA7dkU70udL_Vp94A9oWFJwPKox2lqcP-UjOA-Tc0YEnuLMEkLdahdr8ZxIxUnI6nNlN_3IaJVC46I1tKnJ3OYnes-VU.NYKr18ufSDTSpfpXtHu4JQ",
+  "token_type": "bearer"
+}
+2025-04-28T09:22:10.366Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8718544,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9.._TppusKQIutMlyP6jkO-fA.rvIrmTRzcZWn7xpDUuXri5V5uDKff_8gZ2VpZ8l59khfdRXjLBJkDu0sxP417jVBncpZsbzZTNiXcewAB8rclZCAYYKuEIG20ARS8tqV4pbco2MzBsjgx4Q5gMnnEsTaXkj6yEGUh6JKVhABjjwSdVc_9dksSAhR7UNCUofzlqZj_UgvFZGz6rp_qrVlpdRfCbNEghLdJ_TP3Qu17_h1q-RyKXCi4Ruwdqq3Og7yAgnsjloo5gsndCpQQVY2wm_fdN566KCmaPCtcio-U-tZe30-jNGm-Bw8myhSm6Hu-ytRI-Mi59KJNiMo945ur7Hn5A8udVOW_XTz_fxarEYJznhIxICUXql_0qjEphe1XS6TnezzejqCPqmKkCeqWFKMLPoyObOmPCk_8wH-WZEOF_YuIn47q7Kn7rH9XhStXf0bh_J8Z7EXlvvspHWULa7fs_8H_hDiq-bZGF5RFS1JxD8niGjahg5ELV8cSivSMds.107HVwObSy3S2Q2ntAyKVQ",
+  "token_type": "bearer",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262"
+}
+2025-04-28T09:26:06.089Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8718307,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..wYgAwgW6igAm0pYBfqrGqA.djaiZwKNNkAeaMUdlQIRTxoLObaVc8m9N3u7pBRhGza6nRZb_VydJrC1-f9e3NLkgluVzNBiFpe9Jk-N3l47V6YPd3TdvnE4XHHtnS1946M2mCzU26CaTAOq2PB5XGUr7Se-owKsvqOyFE9AJa_A-UikttTkzrbRVqFNy2YDBq4ype5sdQQmomg25o8DfJRPc2Vkcp891wX_zlJLGGeS3Y3xhygx1Slq3ZRp6cDE64M1M5UMFVUe7h5jWIF7mYTLIvSfF_jvbDs8v_o2qDesmvd1LM5VFoQC9u4_JQ94UF05sLuSfYBaAn9iDvRbPTK7wmsaRY-VWlhDkHorDpgJQ6-RmXZ4VsTUgx-_lN66KD1rnvbd2iXt2pBOrZtRysgAh70yz6qsLIxQEwSbkVa3qVL4L8gGoWZEh5uumtu9PCtwCYPtbPRi9nulRxbkhXQvOl-sCJc5CNkoC_bN6RfKjEAVZrWiPlRd1yY91QAAO6U.FMMuT6X-dnf3XoNi3D8Few",
+  "token_type": "bearer"
+}
+2025-04-28T09:26:07.016Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8718307,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..mK0ZUlCys51f-EfN7PnRsw.fM6XYsiB38QyCdB57ULxyPpt6MV4vuHfaJjEhSiZXhfTb0i7SM1SHa2-o2OBX7jF8wS6AHeUJEwBvuL145OkBlnrOFOsOiKnoomUeKEDuEK_ATb_QN1ZL-ibcSA-d_DiIlXYONjuklIF4E1akMnWlsgXKS8Vr5zJqlwVSMrWpds8snKSijVEKY2UDtyUzpu7iP1iKn5vshdAdO3eaHMJtN05Twy62VITy86QiL5trX1uWdR6nQ8hrQ5asAW3BgiSaWJNfx0eMbXB4naA2vBqK7vUJbbp65Z_01pC1riaVJNeIkR07f-yXijFdiDNdiGsxmxnWKCxbbclGLy_KuGUjnK4DvS1SP5tqMn2mSw28khQ3JjcnU9eXZdaEuulRhZqdIeAGw5rvrq7lIOXpObGaRjccP0Rl_xYYH2cHPihGoWMav-KLvRctA3ysUpM8jd7J1AnaznRDzi5yY45c9Tu33mSpwjexlDIfHB43Odm0XU.bXa4trG97D0nH8-tYjAAMw",
+  "token_type": "bearer"
+}
+2025-04-28T09:28:00.111Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..GQv8UIWWqYT4ZUptbI8XVg.By--2fXbcnp_KY9CQkwPyM3vSiepZfON3AuFxrNX4-ELK3QH_g7-iBg5_Vs0b4Gaa8X3kwk-VBBVZyYuaZs6Svi01CWfQ_q-Z4Yd1vMHs7pQ-Ui3z-V2_rPEZhuKJ5V-5LVPKLKMJNoTv79-8SRhzmiByiDwVtHDCLmhLckTu3OLbmXbF1lkySM_gGrhtmezk0oKg93J18ZFzgOC-8J5Q6QKEZvIc5KTrOPdu3jAaqULI9lCuzuxZgWLZgJ16AESMUl3E2EqnHLj65BKNsLfJGPtQcl9AlohSrWkgE_2_C7m_hvEqXtTC2589OD-52BIS80ysEsj0EuzjZ0ArFekg21bQQXYWJNVkx3g4v417H58T_Cmovw884ZhVIeI8MZN1U5fYzmG6m7LT9kVg3royxICRXeWNch1eHSAwwz2xRpBpP7E2wryWR0HYtkwP9zu1e7-LIHUzQf3jgUjwvToRNZ4uDotEI8qiDYzLL8H1l4.funCLha3OATr5HWyBzPSew",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8718193
+}
+2025-04-28T09:28:06.119Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..PBS-EMOmUraG--1XMlIY1g.kj2uZHgwLgQYgrPVc2HG3qoHpo-LO4jimmoIWK2-Jd40G9hQm-czEYmrpN-UIm4hFZpYpM4OmxEDq5I9jLrQ3P1lxJ1rGenxRO7dK0BKAZUgFcpialfyGnKzAZGkAq5Y1ytiXX7TSoHIiXDocT7mV7qQqPKqUPUSPGzfucdcavuBLzXthgdmNDcPBczFTbWlqX7pDfeZKvD1jQ6ez4EbzFs6UjJuFiJJI813DcNxEeeQCVIBw-lvhxw5rUeHRfhHxcFonFLoVFmOb9JW1fkBMlruScAV3yhXkHSu-QKTopftujhQ6-3g7uwnRWnu1NwjdoQfauMT4lICu1AmmCN4-y9wXM4dffSmyna27KhXwbNjqTblgDCYTQ5iPUezlhI3wx4QqOcmegvN1F9IITYZCq8GPRZgz7G2GtlF_qzhuayrZY5dLkr0E0k7Lwj27xQ4dtDuu7gCM9ky44reMDaJ0dAH65WMc4j-b-klQhdygNw.YwxhEaYPIqQus369W8Qsyw",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8718193
+}
+2025-04-28T09:35:19.717Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8717753,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..JxYeu1dP_MzMYywheZfFXw.0vU4_tzAa1ebYbM_F6lPW7EjBzoVc_ZuFwqAXl0svhweSi4152VSd4F4as9Xls8ag4cOL067poBlXqrsCTuZNr2Wx_sYR9EZa3RIHQR4lsR2DnW5ogV3TlN07BYrj8g9n0an2i41p8H6y2BnZ1IJZRsi16l1Zlof4qysn0VjkNbUzGkTDB0QVvBR2MSlrGoA1X5lUHNfBuXkTdCDV-Od5nW7yW8Bj_Zp1LgUGEbDj5tLjvMdjfkbxefDUEJPSRF03iW6yLH1vKxevXbCHKMk4lS2VCdLGk6Q773G2UepjGGJpm8P-wVx3jfaZxcKB6dj9s3TKOWKWKwD15wMRxq6GBlQpoflehEchDGWEcsw9eD9SzKRqgOfihTaWVCqSMqElv8hUa7weW9J-UBLE_RGAnF08uBKZp99OPRRRszmqTrMXXzcdG-0crTrTM9djky18OGc-VQkkmsMPBwJlEjVzu46-rCk2fltWR6hTuEoHqo.DvKgJmbg18LcbGOuZFKiOQ",
+  "token_type": "bearer",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj"
+}
+2025-04-28T09:35:20.738Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8717753,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..W6zRadP-k-GmOejzgQQIVQ.VGDzGow8i85nFKfqNaEpxGK7QxXplC9B8JbtNrt8B8l0s7SRvstr2UVOsMA4YbO7hyXqjTZqsmhvndcJuq_gc6NGINAC0u3celSA5zVkcdtPEbirOcN30KA4sRQqjc2r1r0BMhEN8RyUGD2L2ytMI_WRkcDcNrTuR6M4Qsew2mRqcXJCapJgfKOF5UlzfBXB117wTMzXnKvW7MJW8ssQsN5960bd-qEIj4zZrIjCdnvJeTgYI0NKLDRtOYQEFbPeYvPintuJaiu5QX4J6k4eGR1buN2z0Meyc1XGQMrUZS55wDu0VlwPGwphdUqu5SgMEOpQ4cIGBthvko2_WgBnjY2bLMJlotDxeL65cNfxL7h5rn2g_Tr4d1aE-cW1yOJN5VBMNmSTRGRQRHC5HMrczEXWEOgq8yeUx5ROO9k8yCHzuAyRxi55l1nNEROAVrHnX9d_czwjoquN26u6aKnRKTTADWmZYOCVtCv332ujwFg.wpktSbUx6eVbRFAtSaL6zA",
+  "token_type": "bearer"
+}
+2025-04-28T09:44:19.687Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..NYjrwexf2vn4Cu3PYom_VA.v-1WrVXWbC5Gh9bdWQozWAUtnrp22Wz3wNHelCE2jbDd5b7j5cqbzk0KLNXW2Iz9nibU0cq37CxiUMQgH66lfiW4qUAmjDFfSyNDmAHFoj72Ng_D6KmrBHRAqRiCF_B8GDe8shWZE9kHNaAe-fK5vqFxEKOtTpdEAzf5SPYC7CBhZEZ5Y4BWxMnq0k-7Xz9USJDq8UbjDyAJm2-jrLI8slxVy_kCqh3b3DIDfw9HOyYeO1jnZR2oQIHyIO_Na5rjM7fyM6t120I0eeJIvJGcJSJk1Z2a3_T4Lk-MgZ0CtxqeGYOp9nGSK5jyWQ-fVZcUvnEMbnejFkyhKSjiVyb1jJ-8sbusMGFcBpQQYFke19QxwIcW856ftY2I7gdNESw0_l4ABDy_L6J39WgAy_noyE8wNyS6wGC6Cm5g2Ilq0TNHvgCbeR-wdQA4Qu6DJpdRGUMmMmJ5g5_MRic49QzHrl_nKAuR_6wqAWzo7lzjabs._MKmAoXcDZjK3h4vHHwKXQ",
+  "x_refresh_token_expires_in": 8717213
+}
+2025-04-28T09:44:20.681Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..TBIyDM9d50JaPP4Qs5vq6A.C0VVEsmlNGhSv6HmrOGbcuC3sYS0W1x9OkdKdmujJWu8kEg0jqbTpYQkDN3gIoTr1l0_-VfVPkpVgj7goadopNsJm6vudguWhUN83BGE5QZgprlyX0j8Gqn4XCQaWXjPUa5WrlNkW4GG3ODAR4t-5vpS-rgel4pUm4O8yB5FWk-iEqhUfVdyOQsvJrnkBCQSauSq2CS8f9Z6hWO0wd2CtHvUdlDvl9VsfNIg25uLEcbQbKLzBDfxrotJXzU5ar6OoHetjPjUxvzGNu87druz2ewT_1E_muST_jr7L5wrmI2QzgySbaKgatnTZ8j0AfYdDkp9siF6kjcgIWNah5acF3y2i7twB3x4OLnGZpsbzNBnhaJbRGHZfFofyTIF4r6Oa2ZIjdKpTgHCCpNZashHjW7KWGBkFLobSC1TkCEt1RfpvUni2f2PMn2Qg2BiE7youGhNXaAoMMlIEgvJHp_6JY97E2KMTR0KorC3Tg9qXqI.rEqDV7CnR_1BKXlP0XdJ6Q",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "x_refresh_token_expires_in": 8717213
+}
+2025-04-28T09:46:22.947Z info: Refresh usingToken () response is : {
+  "x_refresh_token_expires_in": 8717090,
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..c97ElWOMuNm0uTVPR-4hPA.x0Uc1DOW9t-GRner0dnX5lkzPBnYmFi9XFVx0NVx3yAtnEFgZj2h_ep8rB9J0a9EflJnJEW4P30eK4Y1TLZbh-2-f6atCQtyCHpvMO7XsvkLMoVoFLiWk2MEtkjj8uQLrQ3k5x_E-7tDNqoRGjk_f-e1sbvGTjgrdKqbBd35jidnktQRx7HpA8LmvAd1MMYSwh-CicRVE3IrSznOnl_qtG8M_Yd5FO5axmaN54uG2Ec710R4tjNBm5JXsJi6_DZoP0p8s2AfaCyBrX8zmckU6Yla2LUIaZS0fJZDpm4JstJGTL6PHopTWPuxtYQRPcMl8i1m9UD4Q0Psp7dcUIzBCdHUC4JJnEndF9a5NdK1N5NvDAUnMg9FtIYoJZlKBeibc8_6DbDh2obX_gtIpyPu5o6jrl2D8mH_JGWpBzX9wsiL7yGvY9JXBcVERtqE33JvxEzg5TVXOTEqbcxjCNacip65lMgeYcE8efdOQ-xTtQw.BrlaWoSljfVoIKDFFZE68Q",
+  "token_type": "bearer",
+  "expires_in": 3600
+}
+2025-04-28T09:46:23.862Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..D4F_OjmaQbdIQy8v6L6KMQ.pbRJ-BENmWjviQ-N1Izdix8rFkcPS-HWDLPvxXQKC4z8yrFzNRqF-2WkIrn8511DsjonspuJ20TTzQoy3Ji7ESRUXNXf3wDiQSqh27dXBkY9niGH_nWG0KpyezDhhUGudaefRWk87v-nXf-LoWzmMWis_Ag4wZlODXL8vPOD43osWxqESsGy9BgnqkGfIgxFCvkaYJE7UkZYOskSQUPtsF0tK4SYwRNPyq9ahFS7ScCuoRy-xDvzgVfNRR-e5SvLnzHUyj9ru9ZJ8J9LjqxD023amuQswdzrFKEbd92USDADlP7v-nnRjR3C3-bOcOs1npjv_ed46KfdUjqssvuBa8OPfPKilXaE-MPTUWooy7SZWSrPxAFIHlVQ2Q6_truKii5AwSYmB3oXOtFitoYLNcP-0lfoDly6WdRWOSGsF_u6zaWZ0bRo0yibEbzgz3HeUI6mEz_2uzRmR38mj-xeRJ2CJQNz5oS22pnCCtFAYkg.BEC5F5ufHIhTkl-PcZaCJg",
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "x_refresh_token_expires_in": 8717090
+}
+2025-04-28T09:49:18.806Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..7aYNRC_KHHBPjGe-VTeoIw.-tNkLJ1o8v15gNyWj5KhN5GmS7qQL4cZEJMB2re01HxGtIibENPZot-FeuygTdFA-wwpMangTz7RLB5TOognTUayWp72uTvCvP_mYIMOiXEK-59PxO47BdrwP7XkQShk3nj-QHOalX-21b2jX3xp60KKkZYtEe9vc1RwNWli0fFpkvBbmcUGqqjd8O9LK78FmUDzePMA_Uud9ZPibFviuw52GNunvl7WVkFbFIWuvP4yU9H2AgTGCSuDQC1byEko8kATadT0pq5MKbWemkQRNVhW7uZVUyELFbiOvHefkXvx7YTx1rbH-vYe98jXjg3XN3Q0C3jKBmxM8T10oAWxmkGqYNOYouEkOySIwH-Lpn5oX0aQnxH9g17qBG_pEMto3W_XWPYzHz3XlD5J6JBpCW-Nnc1LUYysJ5X8voMN-RbA13kpaEGxavfsdBxsmaGRWuFQTiOJRataQcVOWN8k73eEs8Z3dVbwwxdXiuqq-_A.t5hufjeSPG0l7kOXH3wYUA",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8716914
+}
+2025-04-28T09:49:19.669Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8716914,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..jYqhWNNdGqMnYj5hCGNBRA.7oi06yLGl42VQhPlgMCHsHv_uxcDjJfIEewUDPdwrttc_SSbJxyW6HDpYcf-WxgmDLOeve2PH-j2aTGty2q3w97D9vT81kGka0ZKhV6Rkt8ZRAu2HPrxr6rKAm0zykNJPLsOX9o0Qh5t1HD7lN8np0VBlPkWabutDhQBk9wY1fVlHE-3zPltVflMRShfFvO6eAjv_l44JKe2QQeORLRXBBPlSao6gMH4zuEyT3NOqnHuWZClBXgkipJJXyYpdvlws48QMTklEXDM_kQ3UbwB4ohjcPb-NF8fiYBfUZvOEZIGCdXh2AqfLvBAzMegBpb6LQQ28mD2cSbLZrCvZrWsRxmvRzh2FSv5KDTEeMeuJpDyEmfWpkfUQARgYu0C86tsVGUv8mBpgyU8wzrRtdwhn5AbYOTDiijRMV3-gzlSrMcXEvONv8Hny6rD7-vws_87sIiQKtwbDJp2rb0WKO1IBi6Ezuh0_F0jazueDtX48eI.8V_wYBk76a07Qw7ajc-zag",
+  "token_type": "bearer"
+}
+2025-04-28T09:55:11.778Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..pcA41s_TzT3Ahff4IT5Dsg.iKuUiKatJxB5KSMs7Z1STuogt9Wo7Wq0QXGaioLX5tFEYtLs7dTF6E5vlumIyKzf18vbexhZ9oV0buwdCZSwLoOlMHIDk1en7kDKl7nVGIUfCpe7LhQzGmlzh7-wwblpuVyc4FSWocBAgFLPrd9k2v0i9rHteo_LejqGHnNXwgRl3Tztarwf5FHFdoQm1f5bWNcvAlkQnQj0UHjKDyUUgp-CPbWCTfHPAnGRlEWKxid2tR2UHugDIFOmmemICs7Jlni-Tz3hT8fZPil9I03Eyo27-HITjQNd2WFMzeTx1Mybf7AQCWjGKRefpaMJ2yLQ73OCFBypMs1sF7CpCYxtoPveQO2JBweODF_J1kjUekx93DJJzVSNWOuKcdHG3H6TWA42_qGUnLQLpmuZwYDOjsk-U07BUC4H2KnIvfCmFCRBeIBJtqEusULMMec307bdiyKxNgces-S5ve8_f2k-BGdlwhh8bzHtQo5BnoUORXU.AR8JhzZRHjAa1pjfz8bOHQ",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj",
+  "x_refresh_token_expires_in": 8716561
+}
+2025-04-28T09:55:12.684Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "x_refresh_token_expires_in": 8716561,
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..lX8fEis2Zgmep5budXURtg.YEUrYUk1IizV4xC6f5T7nELU6CcoLBZmc7eg7-iEMYhS5xYaRVCSZEoK_Uf_gwsmxm7Boz6drTdS04vcLV1ATw--xK_5Zos_ylof_GSyMNUgu6KDUdDvhKCjAyWr9ggBYGP9zj7Iba2MXZEc3Of0UusRCsYhFLbY5WeMTPyxpGroZwiy2EmIdc_eykRxFTzLijDR7BImY-ImToFg4rmhVT8BryTgJkYAUNpTmvTAiXkjD-XduFqn6l01C9fXjEqlMznLki-TaF6YqdkbXb4tVZg0uUQtf12iltG1q6a_zB0HCGIWMjHh9TtECdMaMsEawK5afHWKoRYEErCrN2Tz7k1g2V51dx0xBks1nwTYIaV0nLnOO5TeD5ggGn3Ud7lhqW_qp-KYPA3laDUpft7JxBBR1UwO6jv9bIoz98rBx0VeXaYNkC5bP5pb5IsMqsZtGSYwg-Vy742Qua-20E7Q2CPRRaQqqbZ8wKAhC5KpbTI.yV3wWIw0tIubzl8K061K2Q",
+  "token_type": "bearer"
+}
+2025-04-28T09:56:28.796Z info: Refresh usingToken () response is : {
+  "expires_in": 3600,
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8716484,
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..dwOe3NcABu_oZNoDy5Ir5g.cgzxvhWny8HEFsJ2NoG2O_zZ4KgOC1GB77XSU9PLjj7Tfh7yJnAc3wAHqDbAsWYBgy1RN6H2eOA2eDAowXQAAajlzphI7HthmOhppb7BtY5vwZxFiWdTFDXrMta3YSgibF-2btcS2lynhdmx6O0gEPH-VK5c6M1qyLJVhMNVtCuQjOrPV1_LmzRWoZn2aJZsjFpjqWH2CiilDea1qw6ysyV49Si6HqNCCPyPqEx1d5S6Gmg-TNyJ_AQRqebzPAtkvFEcUQ5xnfFwIc8-EG1J0zRW9DeW3t-H0m5DN1oR-8MyWFZJns1r0LsMGfHqndms5j0cGWXFkz5y36Bp8CO1FmKYQfxctF2R3__D3AuFmqOe0DaF5Z19RsjQIAAlognRX0lHbxcIAJOWB_zpB7ocZyPLty5UN4pJ4MQvtf3kMxVxr5VMSHK0VEC6RoUaTJXR2Gf9Ux6Uvf9NHYPYJqD14JVbs6PbGGuPDIUA_QY05Uc.8GsrybMdrjNz1e-8_sAPbw",
+  "refresh_token": "RT1-169-H0-17545506726p81pvfs1yhdhlnbqnxj"
+}
+2025-04-28T09:56:29.715Z info: Refresh usingToken () response is : {
+  "refresh_token": "RT1-230-H0-1754550673x7ijh3e03vxem7v4x262",
+  "access_token": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..S3nVChcT08f9RRs8qjZDvg.woQ9riQF88m07sK750Ese7JKO3zH-wpnmrr2O1n0wy5YcgRkq3LykTPkYlH82UAvEb4bpHhIg5pTE5m6sNkPnaadUZz0oh4d8KJjY2aoJanZV9NmfdPbtJec1eV7-YAORPRKpftiSwC-qhcWRrIIQT2YWxDaQRxKLPD1uc2EzZwyCdJA90jOEPXkOo6aziuDTqR9c6RwQi7Fs74XW1Si4uYsr5aPRPodMGlN-7dqkd3U4_uqBhL9y0vxrAQ08UCIexSMPw-0ZDoBLnOvzykAs0ouBCdGd6lN6nyoukPGw_X46cYBD69IIEoRlPwV-fpfnp2O3mD9fHhXQTMrBZ4LXBCTZAeXjRF4h5RGEpidT65-S3PfCnGz9sK-31FFHnpZ-RhcWt3MTQlkSm3I8y0Q6qR4AonvnDNNNUBfAPOtotdVjjPVbys04xVmVxd1wkN9hS-YmDUnBbBHJ96Xt246NjrHKTC6Xd7qTt8Iw0Pdv6M.IhvLMN99id-UtmiDFbY7kQ",
+  "token_type": "bearer",
+  "x_refresh_token_expires_in": 8716484,
+  "expires_in": 3600
+}

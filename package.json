@@ -1,0 +1,24 @@
+{
+  "name": "mynodeapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "intuit-oauth": "^4.2.0",
+    "log4js": "^6.9.1",
+    "mongoose": "^8.13.3",
+    "node-quickbooks": "^2.0.45",
+    "quickbooks": "^1.0.4",
+    "uuid": "^11.1.0",
+    "winston": "^3.17.0"
+  }
+}
