@@ -2,6 +2,8 @@ const QuickBooks = require('node-quickbooks');
 const quickbooksDao = require('../dao/QuickbooksDao');
 const CommonResponsePayload = require('../payload/commonResponsePayload');
 const ConfigDao = require('../dao/ConfigDao');
+const { promisify } = require('util');
+const failureRecordDao = require('../dao/FailureRecordDao'); // Import the DAO
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -33,7 +35,6 @@ class InvoiceService {
         const companyName = req.body.qbCompanyConfigCode;
         const config = await ConfigDao.findOne({ id: companyName });
         if (!config) {
-            logger.error(`Configuration not found for id: ${companyName}`);
             throw new Error(`Configuration not found for id: ${companyName}`);
         }
 
@@ -62,6 +63,7 @@ class InvoiceService {
                             taxDetails: misMatchedTaxes,
                             status: "FAILURE"
                         });
+                        await this.insertOrUpdateInDBForFailure(invoicePayload.workOrderId, responseMessage, invoicePayload.invoiceDate, companyName);
                     } else {
                         // Tax validation passed, create or validate customer
                         const customer = await this.validateOrCreateCustomer(invoicePayload.to);
@@ -76,6 +78,11 @@ class InvoiceService {
                     }
                 } catch (error) {
                     console.error("Error creating invoice:", error.message);
+                    let response = await insertOrUpdateInDBForFailure(invoicePayload.workOrderId, error.message, invoicePayload.invoiceDate,companyName)
+                    reponseList.push({
+                      ...response,
+                      message: error.message
+                    });
                 }
             }
 
@@ -116,59 +123,88 @@ class InvoiceService {
         }
     }
 
+
+    async insertOrUpdateInDBForFailure(workOrderId, errorMessage, invoiceDate, qbCompanyConfigCode) {
+        try {
+            const failureRecord = await failureRecordDao.insertOrUpdateForFailure(workOrderId, errorMessage, invoiceDate, qbCompanyConfigCode);
+            console.log('Failure record processed:', failureRecord);
+        } catch (err) {
+            console.error('Error processing failure:', err);
+        }
+    };
+
     async createInvoiceInQBO(invoicePayload, customer, config) {
         const lineItems = [];
         // Add parts to the invoice
-        invoicePayload.lines.forEach(line => {
-            line.parts?.forEach(part => {
+        for (const line of invoicePayload.lines) {
+            try {
+                // Add parts to the invoice
+                for (const part of line.parts || []) {
+                    // Await the result of getItemIdByName to get the itemId
+                    const itemId = await this.getItemIdByName(part.name);
 
-                this.qb.findItems
-
-                lineItems.push({
-                    "Amount": part.totalAmount,
-                    "DetailType": "SalesItemLineDetail",
-                    "SalesItemLineDetail": {
-                        "ItemRef": {
-                            "value": part.name
-                        },
-                        "UnitPrice": part.sellingPrice,
-                        "Qty": part.quantity,
-                        "TaxCodeRef": {
-                            "value": part.taxCode
+                    const lineItem = {
+                        "Amount": part.totalAmount,
+                        "DetailType": "SalesItemLineDetail",
+                        "SalesItemLineDetail": {
+                            "ItemRef": {
+                                "value": itemId
+                            },
+                            "UnitPrice": part.sellingPrice,
+                            "Qty": part.quantity,
                         }
-                    }
-                });
-            });
+                    };
 
-            // Add miscellaneous charges
-            line.miscCharges?.forEach(charge => {
-                lineItems.push({
-                    Amount: charge.totalAmount,
-                    DetailType: "SalesItemLineDetail",
-                    SalesItemLineDetail: {
-                        ItemRef: {
-                            value: 23,
-                        },
-                        Qty: 1, // Usually 1 for misc charges unless otherwise
+                    // Add TaxCodeRef only when taxCode is available
+                    if (part.taxCode) {
+                        lineItem.SalesItemLineDetail.TaxCodeRef = {
+                            "value": part.taxCode
+                        };
                     }
-                });
-            });
 
-            // Add disposal taxes
-            line.disposalTaxes?.forEach(tax => {
-                lineItems.push({
-                    Amount: tax.totalAmount,
-                    DetailType: "SalesItemLineDetail",
-                    SalesItemLineDetail: {
-                        ItemRef: {
-                            value: 25,
-                        },
-                        UnitPrice: tax.amount,
-                        Qty: 1, // Usually 1 for disposal/tax unless otherwise
-                    }
-                });
-            });
-        });
+                    lineItems.push(lineItem);
+                }
+
+
+                // Add miscellaneous charges
+                for (const charge of line.miscCharges || []) {
+                    // Assuming you need an itemId for the miscellaneous charge, but it's unclear if getItemIdByName is required
+                    const itemId = await this.getItemIdByName(charge.name); // Or any appropriate name for misc charges
+
+                    lineItems.push({
+                        Amount: charge.totalAmount,
+                        DetailType: "SalesItemLineDetail",
+                        SalesItemLineDetail: {
+                            ItemRef: {
+                                value: itemId,
+                            },
+                            Qty: 1, // Usually 1 for misc charges unless otherwise
+                        }
+                    });
+                }
+
+                // Add disposal taxes
+                for (const tax of line.disposalTaxes || []) {
+                    const itemId = await this.getItemIdByName(charge.name);
+                    lineItems.push({
+                        Amount: tax.totalAmount,
+                        DetailType: "SalesItemLineDetail",
+                        SalesItemLineDetail: {
+                            ItemRef: {
+                                value: itemId, // Assuming this is a fixed value for disposal taxes
+                            },
+                            UnitPrice: tax.amount,
+                            Qty: 1, // Usually 1 for disposal/tax unless otherwise
+                        }
+                    });
+                }
+
+            } catch (error) {
+                console.error(`Error processing line items: ${error.message}`);
+                // Handle error or continue with default behavior
+            }
+        }
+
 
         const termsRef = await this.getTermRef(config);
         const invoice = {
@@ -188,7 +224,6 @@ class InvoiceService {
                 "Country": invoicePayload.from.address.country
             },
             "DueDate": invoicePayload.invoiceDate, // Optional, but ensure correct format
-            "PONumber": invoicePayload.PONumber, // Optional, ensure it exists,
             "SalesTermRef": {
                 "value": termsRef
             }
@@ -269,6 +304,29 @@ class InvoiceService {
         } catch (error) {
             console.error("Error fetching customer data:", error.message);
             throw new Error("Failed to fetch customer data from QuickBooks Online.");
+        }
+    }
+
+    async getItemIdByName(itemName) {
+        const criteria = {
+            Name: itemName
+        };
+
+        try {
+            // Promisify the findItems function to return a Promise
+            const findItemsAsync = promisify(this.qb.findItems.bind(this.qb));
+
+            // Await the result of the promisified function
+            const data = await findItemsAsync(criteria);
+
+            if (data && data.QueryResponse && data.QueryResponse.Item && data.QueryResponse.Item.length > 0) {
+                return data.QueryResponse.Item[0].Id;
+            } else {
+                return [];  // Return an empty array if no item found
+            }
+        } catch (err) {
+            // Handle errors, such as connection issues or invalid responses
+            throw new Error(`Error fetching item ID: ${err.message}`);
         }
     }
 
@@ -372,8 +430,8 @@ class InvoiceService {
                 throw new Error('No matching Term found between the configuration and QuickBooks.');
             }
 
-            console.log(`Created new term '${termName}' with ID ${createdTerm.Id}`);
-            return terms.Id;
+            console.log(`Created new term '${termName}' with ID ${terms.Id}`);
+            return terms[0].Id;
 
         } catch (error) {
             console.error("Error in getOrCreateTermRef:", error.message);
@@ -411,7 +469,6 @@ class InvoiceService {
 
         // If taxVendorName is not found in config
         if (!taxVendorName) {
-            logger.error("Company got connected but exception while creating sales tax item. Error : taxVendorName is not found in config");
             throw new Error("Company got connected but exception while creating sales tax item. Error : taxVendorName is not found in config");
         }
 
@@ -423,7 +480,7 @@ class InvoiceService {
             Type: "SalesTax", // Type should be SalesTax for QuickBooks Online
             Rate: 0.0, // Zero rate for this item
             VendorRef: {
-                value: await this.getVendorId(taxVendorName)  
+                value: await this.getVendorId(taxVendorName)
             },
             TaxReturnLine: salexTaxReturnLine, // Optional, if needed for reporting purposes
         };
@@ -442,14 +499,11 @@ class InvoiceService {
 
             // Check if the item is created successfully
             if (!createdTaxItem) {
-                logger.error("Error: Failed to create sales tax item in QuickBooks Online.");
                 throw new Error("Error: Failed to create sales tax item in QuickBooks Online.");
             }
 
-            logger.info("Zero Sales Tax Item created successfully in QuickBooks Online.");
             return createdTaxItem;
         } catch (error) {
-            logger.error("Error creating sales tax item: " + error.message);
             throw new Error("Failed to create sales tax item in QuickBooks Online.");
         }
     }
