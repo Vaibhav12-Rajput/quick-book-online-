@@ -106,8 +106,11 @@ class InvoiceService {
     };
 
     async getCompanyConfig(companyName) {
+        logger.info(`Fetching configuration for company: ${companyName}`);
+
         const config = await ConfigDao.findOne({ id: companyName });
         if (!config) {
+            logger.error(`Error Getting config details for company: ${companyName}`);
             throw new Error(`Configuration not found for id: ${companyName}`);
         }
         return config;
@@ -128,6 +131,7 @@ class InvoiceService {
                 
                 const misMatchedTaxes = await this.validateSalesTax(invoicePayload, taxesFromQB);
                 if (misMatchedTaxes.length > 0) {
+                    logger.info(`Tax mismatch found for company: ${companyName}. Mismatched taxes: ${JSON.stringify(misMatchedTaxes)}`);
                     await this.handleTaxMismatch(invoicePayload, companyName, misMatchedTaxes, reponseList);
                     continue;
                 }
@@ -219,13 +223,17 @@ class InvoiceService {
 
     async buildLineItems(invoicePayload) {
         const lineItems = [];
-        
+
+        logger.info(`Starting to process line items for invoice payload.`);
+
         for (const line of invoicePayload.lines) {
             await this.processParts(line.parts, lineItems);
             await this.processMiscCharges(line.miscCharges, lineItems);
             await this.processDisposalTaxes(line.disposalTaxes, lineItems);
             
+            logger.info(`Line Item process done for work order id ${invoicePayload}`);
             if (invoicePayload.laborTaxSameAsPart === false && invoicePayload.laborTaxPercentage > 0) {
+                logger.info(`Adding labor tax item. laborTaxSameAsPart: false, laborTaxPercentage: ${invoicePayload.laborTaxPercentage}, workOrderId: ${invoicePayload.workOrderId}`);
                 lineItems.push(await this.createLaborTaxItem());
             }
         }
@@ -234,9 +242,13 @@ class InvoiceService {
     }
 
     async processParts(parts, lineItems) {
-        if (!parts) return;
-        
+        if (!parts) {
+            logger.info(`No parts to process company: ${companyName}`);
+            return;
+        }
+
         for (const part of parts) {
+            logger.info(`Processing part: ${part.name}, Qty: ${part.quantity}, Price: ${part.sellingPrice}`);
             const itemId = await this.getItemIdByName(part.name);
             const lineItem = {
                 Amount: part.totalAmount,
@@ -250,6 +262,7 @@ class InvoiceService {
 
             if (part.taxCode) {
                 lineItem.SalesItemLineDetail.TaxCodeRef = { value: part.taxCode };
+                logger.info(`[processParts] Applied tax code: ${part.taxCode} for part: ${part.name}`);
             }
 
             lineItems.push(lineItem);
@@ -257,9 +270,14 @@ class InvoiceService {
     }
 
     async processMiscCharges(miscCharges, lineItems) {
-        if (!miscCharges) return;
-        
+
+        if (!miscCharges) {
+            logger.info(`No miscellaneous charges to process.`);
+            return;
+        }        
+
         for (const charge of miscCharges) {
+            logger.info(`Processing misc charge: ${charge.name}, Amount: ${charge.totalAmount}`);
             const itemId = await this.getItemIdByName(charge.name);
             lineItems.push({
                 Amount: charge.totalAmount,
@@ -273,9 +291,13 @@ class InvoiceService {
     }
 
     async processDisposalTaxes(disposalTaxes, lineItems) {
-        if (!disposalTaxes) return;
         
+        if (!disposalTaxes) {
+            logger.info(`No disposal Taxes to process.`);
+            return;
+        } 
         for (const tax of disposalTaxes) {
+            logger.info(`Processing disposal Taxes Name: ${tax.name}`);
             const itemId = await this.getItemIdByName(tax.name);
             lineItems.push({
                 Amount: tax.totalAmount,
@@ -291,6 +313,7 @@ class InvoiceService {
 
     async createLaborTaxItem() {
         const itemId = await this.getItemIdByName("Labor Tax");
+        logger.info("Creating an Labour Tax Item")
         return {
             ItemRef: { value: itemId },
             Qty: 1,
@@ -299,6 +322,7 @@ class InvoiceService {
 
     async buildInvoiceObject(invoicePayload, customer, config, lineItems) {
         const terms = await this.getTermRef(config);
+        logger.info(`Creating an Invoice payload`)
         return {
             Line: lineItems,
             CustomerRef: { value: customer[0].Id },
@@ -337,6 +361,7 @@ class InvoiceService {
 
     async validateOrCreateCustomer(customer) {
         try {
+            logger.info(`Validating Customer with ${customer.name}`)
             const existingCustomer = await this.getCustomerByName(customer.name);
             return existingCustomer || await this.createNewCustomer(customer);
         } catch (error) {
@@ -347,6 +372,7 @@ class InvoiceService {
 
     async getCustomerByName(customerName) {
         try {
+            logger.info(`Fetching ${customerName} customer info`)
             const data = await new Promise((resolve, reject) => {
                 this.qb.findCustomers({ DisplayName: customerName }, (err, data) => {
                     if (err) reject(err);
@@ -394,7 +420,7 @@ class InvoiceService {
             GivenName: customer.firstName || "",
             FamilyName: customer.lastName || "",
         };
-
+        logger.info(`Creation new Customer with name ${customer.name}`)
         try {
             const createdCustomer = await new Promise((resolve, reject) => {
                 this.qb.createCustomer(customerPayload, (err, data) => {
@@ -432,6 +458,8 @@ class InvoiceService {
 
     findMismatchedTaxes(invoiceTaxes, qbTaxes) {
         return invoiceTaxes.reduce((mismatches, invTax) => {
+            logger.info(`Checking mismatched tax: ${invTax.name}, Tax Code: ${invTax.code}`);
+
             const qbTax = qbTaxes.find(tax => tax.Name === invTax.name);
             
             if (!qbTax) {
@@ -461,6 +489,8 @@ class InvoiceService {
     async getTermRef(config) {
         try {
             const termName = config.terms;
+            logger.info(`Fetching terms for termName ${termName}`)
+
             if (!termName) {
                 throw new Error('No terms specified in config.');
             }
@@ -478,14 +508,15 @@ class InvoiceService {
         }
     }
 
-    async getTerm(templateName) {
+    async getTerm(termName) {
         try {
             const data = await new Promise((resolve, reject) => {
-                this.qb.findTerms({ Name: templateName }, (err, data) => {
+                this.qb.findTerms({ Name: termName }, (err, data) => {
                     if (err) reject(err);
                     else resolve(data);
                 });
             });
+            logger.info(`Fetching term with Term: ${data}`)
             return data?.QueryResponse?.Term || [];
         } catch (error) {
             logger.error("Error fetching TermRef:", error);
@@ -507,6 +538,7 @@ class InvoiceService {
 
         const status = this.determineInvoiceStatus(invoiceIdToDelete, oldInvoiceFound);
         const createdInvoice = await this.createInvoiceInQBO(invoice, customer, config);
+        logger.info(`Invoice ${status} with invoiceId: ${createdInvoice.Id}`)
 
         return await failureRecordDao.insertOrUpdateInDBForSuccess(
             invoice.workOrderId,
@@ -519,7 +551,7 @@ class InvoiceService {
 
     async determineInvoiceToDelete(oldInvoiceRecord, existingQbInvoiceId, workOrderId) {
         if (oldInvoiceRecord && oldInvoiceRecord.DocNumber) {
-            logger.info(`Picked invTxnIdToDelete from db: ${oldInvoiceRecord.invoiceId} for workOrderId: ${workOrderId} and qbInvoiceNumber: ${existingQbInvoiceId}`);
+            logger.info(`Picked invoiceIdToDelete from db: ${oldInvoiceRecord.invoiceId} for workOrderId: ${workOrderId} and qbInvoiceNumber: ${existingQbInvoiceId}`);
             return oldInvoiceRecord.invoiceId;
         }
 
@@ -553,6 +585,7 @@ class InvoiceService {
 
     async deleteInvoieById(invoiceId) {
         try {
+            logger.info("Deleting old invoice.")
             return await new Promise((resolve, reject) => {
                 this.qb.deleteInvoice(invoiceId, (err, data) => {
                     if (err) reject(new Error(`Error deleting invoice in QBO: ${err.message}`));
