@@ -1,0 +1,5 @@
+
+exports.TAX_CODES = {
+    ZERO_SALES_TAX_CODE : "FX",
+    ZERO_NON_SALES_TAX_CODE : "FXN"
+}
