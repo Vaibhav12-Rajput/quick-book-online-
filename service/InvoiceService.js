@@ -6,7 +6,7 @@ const { promisify } = require('util');
 const failureRecordDao = require('../dao/RecordDao'); // Import the DAO
 const logger = require('../config/logger');
 const RecordDao = require('../dao/RecordDao');
-const  qbOnlineConstant  = require('../constant/qbdConstants');
+const qbOnlineConstant = require('../constant/qbdConstants');
 
 
 
@@ -246,8 +246,12 @@ class InvoiceService {
             "DueDate": invoicePayload.invoiceDate, // Optional, but ensure correct format
             "SalesTermRef": {
                 "value": termsRef
-            }
+            },
         };
+
+        if (config?.keepQBInvoiceNumber) {
+            invoice.DocNumber = invoicePayload.workOrderId;
+          }
 
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
             // 1. Choose your tax group (here we just take the first one)
@@ -543,7 +547,7 @@ class InvoiceService {
         }
     }
 
-    async getInvoiceById(invoiceId){
+    async getInvoiceById(invoiceId) {
         try {
             const invoice = await new Promise((resolve, reject) => {
                 this.qb.getInvoice(invoiceId, (err, data) => {
@@ -608,9 +612,13 @@ class InvoiceService {
 
         let status = "";
 
+        let createdInvoice = await this.createInvoiceInQBO(invoice, customer, config);
+        let DocNumber = createdInvoice.DocNumber;
+        let invoiceId = createdInvoice.Id;
+
         if (invoiceIdToDelete) {
             status = await this.deleteInvoieById(invoiceIdToDelete);
-            status = "DELETED"
+            status = "UPDATED"
         }
         else if (existingQbInvoiceId && !invoiceIdToDelete) {
             status = oldInvoiceFound == false ? "OLD INVOICE NOT FOUND" : "DUPLICATE OLD INVOICES FOUND"
@@ -618,11 +626,7 @@ class InvoiceService {
             status = "CREATED"
         }
 
-        let createdInvoice = await this.createInvoiceInQBO(invoice, customer, config);
-        let DocNumber = createdInvoice.DocNumber;
-        let invoiceId = createdInvoice.Id;
-
-        oldInvoiceRecord = await failureRecordDao.insertOrUpdateInDBForSuccess(invoice.workOrderId, DocNumber,status, invoiceId, companyName);
+        oldInvoiceRecord = await failureRecordDao.insertOrUpdateInDBForSuccess(invoice.workOrderId, DocNumber, status, invoiceId, companyName);
         return oldInvoiceRecord;
     }
 
@@ -671,7 +675,7 @@ class InvoiceService {
                     TaxRateName: `${saleTaxCodePayload.Name}Rate`,
                     RateValue: saleTaxCodePayload.RateValue,
                     TaxAgencyId: taxAgencyId,
-                    TaxApplicableOn:  saleTaxCodePayload.TaxType
+                    TaxApplicableOn: saleTaxCodePayload.TaxType
                 }
             ]
         };
