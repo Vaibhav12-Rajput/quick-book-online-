@@ -87,48 +87,18 @@ function buildQuickBooksData(authCode, state, realmId, token) {
     accessTokenLastRefreshedTime: new Date(),
     refreshTokenExpiredTime: token.x_refresh_token_expires_in,
     isRefreshTokenExpired: false,
+    tokenExpiry: Date.now() + token.expires_in * 1000
   };
-}
-
-// Refresh access token
-async function updateAccessToken(quickBooks) {
-  try {
-    validateRefreshTokenInput(quickBooks);
-
-    const bearerTokenResponse = await oauthClient.refreshUsingToken(quickBooks.refreshToken);
-    const { access_token, refresh_token } = bearerTokenResponse.token;
-
-    if (!access_token || !refresh_token) {
-      throw new Error('Failed to get new access or refresh token');
-    }
-
-    const updateData = {
-      accessToken: access_token,
-      refreshToken: refresh_token,
-    };
-
-    await QuickbooksDao.findAndModify(quickBooks._id, updateData);
-  } catch (error) {
-    logger.error(`Failed to update access token for userId: ${quickBooks.userId}, email: ${quickBooks.userEmail}. Error: ${error.stack || error.message}`);
-  }
-}
-
-function validateRefreshTokenInput(quickBooks) {
-  if (!oauthClient) {
-    throw new Error('OAuth client is not initialized');
-  }
-  if (!quickBooks.refreshToken) {
-    throw new Error('Refresh token is not available');
-  }
 }
 
 // Write or update configuration
 async function writeConfig(req) {
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
-    const errMsg = 'Validation Failed';
+    const errMsg = `Validation failed for companyId=${req.body?.companyId}`;
     logger.error(errMsg);
-    throw new Error(errMsg);
+    throw new Error('Validation Failed');
   }
 
   const { companyId, companyName } = extractCompanyInfo(req.body);
@@ -139,17 +109,15 @@ async function writeConfig(req) {
 
     if (existingConfig) {
       await ConfigDao.findAndModify(existingConfig._id, config);
-      const message = 'Configuration updated successfully';
-      logger.info(message);
-      return message;
+      return 'Configuration updated successfully';
     } else {
       await ConfigDao.insert(config, companyId);
-      const message = 'Configuration created successfully';
-      logger.info(message);
-      return message;
+      return 'Configuration created successfully';
     }
   } catch (err) {
-    logger.error(err);
+    logger.error(`Error saving config for companyId=${companyId}: ${err.message}`, {
+      stack: err.stack,
+    });
     throw new Error('Something went wrong while saving the configuration.');
   }
 }
@@ -180,6 +148,5 @@ function buildConfigObject(body, companyId, companyName) {
 module.exports = {
   startOauthFlow,
   handleCallback,
-  updateAccessToken,
   writeConfig,
 };

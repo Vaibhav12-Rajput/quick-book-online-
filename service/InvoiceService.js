@@ -7,9 +7,18 @@ const failureRecordDao = require('../dao/RecordDao');
 const logger = require('../config/logger');
 const RecordDao = require('../dao/RecordDao');
 const qbOnlineConstant = require('../constant/qbdConstants');
-
+const OAuthClient = require('intuit-oauth');
+const QuickbooksDao = require('../dao/QuickbooksDao');
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
+
+const {
+    CLIENT_ID,
+    CLIENT_SECRET,
+    REDIRECT_URI,
+    ENVIRONMENT,
+  } = process.env;
+
 
 class InvoiceService {
     constructor() {
@@ -18,7 +27,8 @@ class InvoiceService {
 
     async initializeQuickBooks() {
         try {
-            const quickbooks = await quickbooksDao.findOne();
+            const quickbooks = await quickbooksDao.findOne();            
+            await this.ensureValidAccessToken(quickbooks);
             this.qb = new QuickBooks(
                 client_id,
                 client_secret,
@@ -37,6 +47,41 @@ class InvoiceService {
             throw error;
         }
     }
+
+    async ensureValidAccessToken(quickBooks) {
+
+        const now = Date.now();
+        const bufferTime = 2 * 60 * 1000;
+
+        if (!quickBooks.tokenExpiry || quickBooks.tokenExpiry - now <= bufferTime) {
+            try {                
+                const oauthClient = new OAuthClient({
+                    clientId: CLIENT_ID,
+                    clientSecret: CLIENT_SECRET,
+                    environment: ENVIRONMENT,
+                    redirectUri: REDIRECT_URI,
+                    logging: false,
+                });
+
+
+                const bearerTokenResponse = await oauthClient.refreshUsingToken(quickBooks.refreshToken);
+                const { access_token, refresh_token, expires_in } = bearerTokenResponse.token;
+
+                const updateData = {
+                    accessToken: access_token,
+                    refreshToken: refresh_token,
+                    tokenExpiry: now + expires_in * 1000
+                };
+
+                await QuickbooksDao.findAndModify(quickBooks._id, updateData);
+                quickBooks.accessToken = access_token;
+            } catch (error) {
+                logger.error(`Token refresh failed for _id=${quickBooks._id}: ${error.message}`);
+                throw new Error('Failed to refresh QuickBooks token');
+            }
+        }
+    }
+
 
     createInvoiceQBO = async (req, res) => {
         try {
@@ -349,8 +394,10 @@ class InvoiceService {
 
             if (data?.QueryResponse?.Item?.length > 0) {
                 return data.QueryResponse.Item[0].Id;
+            }else{
+                throw new Error(`Item '${itemName}' not found in QuickBooks.`);
+        
             }
-            return [];
         } catch (err) {
             logger.error('Error fetching item ID:', err);
             throw new Error(`Error fetching item ID: ${err.message}`);

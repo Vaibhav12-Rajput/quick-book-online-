@@ -1,5 +1,5 @@
 const express = require('express');
-const QuickbooksAuthService = require('../service/QuickbooksAuthService ');
+const QuickbooksAuthService = require('../service/QuickbooksAuthService');
 const { InvoiceService } = require('../service/InvoiceService');
 const router = express.Router();
 const invoiceService = new InvoiceService();
