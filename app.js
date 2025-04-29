@@ -4,7 +4,6 @@ const port = 5000;
 const cors = require('cors');
 const qbdRoute = require('./routes/qbRoute');
 const connectToMongo = require('./config/db');
-require('./service/refreshToken');
 connectToMongo();
 
 app.use(express.json());
