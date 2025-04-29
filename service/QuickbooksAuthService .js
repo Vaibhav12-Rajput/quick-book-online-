@@ -30,7 +30,7 @@ const oauthClient = new OAuthClient({
   clientSecret: CLIENT_SECRET,
   environment: ENVIRONMENT,
   redirectUri: REDIRECT_URI,
-  logging: true,
+  logging: false,
 });
 
 // CSRF Generator

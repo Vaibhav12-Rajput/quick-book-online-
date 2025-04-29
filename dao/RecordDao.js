@@ -21,12 +21,12 @@ class RecordDao {
         const update = {
             $set: {
                 workOrderId: DocNumber,
-                Id: invoiceId,
+                invoiceId: invoiceId,
                 status: status,
-                invoiceDate: new Date(invoiceDate),
+                invoiceDate: invoiceDate,
                 qBInvoiceProcessingDate: new Date(),
                 qbCompanyConfigCode: qbCompanyConfigCode,
-                errorMessage: undefined
+                errorMessage: ""
             }
         };
         const options = { upsert: true, new: true }; // new: true ensures updated document is returned

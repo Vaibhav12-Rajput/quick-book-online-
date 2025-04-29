@@ -273,9 +273,9 @@ class InvoiceService {
 
     addTaxDetailsIfNeeded(invoice, invoicePayload) {
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
-            const { value, name, taxAmount } = invoicePayload.partsTax[0];
+            const { code, name, taxAmount } = invoicePayload.partsTax[0];
             invoice.TxnTaxDetail = {
-                TxnTaxCodeRef: { value, name },
+                TxnTaxCodeRef: { "value" : code, name },
                 TotalTax: taxAmount
             };
         }
@@ -458,14 +458,14 @@ class InvoiceService {
             invoiceIdToDelete = await this.determineInvoiceToDelete(oldInvoiceRecord, existingQbInvoiceId, invoice.workOrderId);
         }
 
-        const createdInvoice = await this.createInvoiceInQBO(invoice, customer, config);
         const status = this.determineInvoiceStatus(invoiceIdToDelete, oldInvoiceFound);
+        const createdInvoice = await this.createInvoiceInQBO(invoice, customer, config);
 
         return await failureRecordDao.insertOrUpdateInDBForSuccess(
             invoice.workOrderId,
-            createdInvoice.DocNumber,
-            status,
             createdInvoice.Id,
+            status,
+            createdInvoice.TxnDate,
             companyName
         );
     }
