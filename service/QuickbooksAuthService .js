@@ -96,8 +96,6 @@ async function updateAccessToken(quickBooks) {
     validateRefreshTokenInput(quickBooks);
 
     const bearerTokenResponse = await oauthClient.refreshUsingToken(quickBooks.refreshToken);
-    logger.info('OAuth Refresh Token Response:', bearerTokenResponse);
-
     const { access_token, refresh_token } = bearerTokenResponse.token;
 
     if (!access_token || !refresh_token) {
