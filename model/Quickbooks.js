@@ -15,7 +15,8 @@ const QuickbooksSchema = new mongoose.Schema({  // Use mongoose.Schema here
   idToken: String,
   tokenType: String,
   accessToken: String,
-  intuitTid: String
+  intuitTid: String,
+  tokenExpiry: Date
 });
 
 module.exports = mongoose.model('Quickbooks', QuickbooksSchema);
