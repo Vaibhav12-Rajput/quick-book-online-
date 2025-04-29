@@ -36,7 +36,7 @@ class InvoiceService {
                 false,
                 quickbooks.realmId,
                 true,
-                true,
+                false,
                 null,
                 '2.0',
                 quickbooks.minorVersion || 65
