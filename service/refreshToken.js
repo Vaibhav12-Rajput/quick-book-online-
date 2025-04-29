@@ -15,8 +15,6 @@ async function runTask() {
   }
 }
 
-// Run immediately after starting the app
 runTask();
 
-// Then set an interval to run every 30 minutes (1800000 milliseconds)
-setInterval(runTask, 1800000); // 30 minutes in milliseconds
+setInterval(runTask, 1800000); 

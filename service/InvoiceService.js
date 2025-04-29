@@ -2,6 +2,7 @@ const QuickBooks = require('node-quickbooks');
 const quickbooksDao = require('../dao/QuickbooksDao');
 const CommonResponsePayload = require('../payload/commonResponsePayload');
 const ConfigDao = require('../dao/ConfigDao');
+const  qbOnlineConstant  = require('../constant/qbdConstants');
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -33,7 +34,6 @@ class InvoiceService {
         const companyName = req.body.qbCompanyConfigCode;
         const config = await ConfigDao.findOne({ id: companyName });
         if (!config) {
-            logger.error(`Configuration not found for id: ${companyName}`);
             throw new Error(`Configuration not found for id: ${companyName}`);
         }
 
@@ -169,7 +169,9 @@ class InvoiceService {
             "PONumber": invoicePayload.PONumber,
             "SalesTermRef": {
                 "value": termsRef
-            }
+            },
+            "PrivateNote": "FOB: WorkOrderId-12345",
+            "DocNumber": "WO-1234"
         };
         try {
             const createdInvoice = await new Promise((resolve, reject) => {
@@ -190,7 +192,6 @@ class InvoiceService {
             throw new Error("Failed to create invoice in QuickBooks Online.");
         }
     }
-
 
     // Validate or create customer in QuickBooks
     async validateOrCreateCustomer(customer) {
@@ -336,8 +337,8 @@ class InvoiceService {
                 throw new Error('No matching Term found between the configuration and QuickBooks.');
             }
 
-            console.log(`Created new term '${termName}' with ID ${createdTerm.Id}`);
-            return terms.Id;
+            console.log(`Created new term '${termName}' with ID ${terms.Id}`);
+            return terms[0].Id;
 
         } catch (error) {
             console.error("Error in getOrCreateTermRef:", error.message);
@@ -369,78 +370,111 @@ class InvoiceService {
         }
     }
 
-    async createNonSalesTaxQBO(config) {
-        const taxVendorName = config.TaxAgent;
-        const salexTaxReturnLine = config.SalexTaxReturnLine;
-
-        // If taxVendorName is not found in config
-        if (!taxVendorName) {
-            logger.error("Company got connected but exception while creating sales tax item. Error : taxVendorName is not found in config");
-            throw new Error("Company got connected but exception while creating sales tax item. Error : taxVendorName is not found in config");
+    async createDefaultTax(config) {
+        try {
+            await this.initializeQuickBooks();
+            await this.validateOrCreateTaxCode(qbOnlineConstant.TAX_CODES.ZERO_SALES_TAX_CODE, config);
+            await this.validateOrCreateTaxCode(qbOnlineConstant.TAX_CODES.ZERO_NON_SALES_TAX_CODE, config);
+        } catch (error) {
+            console.error('Failed to create default Rate and Code ', error.message);
+            throw error;
         }
+    }
 
-        // Prepare the data for the new sales tax item
-        const salesTaxItem = {
-            Name: "Zero Sales Tax for 0%",  // You can customize the name
-            Description: "Zero Sales Tax for 0%",  // Description of the tax item
-            Active: true,
-            Type: "SalesTax", // Type should be SalesTax for QuickBooks Online
-            Rate: 0.0, // Zero rate for this item
-            VendorRef: {
-                value: await this.getVendorId(taxVendorName)  
-            },
-            TaxReturnLine: salexTaxReturnLine, // Optional, if needed for reporting purposes
+    async validateOrCreateTaxCode(taxCode, config) {
+        const existingTaxRate = await this.getSalesTaxCode(taxCode);
+
+        if (!existingTaxRate || existingTaxRate.length === 0) {
+            console.log(`Creating new TaxCode: ${taxCode}`);
+            return await this.createNewTaxCode(taxCode, config);
+        } else {
+            console.log(`TaxCode '${taxCode}' already exists.`);
+            return existingTaxRate[0].Id;
+        }
+    }
+
+    async getSalesTaxCode(taxRateName) {
+        try {
+            const criteria = { Name: taxRateName };
+
+            const data = await new Promise((resolve, reject) => {
+                this.qb.findTaxCodes(criteria, (err, data) => {
+                    if (err) reject(err);
+                    else resolve(data);
+                });
+            });
+
+            return data?.QueryResponse?.TaxCode || [];
+        } catch (error) {
+            console.error('Error fetching TaxCode:', error.message);
+            throw error;
+        }
+    }
+
+    async createNewTaxCode(code, config) {
+
+        const taxAgencyId = await this.getTaxAgencyId(config.salesTaxAgence);
+        const saleTaxCodePayload = this.buildTaxRatePayload(code);
+
+        const taxServicePayload = {
+            TaxCode: saleTaxCodePayload.Name,                  
+            TaxRateDetails: [
+                {
+                    TaxRateName: `${saleTaxCodePayload.Name}Rate`,      
+                    RateValue: saleTaxCodePayload.RateValue,     
+                    TaxAgencyId: taxAgencyId,
+                    TaxApplicableOn:  saleTaxCodePayload.TaxType 
+                }
+            ]
         };
 
         try {
-            // Create the sales tax item using QuickBooks Online SDK
-            const createdTaxItem = await new Promise((resolve, reject) => {
-                this.qb.createItem(salesTaxItem, (err, data) => {
-                    if (err) {
-                        reject(new Error("Error creating sales tax item in QuickBooks Online: " + err.message));
-                    } else {
-                        resolve(data);
-                    }
+            const created = await new Promise((resolve, reject) => {
+                this.qb.createTaxService(taxServicePayload, (err, resp) => {
+                    if (err) reject(err);
+                    else resolve(resp.TaxCode);
                 });
             });
-
-            // Check if the item is created successfully
-            if (!createdTaxItem) {
-                logger.error("Error: Failed to create sales tax item in QuickBooks Online.");
-                throw new Error("Error: Failed to create sales tax item in QuickBooks Online.");
-            }
-
-            logger.info("Zero Sales Tax Item created successfully in QuickBooks Online.");
-            return createdTaxItem;
+            console.log("Created TaxCode:", created);
+            return created.Id;
         } catch (error) {
-            logger.error("Error creating sales tax item: " + error.message);
-            throw new Error("Failed to create sales tax item in QuickBooks Online.");
+            console.error("Error creating TaxCode:", error);
+            throw error;
         }
     }
 
-    async getVendorId(vendorName) {
+
+
+    async getTaxAgencyId(taxAgencyName) {
         try {
-            const vendorData = await new Promise((resolve, reject) => {
-                this.qb.findVendors({ DisplayName: vendorName }, (err, data) => {
-                    if (err) {
-                        reject(new Error("Error finding vendor: " + err.message));
-                    } else {
-                        resolve(data);
-                    }
+            const agencies = await new Promise((resolve, reject) => {
+                this.qb.findTaxAgencies({ Name: taxAgencyName }, (err, data) => {
+                    if (err) reject(err);
+                    else resolve(data?.QueryResponse?.TaxAgency || []);
                 });
             });
 
-            if (!vendorData || vendorData.QueryResponse.Vendor.length === 0) {
-                throw new Error("Vendor not found for name: " + vendorName);
+            if (!agencies.length) {
+                throw new Error(`No TaxAgency found with name: ${taxAgencyName}`);
             }
 
-            // Assuming the first result is the correct vendor
-            return vendorData.QueryResponse.Vendor[0].Id;
+            return agencies[0].Id;
         } catch (error) {
-            throw new Error("Failed to get Vendor ID: " + error.message);
+            console.error('Error fetching TaxAgency:', error.message);
+            throw error;
         }
     }
 
+    buildTaxRatePayload(code) {
+        const isZeroTax = code === qbOnlineConstant.TAX_CODES.ZERO_SALES_TAX_CODE;
+
+        return {
+            Name: code,
+            Description: isZeroTax ? 'Zero Sales Tax Code' : 'Non-Zero Sales Tax Code',
+            RateValue: isZeroTax ? 0 : 5, 
+            TaxType: "Sales"
+        };
+    }
 }
 
 module.exports = { InvoiceService };
