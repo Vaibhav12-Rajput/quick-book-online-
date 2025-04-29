@@ -3,7 +3,9 @@ const quickbooksDao = require('../dao/QuickbooksDao');
 const CommonResponsePayload = require('../payload/commonResponsePayload');
 const ConfigDao = require('../dao/ConfigDao');
 const { promisify } = require('util');
-const failureRecordDao = require('../dao/FailureRecordDao'); // Import the DAO
+const failureRecordDao = require('../dao/RecordDao'); // Import the DAO
+const logger = require('../config/logger');
+const RecordDao = require('../dao/RecordDao');
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -63,13 +65,14 @@ class InvoiceService {
                             taxDetails: misMatchedTaxes,
                             status: "FAILURE"
                         });
-                        await this.insertOrUpdateInDBForFailure(invoicePayload.workOrderId, responseMessage, invoicePayload.invoiceDate, companyName);
+                        await failureRecordDao.insertOrUpdateForFailure(invoicePayload.workOrderId, error.message, invoicePayload.invoiceDate, companyName);
                     } else {
                         // Tax validation passed, create or validate customer
                         const customer = await this.validateOrCreateCustomer(invoicePayload.to);
 
                         // Create invoice in QuickBooks
-                        const invoiceResponse = await this.createInvoiceInQBO(invoicePayload, customer, config);
+                        let invoiceResponse = await this.getItemAndProcessInvoice(invoicePayload, companyName, customer, config);
+                        // const invoiceResponse = await this.createInvoiceInQBO(invoicePayload, customer, config);
                         responseMessage = "Invoice created Successfully.";
                         reponseList.push({
                             ...invoiceResponse,
@@ -78,10 +81,10 @@ class InvoiceService {
                     }
                 } catch (error) {
                     console.error("Error creating invoice:", error.message);
-                    let response = await insertOrUpdateInDBForFailure(invoicePayload.workOrderId, error.message, invoicePayload.invoiceDate,companyName)
+                    let response = await failureRecordDao.insertOrUpdateForFailure(invoicePayload.workOrderId, error.message, invoicePayload.invoiceDate, companyName);
                     reponseList.push({
-                      ...response,
-                      message: error.message
+                        ...response,
+                        message: error.message
                     });
                 }
             }
@@ -124,14 +127,14 @@ class InvoiceService {
     }
 
 
-    async insertOrUpdateInDBForFailure(workOrderId, errorMessage, invoiceDate, qbCompanyConfigCode) {
-        try {
-            const failureRecord = await failureRecordDao.insertOrUpdateForFailure(workOrderId, errorMessage, invoiceDate, qbCompanyConfigCode);
-            console.log('Failure record processed:', failureRecord);
-        } catch (err) {
-            console.error('Error processing failure:', err);
-        }
-    };
+    // async insertOrUpdateInDBForFailure(workOrderId, errorMessage, invoiceDate, qbCompanyConfigCode) {
+    //     try {
+    //         const failureRecord = await failureRecordDao.insertOrUpdateForFailure(workOrderId, errorMessage, invoiceDate, qbCompanyConfigCode);
+    //         console.log('Failure record processed:', failureRecord);
+    //     } catch (err) {
+    //         console.error('Error processing failure:', err);
+    //     }
+    // };
 
     async createInvoiceInQBO(invoicePayload, customer, config) {
         const lineItems = [];
@@ -157,9 +160,11 @@ class InvoiceService {
 
                     // Add TaxCodeRef only when taxCode is available
                     if (part.taxCode) {
-                        lineItem.SalesItemLineDetail.TaxCodeRef = {
-                            "value": part.taxCode
-                        };
+                        lineItem.SalesItemLineDetail = {
+                            "TaxCodeRef": {
+                                "value": part.taxCode
+                            }
+                        }
                     }
 
                     lineItems.push(lineItem);
@@ -181,6 +186,18 @@ class InvoiceService {
                             Qty: 1, // Usually 1 for misc charges unless otherwise
                         }
                     });
+                }
+
+                if (invoice.laborTaxSameAsPart == false && labors.length > 0) {
+                    if (invoice.laborTaxPercentage > 0) {
+                        const itemId = await this.getItemIdByName("Labor Tax"); // Or any appropriate name for misc charges
+                        lineItems.push({
+                            ItemRef: {
+                                value: itemId,
+                            },
+                            Qty: 1,
+                        })
+                    }
                 }
 
                 // Add disposal taxes
@@ -226,21 +243,20 @@ class InvoiceService {
             "DueDate": invoicePayload.invoiceDate, // Optional, but ensure correct format
             "SalesTermRef": {
                 "value": termsRef
-            }
+            },
+            "DocNumber": invoicePayload.workOrderId
         };
 
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
-            invoice["TxnTaxDetail"] = {
-                "TaxLine": invoicePayload.partsTax.map(tax => ({
-                    "DetailType": "TaxLineDetail",
-                    "TaxLineDetail": {
-                        "TaxRateRef": {
-                            "value": tax.code // Reference the tax rate code
-                        },
-                    }
-                }))
+            // 1. Choose your tax group (here we just take the first one)
+            const { value, name, taxAmount } = invoicePayload.partsTax[0];
+
+            invoice.TxnTaxDetail = {
+                TxnTaxCodeRef: { value, name },
+                TotalTax: taxAmount           // omit this line if you’d rather let QBO auto‐calculate
             };
         }
+
 
         try {
             const createdInvoice = await new Promise((resolve, reject) => {
@@ -529,6 +545,89 @@ class InvoiceService {
         } catch (error) {
             throw new Error("Failed to get Vendor ID: " + error.message);
         }
+    }
+
+    async getInvoiceById(invoiceId){
+        try {
+            const invoice = await new Promise((resolve, reject) => {
+                this.qb.getInvoice(invoiceId, (err, data) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(data);
+                    }
+                });
+            });
+            return invoice;
+        } catch (error) {
+            console.error("Error fetching invoice by ID:", error.message);
+            // throw new Error("Failed to fetch invoice from QuickBooks Online.");
+        }
+    }
+
+    async deleteInvoieById(invoiceId) {
+        try {
+            const deletedInvoice = await new Promise((resolve, reject) => {
+                this.qb.deleteInvoice(invoiceId, (err, data) => {
+                    if (err) {
+                        reject(new Error(`Error deleting invoice in QBO: ${err.message}`));
+                    } else {
+                        resolve(data);
+                    }
+                });
+            });
+            // console.log(`Invoice deleted with ID: ${deletedInvoice.Id}`);
+            return deletedInvoice;
+        } catch (error) {
+            console.error("Error deleting invoice in QBO:", error.message);
+            // throw new Error("Failed to delete invoice in QuickBooks Online.");
+        }
+    }
+
+
+    async getItemAndProcessInvoice(invoice, companyName, customer, config) {
+        let invoiceIdToDelete;
+        let oldInvoiceFound;
+
+        let oldInvoiceRecord = await RecordDao.findOldInvoiceRecord(invoice.workOrderId, companyName);
+
+        let existingQbInvoiceId = oldInvoiceRecord ? oldInvoiceRecord.invoiceId : invoice.invoiceId;
+
+        if (existingQbInvoiceId) {
+            logger.info("Invoice creating again")
+            if (oldInvoiceRecord && oldInvoiceRecord.DocNumber) {//
+                invoiceIdToDelete = oldInvoiceRecord.invoiceId;
+                logger.info(`Picked invTxnIdToDelete from db : ${invoiceIdToDelete} for workOrderId : ${invoice.workOrderId} and qbInvoiceNumber : ${existingQbInvoiceId}`)
+
+            } else {
+                const invoiceResponse = await this.getInvoiceById(existingQbInvoiceId);
+
+                if (invoiceResponse) {
+                    invoiceIdToDelete = invoiceResponse.Id;
+                } else {
+                    oldInvoiceFound = false;
+                }
+            }
+        }
+
+        let status = "";
+
+        if (invoiceIdToDelete) {
+            status = await this.deleteInvoieById(invoiceIdToDelete);
+            status = "DELETED"
+        }
+        else if (existingQbInvoiceId && !invoiceIdToDelete) {
+            status = oldInvoiceFound == false ? "OLD INVOICE NOT FOUND" : "DUPLICATE OLD INVOICES FOUND"
+        } else {
+            status = "CREATED"
+        }
+
+        let createdInvoice = await this.createInvoiceInQBO(invoice, customer, config);
+        let DocNumber = createdInvoice.DocNumber;
+        let invoiceId = createdInvoice.Id;
+
+        oldInvoiceRecord = await failureRecordDao.insertOrUpdateInDBForSuccess(invoice.workOrderId, DocNumber,status, invoiceId, companyName);
+        return oldInvoiceRecord;
     }
 
 }

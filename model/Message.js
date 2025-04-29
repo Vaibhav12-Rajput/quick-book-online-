@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+mongoose.set('strictQuery', false); // Affects query filter behavior (not document saves)
 
-// Define the schema for failure records
-const FailureRecordSchema = new mongoose.Schema({
+const records = new mongoose.Schema({
     workOrderId: { type: String, required: true },
+    invoiceId: { type: String, required: true },
+    DocNumber: {type: String, required: false},
     qbCompanyConfigCode: { type: String, required: true },
     status: { type: String, default: "FAILURE" },
     invoiceDate: { type: Date, required: true },
@@ -11,4 +13,4 @@ const FailureRecordSchema = new mongoose.Schema({
 }, { timestamps: true }); // This will add createdAt and updatedAt fields
 
 // Create and export the model
-module.exports = mongoose.model('FailureRecord', FailureRecordSchema);
+module.exports = mongoose.model('records', records);
