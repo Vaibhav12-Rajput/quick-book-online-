@@ -9,6 +9,7 @@ const RecordDao = require('../dao/RecordDao');
 const qbOnlineConstant = require('../constant/qbdConstants');
 const OAuthClient = require('intuit-oauth');
 const QuickbooksDao = require('../dao/QuickbooksDao');
+const { count } = require('console');
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
@@ -24,7 +25,6 @@ class InvoiceService {
     constructor() {
         this.qb = null;
     }
-
     async initializeQuickBooks() {
         try {
             const quickbooks = await quickbooksDao.findOne();
@@ -90,6 +90,7 @@ class InvoiceService {
 
             const config = await this.getCompanyConfig(companyName);
             await this.initializeQuickBooksIfNeeded();
+
 
             const taxesFromQB = await this.getAllSalesTaxFromQBO();
             const reponseList = await this.processInvoiceList(invoicePayloadList, companyName, taxesFromQB, config);
@@ -209,9 +210,6 @@ class InvoiceService {
             if (config?.keepQBInvoiceNumber) {
                 invoice.DocNumber = invoicePayload.workOrderId;
             }
-
-            this.addTaxDetailsIfNeeded(invoice, invoicePayload);
-
             const createdInvoice = await this.createInvoiceInQuickBooks(invoice);
             logger.info(`Invoice created with ID: ${createdInvoice.Id}`);
             return createdInvoice;
@@ -220,6 +218,16 @@ class InvoiceService {
             throw new Error("Failed to create invoice in QuickBooks Online.");
         }
     }
+
+    async getCompanyInfo(reameId) {
+        return new Promise((resolve, reject) => {
+            this.qb.getCompanyInfo(reameId, (err, data) => {
+                if (err) return reject(err);
+                resolve(data);
+            });
+        });
+    }
+
 
     async createLaborTaxItem() {
         const itemId = await this.getItemIdByName("Labor Tax");
@@ -250,11 +258,11 @@ class InvoiceService {
         };
     }
 
-    addTaxDetailsIfNeeded(invoice, invoicePayload) {
+    addTaxDetailsIfNeeded(invoice, invoicePayload, saleTaxCode) {
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
             const { code, name, taxAmount } = invoicePayload.partsTax[0];
             invoice.TxnTaxDetail = {
-                // TxnTaxCodeRef: { "value" : code, name },
+                TxnTaxCodeRef: { "value": saleTaxCode },
                 TotalTax: taxAmount
             };
         }
@@ -789,11 +797,16 @@ class InvoiceService {
 
 
     async prepareLineItems(invoice) {
-        const { parts, miscCharges, labors, disposalTaxes, partTaxName, laboutTaxName} = this.getItems(invoice);
+        const { parts, miscCharges, labors, disposalTaxes, partTaxName, laboutTaxName } = this.getItems(invoice);
         const lineItems = [];
         const partTaxRef = await this.getSalesTaxCode(partTaxName);
-        const partTaxId = partTaxRef[0]?.Id;
-
+        let partTaxId = partTaxRef[0]?.Id;
+        const companyDetails = await this.getCompanyInfo(this.qb.realmId);
+        const country = companyDetails.CompanyAddr.Country;
+        if (country != 'CA') {
+            this.addTaxDetailsIfNeeded(invoice, invoicePayload, partTaxId);
+            partTaxId = 'TAX';
+        }
 
         if (parts.length) await this.prepareParts(parts, lineItems, partTaxId);
         if (miscCharges.length) await this.prepareMiscCharges(miscCharges, lineItems, partTaxId);
@@ -805,14 +818,43 @@ class InvoiceService {
 
         if (!invoice.laborTaxSameAsPart && labors.length) {
             const laboutTax = await this.getSalesTaxCode(laboutTaxName);
-            const labourTaxId = laboutTax[0]?.Id;
+            let labourTaxId = laboutTax[0]?.Id;
+            if(country != 'CA'){
+                labourTaxId = 'TAX';
+            }
+            if(labourTaxId == null || labourTaxId == undefined){
+                logger.error("Tax code not found for labour");
+                throw Error("Tax code not found for labour");
+            }
             await this.prepareLabor(labors, lineItems, labourTaxId);
         }
+
 
         return lineItems;
     }
 
-    async createTaxGroup(groupName){
+    // async validateTaxGroup(taxGroup) {
+    //     const existingTaxGroup = await this.getSalesTaxByName(taxGroup);
+    //     return existingTaxGroup[0].Id;
+    // }
+
+    // async getSalesTaxByName(taxRateName) {
+    //     try {
+    //         const data = await new Promise((resolve, reject) => {
+    //             this.qb.findTaxCodes({ Name: taxRateName }, (err, data) => {
+    //                 if (err) reject(err);
+    //                 else resolve(data);
+    //             });
+    //         });
+    //         return data?.QueryResponse?.TaxCode || [];
+    //     } catch (error) {
+    //         logger.error('Error fetching TaxCode:', error);
+    //         throw error;
+    //     }
+    // }
+
+
+    async createTaxGroup(groupName) {
         try {
             const taxGroupPayload = {
                 Name: groupName,
@@ -835,8 +877,8 @@ class InvoiceService {
     }
 
     getItems(invoice) {
-        const parts = [], labors = [], miscCharges = [], disposalTaxes = [];
-        const partTaxName = null, laboutTaxName = null;
+        const parts = [], labors = [], miscCharges = [], disposalTaxes = [], partTaxName = [];
+        let laboutTaxName = null;
         invoice.lines.forEach(line => {
             line.parts.forEach(part => {
                 part.name = `${line.item} ${qbOnlineConstant.lineItemConstants.PART} - ${part.name}`;
@@ -858,9 +900,9 @@ class InvoiceService {
                 disposalTaxes.push(disposal);
             });
         });
-        partTaxName = invoice.partsTax.map(partTax => partTax.taxCode).join('-');
-        laboutTaxName = invoice.laborTax.map(laborTax => laborTax.taxCode).join('-');
-        return { parts, labors, miscCharges, disposalTaxes, partTaxName, laboutTaxName};
+        partTaxName = invoice.partsTax.map(partTax => partTax.code).join('-');
+        laboutTaxName = 'Labor Tax';
+        return { parts, labors, miscCharges, disposalTaxes, partTaxName, laboutTaxName };
     }
 
     async prepareParts(parts, lineItems, saleTax) {
@@ -937,47 +979,7 @@ class InvoiceService {
         }
     }
 
-    async prepareSubtotal(description, lineItems) {
-        const itemId = await this.getItemIdByName(qbOnlineConstant.subTotalConstants.SUB_TOTAL);
-        lineItems.push({
-            Amount: 0,
-            DetailType: "SalesItemLineDetail",
-            SalesItemLineDetail: {
-                ItemRef: { value: itemId },
-                Qty: 1,
-                UnitPrice: 0
-            },
-            Description: description
-        });
-    }
 
-    async prepareTax(tax, lineItems) {
-        const itemId = await this.getItemIdByName(tax.name);
-        lineItems.push({
-            Amount: 0,
-            DetailType: "SalesItemLineDetail",
-            SalesItemLineDetail: {
-                ItemRef: { value: itemId },
-                Qty: 1,
-                UnitPrice: 0
-            },
-            Description: tax.code
-        });
-    }
-
-    async prepareLaborTax(lineItems) {
-        const itemId = await this.getItemIdByName("Labor Tax");
-        lineItems.push({
-            Amount: 0,
-            DetailType: "SalesItemLineDetail",
-            SalesItemLineDetail: {
-                ItemRef: { value: itemId },
-                Qty: 1,
-                UnitPrice: 0
-            },
-            Description: "Labor Tax"
-        });
-    }
 
 
 }
