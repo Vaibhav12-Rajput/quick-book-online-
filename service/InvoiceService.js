@@ -17,7 +17,7 @@ const {
     CLIENT_SECRET,
     REDIRECT_URI,
     ENVIRONMENT,
-  } = process.env;
+} = process.env;
 
 
 class InvoiceService {
@@ -27,7 +27,7 @@ class InvoiceService {
 
     async initializeQuickBooks() {
         try {
-            const quickbooks = await quickbooksDao.findOne();            
+            const quickbooks = await quickbooksDao.findOne();
             await this.ensureValidAccessToken(quickbooks);
             this.qb = new QuickBooks(
                 client_id,
@@ -36,7 +36,7 @@ class InvoiceService {
                 false,
                 quickbooks.realmId,
                 true,
-                false,
+                true,
                 null,
                 '2.0',
                 quickbooks.minorVersion || 65
@@ -54,7 +54,7 @@ class InvoiceService {
         const bufferTime = 2 * 60 * 1000;
 
         if (!quickBooks.tokenExpiry || quickBooks.tokenExpiry - now <= bufferTime) {
-            try {                
+            try {
                 const oauthClient = new OAuthClient({
                     clientId: CLIENT_ID,
                     clientSecret: CLIENT_SECRET,
@@ -87,7 +87,7 @@ class InvoiceService {
         try {
             const invoicePayloadList = req.body.invoiceList;
             const companyName = req.body.qbCompanyConfigCode;
-            
+
             const config = await this.getCompanyConfig(companyName);
             await this.initializeQuickBooksIfNeeded();
 
@@ -124,11 +124,11 @@ class InvoiceService {
 
     async processInvoiceList(invoicePayloadList, companyName, taxesFromQB, config) {
         const reponseList = [];
-        
+
         for (const invoicePayload of invoicePayloadList) {
             try {
                 logger.info(`Processing invoice for workOrderId: ${invoicePayload.workOrderId}`);
-                
+
                 const misMatchedTaxes = await this.validateSalesTax(invoicePayload, taxesFromQB);
                 if (misMatchedTaxes.length > 0) {
                     logger.info(`Tax mismatch found for company: ${companyName}. Mismatched taxes: ${JSON.stringify(misMatchedTaxes)}`);
@@ -138,7 +138,7 @@ class InvoiceService {
 
                 const customer = await this.validateOrCreateCustomer(invoicePayload.to);
                 const invoiceResponse = await this.getItemAndProcessInvoice(invoicePayload, companyName, customer, config);
-                
+
                 reponseList.push({
                     ...invoiceResponse,
                     message: "Invoice created Successfully.",
@@ -148,7 +148,7 @@ class InvoiceService {
                 await this.handleInvoiceError(invoicePayload, companyName, error, reponseList);
             }
         }
-        
+
         return reponseList;
     }
 
@@ -160,23 +160,23 @@ class InvoiceService {
             taxDetails: misMatchedTaxes,
             status: "FAILURE"
         });
-        
+
         await failureRecordDao.insertOrUpdateForFailure(
-            invoicePayload.workOrderId, 
-            responseMessage, 
-            invoicePayload.invoiceDate, 
+            invoicePayload.workOrderId,
+            responseMessage,
+            invoicePayload.invoiceDate,
             companyName
         );
     }
 
     async handleInvoiceError(invoicePayload, companyName, error, reponseList) {
         const response = await failureRecordDao.insertOrUpdateForFailure(
-            invoicePayload.workOrderId, 
-            error.message, 
-            invoicePayload.invoiceDate, 
+            invoicePayload.workOrderId,
+            error.message,
+            invoicePayload.invoiceDate,
             companyName
         );
-        
+
         reponseList.push({
             ...response,
             message: error.message
@@ -203,7 +203,7 @@ class InvoiceService {
 
     async createInvoiceInQBO(invoicePayload, customer, config) {
         try {
-            const lineItems = await this.buildLineItems(invoicePayload);
+            const lineItems = await this.prepareLineItems(invoicePayload);
             const invoice = await this.buildInvoiceObject(invoicePayload, customer, config, lineItems);
 
             if (config?.keepQBInvoiceNumber) {
@@ -218,96 +218,6 @@ class InvoiceService {
         } catch (error) {
             logger.error("Error creating invoice in QBO:", error);
             throw new Error("Failed to create invoice in QuickBooks Online.");
-        }
-    }
-
-    async buildLineItems(invoicePayload) {
-        const lineItems = [];
-
-        logger.info(`Starting to process line items for invoice payload.`);
-
-        for (const line of invoicePayload.lines) {
-            await this.processParts(line.parts, lineItems);
-            await this.processMiscCharges(line.miscCharges, lineItems);
-            await this.processDisposalTaxes(line.disposalTaxes, lineItems);
-            
-            logger.info(`Line Item process done for work order id ${invoicePayload}`);
-            if (invoicePayload.laborTaxSameAsPart === false && invoicePayload.laborTaxPercentage > 0) {
-                logger.info(`Adding labor tax item. laborTaxSameAsPart: false, laborTaxPercentage: ${invoicePayload.laborTaxPercentage}, workOrderId: ${invoicePayload.workOrderId}`);
-                lineItems.push(await this.createLaborTaxItem());
-            }
-        }
-        
-        return lineItems;
-    }
-
-    async processParts(parts, lineItems) {
-        if (!parts) {
-            logger.info(`No parts to process company: ${companyName}`);
-            return;
-        }
-
-        for (const part of parts) {
-            logger.info(`Processing part: ${part.name}, Qty: ${part.quantity}, Price: ${part.sellingPrice}`);
-            const itemId = await this.getItemIdByName(part.name);
-            const lineItem = {
-                Amount: part.totalAmount,
-                DetailType: "SalesItemLineDetail",
-                SalesItemLineDetail: {
-                    ItemRef: { value: itemId },
-                    UnitPrice: part.sellingPrice,
-                    Qty: part.quantity,
-                }
-            };
-
-            if (part.taxCode) {
-                lineItem.SalesItemLineDetail.TaxCodeRef = { value: part.taxCode };
-                logger.info(`[processParts] Applied tax code: ${part.taxCode} for part: ${part.name}`);
-            }
-
-            lineItems.push(lineItem);
-        }
-    }
-
-    async processMiscCharges(miscCharges, lineItems) {
-
-        if (!miscCharges) {
-            logger.info(`No miscellaneous charges to process.`);
-            return;
-        }        
-
-        for (const charge of miscCharges) {
-            logger.info(`Processing misc charge: ${charge.name}, Amount: ${charge.totalAmount}`);
-            const itemId = await this.getItemIdByName(charge.name);
-            lineItems.push({
-                Amount: charge.totalAmount,
-                DetailType: "SalesItemLineDetail",
-                SalesItemLineDetail: {
-                    ItemRef: { value: itemId },
-                    Qty: 1,
-                }
-            });
-        }
-    }
-
-    async processDisposalTaxes(disposalTaxes, lineItems) {
-        
-        if (!disposalTaxes) {
-            logger.info(`No disposal Taxes to process.`);
-            return;
-        } 
-        for (const tax of disposalTaxes) {
-            logger.info(`Processing disposal Taxes Name: ${tax.name}`);
-            const itemId = await this.getItemIdByName(tax.name);
-            lineItems.push({
-                Amount: tax.totalAmount,
-                DetailType: "SalesItemLineDetail",
-                SalesItemLineDetail: {
-                    ItemRef: { value: itemId },
-                    UnitPrice: tax.amount,
-                    Qty: 1,
-                }
-            });
         }
     }
 
@@ -394,9 +304,8 @@ class InvoiceService {
 
             if (data?.QueryResponse?.Item?.length > 0) {
                 return data.QueryResponse.Item[0].Id;
-            }else{
+            } else {
                 throw new Error(`Item '${itemName}' not found in QuickBooks.`);
-        
             }
         } catch (err) {
             logger.error('Error fetching item ID:', err);
@@ -461,7 +370,7 @@ class InvoiceService {
             logger.info(`Checking mismatched tax: ${invTax.name}, Tax Code: ${invTax.code}`);
 
             const qbTax = qbTaxes.find(tax => tax.Name === invTax.name);
-            
+
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
             } else if (parseFloat(invTax.tax) !== parseFloat(qbTax.RateValue)) {
@@ -471,7 +380,7 @@ class InvoiceService {
                     parseFloat(qbTax.RateValue).toFixed(2) + " %"
                 ));
             }
-            
+
             return mismatches;
         }, []);
     }
@@ -694,6 +603,383 @@ class InvoiceService {
             TaxType: "Sales"
         };
     }
+
+
+    async checkOrCreateServiceItemsQBO() {
+        try {
+            const qboServiceItemNames = [
+                qbOnlineConstant.itemConstatnts.FIXY_QB,
+                qbOnlineConstant.itemConstatnts.PARTS,
+                qbOnlineConstant.itemConstatnts.MISC_CHARGES,
+                qbOnlineConstant.itemConstatnts.DISPOSAL_TAX,
+                qbOnlineConstant.itemConstatnts.LABORS
+            ];
+
+            const existingItems = await this.getAllItems({});
+
+            const existingItemNames = new Set(
+                existingItems.map(item => item.Name)
+            );
+
+            const itemsToCreate = qboServiceItemNames.filter(name => !existingItemNames.has(name));
+
+            logger.info(`Service items to create: ${itemsToCreate}`);
+
+            for (const item of itemsToCreate) {
+                await this.createServiceItem(item);
+            }
+
+        } catch (error) {
+            logger.error("Error in checkOrCreateServiceItemsQBO:", error);
+            throw error;
+        }
+    }
+
+    async getAllItems(criteria) {
+        try {
+            const findItemsAsync = promisify(this.qb.findItems.bind(this.qb));
+            const data = await findItemsAsync(criteria);
+
+            return data.QueryResponse.Item;
+        } catch (err) {
+            logger.error('Error fetching items ', err);
+            throw new Error(`Error fetching items : ${err.message}`);
+        }
+    }
+
+
+    async createServiceItem(itemName) {
+        logger.info("Creating QBO service items");
+
+        const isLabor = itemName === qbOnlineConstant.itemConstatnts.LABORS;
+        const isChild = itemName !== qbOnlineConstant.itemConstatnts.FIXY_QB;
+
+        const accountName = isLabor ? qbOnlineConstant.accounts.SERVICE_INCOME_ACCOUNT : qbOnlineConstant.accounts.PARTS_AND_MATERIALS_ACCOUNT;
+
+        try {
+            const account = await this.getAccountIdByName(accountName);
+            const taxCode = isChild ? await this.getSalesTaxCode(qbOnlineConstant.TAX_CODES.ZERO_SALES_TAX_CODE) : await this.getSalesTaxCode(qbOnlineConstant.TAX_CODES.ZERO_NON_SALES_TAX_CODE);
+            if (account.length <= 0) {
+                logger.error(`No account found with name: ${accountName}`);
+                throw new Error(`No account found with name: ${accountName}`);
+            }
+            if (taxCode.length <= 0) {
+                logger.error(`No tax code found with name: ${taxCode}`);
+                throw new Error(`No tax code found with name: ${taxCode}`);
+            }
+            const taxCodeId = taxCode[0].Id;
+            const accountId = account[0].Id;
+            const parentItemId = isChild ? await this.getItemIdByName(qbOnlineConstant.itemConstatnts.FIXY_QB) : null;
+            const payload = this.prepareServiceItemPayload(itemName, accountId, accountName, "", isChild, parentItemId, taxCodeId);
+
+            await new Promise((resolve, reject) => {
+                this.qb.createItem(payload, (err, result) => {
+                    if (err) return reject(err);
+                    resolve(result);
+                });
+            });
+
+            logger.info(`Created service item '${itemName}' in QBO`);
+        } catch (err) {
+            logger.error(`Failed to create service item '${itemName}': ${err.message}`);
+            throw err;
+        }
+
+    }
+
+
+    prepareServiceItemPayload(itemName, accountId, accountName, desc = "", isChild = false, parentItemId = null, taxCodeId) {
+        if (!isChild) {
+            // Create Category item
+            return {
+                Name: itemName,
+                Type: "Category"
+            };
+        }
+
+        // Create Service item with optional parent (subcategory)
+        const itemPayload = {
+            Name: itemName,
+            Type: "Service",
+            IncomeAccountRef: {
+                value: accountId,
+                name: accountName
+            },
+            Description: desc,
+            SalesTaxCodeRef: {
+                value: taxCodeId
+            },
+            SubItem: true,
+            ParentRef: {
+                value: parentItemId,
+                name: qbOnlineConstant.itemConstatnts.FIXY_QB
+            }
+        };
+
+        return itemPayload;
+    }
+
+
+    async getAccountIdByName(accountName) {
+        try {
+            const data = await new Promise((resolve, reject) => {
+                this.qb.findAccounts({ Name: accountName }, (err, data) => {
+                    if (err) reject(err);
+                    else resolve(data);
+                });
+            });
+
+            const accounts = data?.QueryResponse?.Account || [];
+            return accounts;
+        } catch (error) {
+            logger.error('Error fetching account:', error);
+            throw error;
+        }
+    }
+
+    async checkOrCreateIncomeAccounts() {
+        const accountsList = [
+            qbOnlineConstant.accounts.PARTS_AND_MATERIALS_ACCOUNT,
+            qbOnlineConstant.accounts.SERVICE_INCOME_ACCOUNT
+        ];
+
+        await Promise.all(accountsList.map(async (accountName) => {
+            try {
+                const existingAccounts = await this.getAccountIdByName(accountName);
+
+                const accountExists = existingAccounts.length > 0;
+
+                if (!accountExists) {
+                    logger.info(`[QBO] Account "${accountName}" not found, creating.`);
+                    await this.createIncomeAccount(accountName);
+                } else {
+                    logger.info(`[QBO] Account "${accountName}" already exists.`);
+                }
+            } catch (err) {
+                logger.error(`[QBO] Error checking/creating account "${accountName}": ${err.message}`);
+                throw err;
+            }
+        }));
+    };
+
+    async createIncomeAccount(accountName) {
+        logger.info(`[QBO] Creating income account: ${accountName}`);
+
+        const accountPayload = {
+            Name: accountName,
+            AccountType: 'Income',
+            // AccountSubType: 'SalesOfProductIncome', // You can adjust this subtype as needed
+            Description: ''
+        };
+
+        try {
+            await new Promise((resolve, reject) => {
+                this.qb.createAccount(accountPayload, (err, result) => {
+                    if (err) return reject(err);
+                    resolve(result);
+                });
+            });
+
+            logger.info(`[QBO] Account created successfully: ${accountName}`);
+        } catch (err) {
+            logger.error(`[QBO] Failed to create account "${accountName}": ${err.message}`);
+            throw err;
+        }
+    };
+
+
+    async prepareLineItems(invoice) {
+        const { parts, miscCharges, labors, disposalTaxes, partTaxName, laboutTaxName} = this.getItems(invoice);
+        const lineItems = [];
+        const partTaxRef = await this.getSalesTaxCode(partTaxName);
+        const partTaxId = partTaxRef[0]?.Id;
+
+
+        if (parts.length) await this.prepareParts(parts, lineItems, partTaxId);
+        if (miscCharges.length) await this.prepareMiscCharges(miscCharges, lineItems, partTaxId);
+        if (disposalTaxes.length) await this.prepareDisposalTaxes(disposalTaxes, lineItems, partTaxId);
+
+        if (invoice.laborTaxSameAsPart && labors.length) {
+            await this.prepareLabor(labors, lineItems, partTaxId);
+        }
+
+        if (!invoice.laborTaxSameAsPart && labors.length) {
+            const laboutTax = await this.getSalesTaxCode(laboutTaxName);
+            const labourTaxId = laboutTax[0]?.Id;
+            await this.prepareLabor(labors, lineItems, labourTaxId);
+        }
+
+        return lineItems;
+    }
+
+    async createTaxGroup(groupName){
+        try {
+            const taxGroupPayload = {
+                Name: groupName,
+                Taxable: true
+            };
+
+            const created = await new Promise((resolve, reject) => {
+                this.qb.createTaxC(taxGroupPayload, (err, resp) => {
+                    if (err) reject(err);
+                    else resolve(resp);
+                });
+            });
+
+            logger.info("Created TaxGroup:", created);
+            return created.Id;
+        } catch (error) {
+            logger.error("Error creating TaxGroup:", error);
+            throw error;
+        }
+    }
+
+    getItems(invoice) {
+        const parts = [], labors = [], miscCharges = [], disposalTaxes = [];
+        const partTaxName = null, laboutTaxName = null;
+        invoice.lines.forEach(line => {
+            line.parts.forEach(part => {
+                part.name = `${line.item} ${qbOnlineConstant.lineItemConstants.PART} - ${part.name}`;
+                parts.push(part);
+            });
+
+            line.labors.forEach(labor => {
+                labor.name = `${line.item} ${qbOnlineConstant.lineItemConstants.LABOR} - ${labor.name}`;
+                labors.push(labor);
+            });
+
+            line.miscCharges.forEach(misc => {
+                misc.name = `${line.item} ${qbOnlineConstant.lineItemConstants.MISC_CHARGES} - ${misc.name}`;
+                miscCharges.push(misc);
+            });
+
+            line.disposalFees.forEach(disposal => {
+                disposal.name = `${line.item} ${qbOnlineConstant.lineItemConstants.DISPOSAL_TAX} - ${disposal.name}`;
+                disposalTaxes.push(disposal);
+            });
+        });
+        partTaxName = invoice.partsTax.map(partTax => partTax.taxCode).join('-');
+        laboutTaxName = invoice.laborTax.map(laborTax => laborTax.taxCode).join('-');
+        return { parts, labors, miscCharges, disposalTaxes, partTaxName, laboutTaxName};
+    }
+
+    async prepareParts(parts, lineItems, saleTax) {
+        const itemId = await this.getItemIdByName(qbOnlineConstant.itemConstatnts.PARTS);
+
+        for (const part of parts) {
+            lineItems.push({
+                Amount: parseFloat(part.sellingPrice) * part.quantity,
+                DetailType: "SalesItemLineDetail",
+                SalesItemLineDetail: {
+                    ItemRef: { value: itemId },
+                    UnitPrice: parseFloat(part.sellingPrice),
+                    Qty: part.quantity,
+                    TaxCodeRef: { value: saleTax }
+                },
+                Description: `${part.name} ($ ${parseFloat(part.sellingPrice).toFixed(2)} * ${part.quantity}${part.unit})`
+            });
+        }
+    }
+
+    async prepareMiscCharges(miscCharges, lineItems, zeroTaxCode) {
+        const itemId = await this.getItemIdByName(qbOnlineConstant.itemConstatnts.MISC_CHARGES);
+
+        for (const misc of miscCharges) {
+            lineItems.push({
+                Amount: parseFloat(misc.totalAmount),
+                DetailType: "SalesItemLineDetail",
+                SalesItemLineDetail: {
+                    ItemRef: { value: itemId },
+                    UnitPrice: parseFloat(misc.totalAmount),
+                    Qty: 1,
+                    TaxCodeRef: { value: zeroTaxCode }
+                },
+                Description: misc.name
+            });
+        }
+    }
+
+    async prepareLabor(labors, lineItems, zeroTaxCode) {
+        const itemId = await this.getItemIdByName(qbOnlineConstant.itemConstatnts.LABORS);
+
+        for (const labor of labors) {
+            const amount = parseFloat(labor.laborPerHour) * labor.hours;
+            lineItems.push({
+                Amount: amount,
+                DetailType: "SalesItemLineDetail",
+                SalesItemLineDetail: {
+                    ItemRef: { value: itemId },
+                    UnitPrice: parseFloat(labor.laborPerHour),
+                    Qty: labor.hours,
+                    TaxCodeRef: { value: zeroTaxCode }
+                },
+                Description: `${labor.name} ($${parseFloat(labor.laborPerHour).toFixed(2)} x ${labor.hours} hrs.)`
+            });
+        }
+    }
+
+    async prepareDisposalTaxes(disposalTaxes, lineItems, zeroTaxCode) {
+        const itemId = await this.getItemIdByName(qbOnlineConstant.itemConstatnts.DISPOSAL_TAX);
+
+        for (const disposal of disposalTaxes) {
+            const amount = parseFloat(disposal.feeAmount) * disposal.quantity;
+            lineItems.push({
+                Amount: amount,
+                DetailType: "SalesItemLineDetail",
+                SalesItemLineDetail: {
+                    ItemRef: { value: itemId },
+                    UnitPrice: parseFloat(disposal.feeAmount),
+                    Qty: disposal.quantity,
+                    TaxCodeRef: { value: zeroTaxCode }
+                },
+                Description: `${disposal.name} ($${parseFloat(disposal.feeAmount).toFixed(2)} x ${disposal.quantity} ${disposal.unit})`
+            });
+        }
+    }
+
+    async prepareSubtotal(description, lineItems) {
+        const itemId = await this.getItemIdByName(qbOnlineConstant.subTotalConstants.SUB_TOTAL);
+        lineItems.push({
+            Amount: 0,
+            DetailType: "SalesItemLineDetail",
+            SalesItemLineDetail: {
+                ItemRef: { value: itemId },
+                Qty: 1,
+                UnitPrice: 0
+            },
+            Description: description
+        });
+    }
+
+    async prepareTax(tax, lineItems) {
+        const itemId = await this.getItemIdByName(tax.name);
+        lineItems.push({
+            Amount: 0,
+            DetailType: "SalesItemLineDetail",
+            SalesItemLineDetail: {
+                ItemRef: { value: itemId },
+                Qty: 1,
+                UnitPrice: 0
+            },
+            Description: tax.code
+        });
+    }
+
+    async prepareLaborTax(lineItems) {
+        const itemId = await this.getItemIdByName("Labor Tax");
+        lineItems.push({
+            Amount: 0,
+            DetailType: "SalesItemLineDetail",
+            SalesItemLineDetail: {
+                ItemRef: { value: itemId },
+                Qty: 1,
+                UnitPrice: 0
+            },
+            Description: "Labor Tax"
+        });
+    }
+
+
 }
 
 module.exports = { InvoiceService };

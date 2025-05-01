@@ -67,6 +67,8 @@ async function handleCallback(authCode, state, realmId, url) {
   const configList = await ConfigDao.findAll();
   for (const config of configList) {
     await invoiceService.createDefaultTax(config);
+    await invoiceService.checkOrCreateIncomeAccounts();
+    await invoiceService.checkOrCreateServiceItemsQBO();
   }
 
   return REDIRECT_UI_URL;
