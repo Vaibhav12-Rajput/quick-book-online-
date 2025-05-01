@@ -254,7 +254,7 @@ class InvoiceService {
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
             const { code, name, taxAmount } = invoicePayload.partsTax[0];
             invoice.TxnTaxDetail = {
-                TxnTaxCodeRef: { "value": code, name },
+                // TxnTaxCodeRef: { "value" : code, name },
                 TotalTax: taxAmount
             };
         }
