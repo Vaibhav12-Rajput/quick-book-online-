@@ -254,14 +254,15 @@ class InvoiceService {
                 Country: invoicePayload.from.address.country
             },
             DueDate: invoicePayload.invoiceDate,
-            SalesTermRef: { value: terms },
+            SalesTermRef: { value: terms }
+            ,
         };
     }
 
-    addTaxDetailsIfNeeded(invoice, invoicePayload, saleTaxCode) {
+    addTaxDetailsIfNeeded(invoicePayload, saleTaxCode) {
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
             const { code, name, taxAmount } = invoicePayload.partsTax[0];
-            invoice.TxnTaxDetail = {
+            invoicePayload.TxnTaxDetail = {
                 TxnTaxCodeRef: { "value": saleTaxCode },
                 TotalTax: taxAmount
             };
@@ -801,10 +802,10 @@ class InvoiceService {
         const lineItems = [];
         const partTaxRef = await this.getSalesTaxCode(partTaxName);
         let partTaxId = partTaxRef[0]?.Id;
-        const companyDetails = await this.getCompanyInfo(this.qb.realmId);
-        const country = companyDetails.CompanyAddr.Country;
+        let companyDetails = await this.getCompanyInfo(this.qb.realmId);
+        let country = companyDetails.CompanyAddr.Country;
         if (country != 'CA') {
-            this.addTaxDetailsIfNeeded(invoice, invoicePayload, partTaxId);
+            this.addTaxDetailsIfNeeded(invoice, partTaxId);
             partTaxId = 'TAX';
         }
 
@@ -877,7 +878,7 @@ class InvoiceService {
     }
 
     getItems(invoice) {
-        const parts = [], labors = [], miscCharges = [], disposalTaxes = [], partTaxName = [];
+        let parts = [], labors = [], miscCharges = [], disposalTaxes = [], partTaxName = [];
         let laboutTaxName = null;
         invoice.lines.forEach(line => {
             line.parts.forEach(part => {
