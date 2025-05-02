@@ -92,7 +92,7 @@ class InvoiceService {
             await this.initializeQuickBooksIfNeeded();
 
 
-            const taxesFromQB = await this.getAllSalesTaxFromQBO();
+            const taxesFromQB = await this.getAllSalesCodeFromQBO();
             const reponseList = await this.processInvoiceList(invoicePayloadList, companyName, taxesFromQB, config);
 
             const responsePayload = new CommonResponsePayload("Invoices processed", { invoicesResponse: reponseList });
@@ -184,6 +184,37 @@ class InvoiceService {
         });
     }
 
+    async getAllSalesCodeFromQBO() {
+        try {
+            const taxCodes = await this.getTaxCode();
+            const taxRateList = await this.getAllSalesTaxFromQBO();
+    
+            const taxRateMap = {};
+            taxRateList.forEach(rate => {
+                if (rate?.Id) {
+                    taxRateMap[rate.Id] = rate;
+                }
+            });
+    
+            taxCodes.forEach(code => {
+                const rateDetails = code?.SalesTaxRateList?.TaxRateDetail || [];
+    
+                const fullRates = rateDetails
+                    .map(detail => taxRateMap[detail?.TaxRateRef?.value])
+                    .filter(rate => rate); // remove undefined
+    
+                code.TaxRateList = fullRates;
+            });
+    
+            logger.info(`Found ${taxRateList.length} sales tax rates in QBO`);
+            return taxCodes;
+        } catch (error) {
+            logger.error("Error fetching sales tax rates:", error);
+            throw new Error("Failed to fetch sales tax rates from QuickBooks Online.");
+        }
+    }
+    
+
     async getAllSalesTaxFromQBO() {
         try {
             const data = await new Promise((resolve, reject) => {
@@ -192,7 +223,6 @@ class InvoiceService {
                     else resolve(data);
                 });
             });
-
             const taxRates = data?.QueryResponse?.TaxRate || [];
             logger.info(`Found ${taxRates.length} sales tax rates in QBO`);
             return taxRates;
@@ -200,6 +230,40 @@ class InvoiceService {
             logger.error("Error fetching sales tax rates:", error);
             throw new Error("Failed to fetch sales tax rates from QuickBooks Online.");
         }
+    }
+
+    async getAllSalesTaxFromQBO() {
+        try {
+            const data = await new Promise((resolve, reject) => {
+                this.qb.findTaxRates({}, (err, data) => {
+                    if (err) reject(err);
+                    else resolve(data);
+                });
+            });
+            const taxRates = data?.QueryResponse?.TaxRate || [];
+            logger.info(`Found ${taxRates.length} sales tax rates in QBO`);
+            return taxRates;
+        } catch (error) {
+            logger.error("Error fetching sales tax rates:", error);
+            throw new Error("Failed to fetch sales tax rates from QuickBooks Online.");
+        }
+    }
+
+
+
+
+
+
+    async getTaxCode() {
+        const data = await new Promise((resolve, reject) => {
+            this.qb.findTaxCodes({}, (err, data) => {
+                if (err) reject(err);
+                else resolve(data);
+            });
+        });
+
+        const taxCodes = data?.QueryResponse?.TaxCode || [];
+        return taxCodes;
     }
 
     async createInvoiceInQBO(invoicePayload, customer, config) {
@@ -377,22 +441,30 @@ class InvoiceService {
     findMismatchedTaxes(invoiceTaxes, qbTaxes) {
         return invoiceTaxes.reduce((mismatches, invTax) => {
             logger.info(`Checking mismatched tax: ${invTax.name}, Tax Code: ${invTax.code}`);
-
+    
             const qbTax = qbTaxes.find(tax => tax.Name === invTax.name);
-
+    
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
-            } else if (parseFloat(invTax.tax) !== parseFloat(qbTax.EffectiveTaxRate[0].RateValue  )) {
-                mismatches.push(this.createTaxMismatchObject(
-                    invTax,
-                    "Tax rate mismatch between FleetFixy and QuickBooks.",
-                    parseFloat(qbTax.EffectiveTaxRate[0].RateValue).toFixed(2) + " %"
-                ));
+            } else {
+                const matchFound = qbTax.TaxRateList?.some(rate =>
+                    parseFloat(rate.RateValue || 0).toFixed(2) === parseFloat(invTax.tax).toFixed(2)
+                );
+    
+                if (!matchFound) {
+                    const qbRates = qbTax.TaxRateList?.map(rate => parseFloat(rate.RateValue).toFixed(2)).join(", ") || "N/A";
+                    mismatches.push(this.createTaxMismatchObject(
+                        invTax,
+                        "No matching tax rate found in QuickBooks for this tax.",
+                        `Expected: ${invTax.tax} %, QBO Rates: [${qbRates}]`
+                    ));
+                }
             }
-
+    
             return mismatches;
         }, []);
     }
+    
 
     createTaxMismatchObject(invTax, description, taxInQB = null) {
         return {
@@ -820,10 +892,10 @@ class InvoiceService {
         if (!invoice.laborTaxSameAsPart && labors.length) {
             const laboutTax = await this.getSalesTaxCode(laboutTaxName);
             let labourTaxId = laboutTax[0]?.Id;
-            if(country != 'CA'){
+            if (country != 'CA') {
                 labourTaxId = 'TAX';
             }
-            if(labourTaxId == null || labourTaxId == undefined){
+            if (labourTaxId == null || labourTaxId == undefined) {
                 logger.error("Tax code not found for labour");
                 throw Error("Tax code not found for labour");
             }
@@ -833,27 +905,6 @@ class InvoiceService {
 
         return lineItems;
     }
-
-
-    // async validateTaxGroup(taxGroup) {
-    //     const existingTaxGroup = await this.getSalesTaxByName(taxGroup);
-    //     return existingTaxGroup[0].Id;
-    // }
-
-    // async getSalesTaxByName(taxRateName) {
-    //     try {
-    //         const data = await new Promise((resolve, reject) => {
-    //             this.qb.findTaxCodes({ Name: taxRateName }, (err, data) => {
-    //                 if (err) reject(err);
-    //                 else resolve(data);
-    //             });
-    //         });
-    //         return data?.QueryResponse?.TaxCode || [];
-    //     } catch (error) {
-    //         logger.error('Error fetching TaxCode:', error);
-    //         throw error;
-    //     }
-    // }
 
 
     async createTaxGroup(groupName) {
