@@ -187,33 +187,38 @@ class InvoiceService {
     async getAllSalesCodeFromQBO() {
         try {
             const taxCodes = await this.getTaxCode();
+            logger.info(`Retrieved ${taxCodes.length} tax codes.`);
+
             const taxRateList = await this.getAllSalesTaxFromQBO();
-    
+            logger.info(`Retrieved ${taxRateList.length} tax rates.`);
+
             const taxRateMap = {};
             taxRateList.forEach(rate => {
                 if (rate?.Id) {
                     taxRateMap[rate.Id] = rate;
                 }
             });
-    
+
             taxCodes.forEach(code => {
                 const rateDetails = code?.SalesTaxRateList?.TaxRateDetail || [];
-    
+
                 const fullRates = rateDetails
                     .map(detail => taxRateMap[detail?.TaxRateRef?.value])
                     .filter(rate => rate); // remove undefined
-    
+
                 code.TaxRateList = fullRates;
             });
-    
-            logger.info(`Found ${taxRateList.length} sales tax rates in QBO`);
+
+            logger.info(`Mapped tax codes to tax rates successfully.`);
             return taxCodes;
         } catch (error) {
             logger.error("Error fetching sales tax rates:", error);
-            throw new Error("Failed to fetch sales tax rates from QuickBooks Online.");
+            // Forward a more detailed error message to the frontend
+            throw new Error(`Failed to fetch sales tax data from QuickBooks Online: ${error.message}`);
         }
     }
-    
+
+
 
     async getAllSalesTaxFromQBO() {
         try {
@@ -228,7 +233,7 @@ class InvoiceService {
             return taxRates;
         } catch (error) {
             logger.error("Error fetching sales tax rates:", error);
-            throw new Error("Failed to fetch sales tax rates from QuickBooks Online.");
+            throw new Error(`Failed to fetch sales tax rates from QuickBooks Online.  ${error.message}`);
         }
     }
 
@@ -245,7 +250,7 @@ class InvoiceService {
             return taxRates;
         } catch (error) {
             logger.error("Error fetching sales tax rates:", error);
-            throw new Error("Failed to fetch sales tax rates from QuickBooks Online.");
+            throw new Error(`Failed to fetch sales tax rates from QuickBooks Online. ${error.message}`);
         }
     }
 
@@ -279,7 +284,7 @@ class InvoiceService {
             return createdInvoice;
         } catch (error) {
             logger.error("Error creating invoice in QBO:", error);
-            throw new Error("Failed to create invoice in QuickBooks Online.");
+            throw new Error(`Failed to create invoice in QuickBooks Online. ${error.message}`);
         }
     }
 
@@ -320,7 +325,7 @@ class InvoiceService {
             DueDate: invoicePayload.invoiceDate,
             SalesTermRef: { value: terms },
         };
-        
+
         if (invoicePayload.TxnTaxDetail) {
             payload.TxnTaxDetail = {
                 TxnTaxCodeRef: {
@@ -329,7 +334,7 @@ class InvoiceService {
             };
         }
         return payload;
-        
+
     }
 
     addTaxDetailsIfNeeded(invoicePayload, saleTaxCode) {
@@ -358,7 +363,7 @@ class InvoiceService {
             return existingCustomer || await this.createNewCustomer(customer);
         } catch (error) {
             logger.error("Error validating or creating customer:", error);
-            throw new Error("Failed to validate or create customer.");
+            throw new Error(`Failed to validate or create customer. ${error.message}`);
         }
     }
 
@@ -375,7 +380,7 @@ class InvoiceService {
             return data?.QueryResponse?.Customer;
         } catch (error) {
             logger.error("Error fetching customer data:", error);
-            throw new Error("Failed to fetch customer data from QuickBooks Online.");
+            throw new Error(`Failed to fetch customer data from QuickBooks Online. ${error.message}`);
         }
     }
 
@@ -385,6 +390,7 @@ class InvoiceService {
             const data = await findItemsAsync({ Name: itemName });
 
             if (data?.QueryResponse?.Item?.length > 0) {
+                logger.info(`Item ${itemName} found with ID: ${data.QueryResponse.Item[0].Id}`)
                 return data.QueryResponse.Item[0].Id;
             } else {
                 throw new Error(`Item '${itemName}' not found in QuickBooks.`);
@@ -424,7 +430,7 @@ class InvoiceService {
             return createdCustomer;
         } catch (error) {
             logger.error("Error creating customer:", error);
-            throw new Error("Failed to create new customer in QuickBooks Online.");
+            throw new Error(`Failed to create new customer in QuickBooks Online. ${error.message}`);
         }
     }
 
@@ -450,16 +456,16 @@ class InvoiceService {
     findMismatchedTaxes(invoiceTaxes, qbTaxes) {
         return invoiceTaxes.reduce((mismatches, invTax) => {
             logger.info(`Checking mismatched tax: ${invTax.name}, Tax Code: ${invTax.code}`);
-    
+
             const qbTax = qbTaxes.find(tax => tax.Name === invTax.name);
-    
+
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
             } else {
                 const matchFound = qbTax.TaxRateList?.some(rate =>
                     parseFloat(rate.RateValue || 0).toFixed(2) === parseFloat(invTax.tax).toFixed(2)
                 );
-    
+
                 if (!matchFound) {
                     const qbRates = qbTax.TaxRateList?.map(rate => parseFloat(rate.RateValue).toFixed(2)).join(", ") || "N/A";
                     mismatches.push(this.createTaxMismatchObject(
@@ -469,11 +475,11 @@ class InvoiceService {
                     ));
                 }
             }
-    
+
             return mismatches;
         }, []);
     }
-    
+
 
     createTaxMismatchObject(invTax, description, taxInQB = null) {
         return {
@@ -503,7 +509,7 @@ class InvoiceService {
             return terms[0].Id;
         } catch (error) {
             logger.error("Error in getTermRef:", error);
-            throw new Error("Failed to fetch Terms from QuickBooks Online.");
+            throw new Error(`Failed to fetch Terms from QuickBooks Online. ${error.message}`);
         }
     }
 
@@ -519,7 +525,7 @@ class InvoiceService {
             return data?.QueryResponse?.Term || [];
         } catch (error) {
             logger.error("Error fetching TermRef:", error);
-            throw new Error("Failed to fetch TermRef from QuickBooks Online.");
+            throw new Error(`Failed to fetch TermRef from QuickBooks Online. ${error.message}`);
         }
     }
 
@@ -528,6 +534,7 @@ class InvoiceService {
         let oldInvoiceFound;
 
         const oldInvoiceRecord = await RecordDao.findOldInvoiceRecord(invoice.workOrderId, companyName);
+        logger.info(`Old invoice found with workId ${oldInvoiceRecord ? oldInvoiceRecord.invoiceId : invoice.invoiceId}`)
         const existingQbInvoiceId = oldInvoiceRecord ? oldInvoiceRecord.invoiceId : invoice.invoiceId;
 
         if (existingQbInvoiceId) {
@@ -578,7 +585,7 @@ class InvoiceService {
             });
         } catch (error) {
             logger.error("Error fetching invoice by ID:", error);
-            return null;
+            throw new Error(`Error fetching invoice. ${error.message}`);
         }
     }
 
@@ -593,7 +600,7 @@ class InvoiceService {
             });
         } catch (error) {
             logger.error("Error deleting invoice in QBO:", error);
-            return null;
+            throw new Error(`Error deleting invoice in QBO. ${error.message}`);
         }
     }
 
@@ -604,7 +611,7 @@ class InvoiceService {
             await this.validateOrCreateTaxCode(qbOnlineConstant.TAX_CODES.ZERO_NON_SALES_TAX_CODE, config);
         } catch (error) {
             logger.error('Failed to create default Rate and Code', error);
-            throw error;
+            throw new Error(`Failed to create default Rate and Code: ${error.message}`);
         }
     }
 
@@ -629,13 +636,17 @@ class InvoiceService {
             return data?.QueryResponse?.TaxCode || [];
         } catch (error) {
             logger.error('Error fetching TaxCode:', error);
-            throw error;
+            throw new Error(`Error fetching TaxCode: ${error.message}`);
         }
     }
 
     async createNewTaxCode(code, config) {
         try {
+            logger.info(`Creating new TaxCode: ${code}`);
+
             const taxAgencyId = await this.getTaxAgencyId(config.salesTaxAgence);
+            logger.info(`Using TaxAgency ID: ${taxAgencyId}`);
+
             const saleTaxCodePayload = this.buildTaxRatePayload(code);
             const taxServicePayload = {
                 TaxCode: saleTaxCodePayload.Name,
@@ -649,6 +660,8 @@ class InvoiceService {
                 ]
             };
 
+            logger.info(`Sending payload to create TaxCode: ${JSON.stringify(taxServicePayload)}`);
+
             const created = await new Promise((resolve, reject) => {
                 this.qb.createTaxService(taxServicePayload, (err, resp) => {
                     if (err) reject(err);
@@ -656,13 +669,15 @@ class InvoiceService {
                 });
             });
 
-            logger.info("Created TaxCode:", created);
+            logger.info(`Successfully created TaxCode with ID: ${created.Id}`);
             return created.Id;
         } catch (error) {
-            logger.error("Error creating TaxCode:", error);
-            throw error;
+            const errorMsg = `Failed to create TaxCode "${code}": ${error.message}`;
+            logger.error(errorMsg, error);
+            throw new Error(errorMsg);
         }
     }
+
 
     async getTaxAgencyId(taxAgencyName) {
         try {
@@ -679,8 +694,9 @@ class InvoiceService {
             }
             return agencies[0].Id;
         } catch (error) {
-            logger.error('Error fetching TaxAgency:', error);
-            throw error;
+            const errorMsg = `Failed to fetch TaxAgency ID for "${taxAgencyName}": ${error.message}`;
+            logger.error(errorMsg, error);
+            throw new Error(errorMsg);
         }
     }
 
@@ -697,6 +713,8 @@ class InvoiceService {
 
     async checkOrCreateServiceItemsQBO() {
         try {
+            logger.info("Checking for required QBO service items...");
+
             const qboServiceItemNames = [
                 qbOnlineConstant.itemConstatnts.FIXY_QB,
                 qbOnlineConstant.itemConstatnts.PARTS,
@@ -706,40 +724,45 @@ class InvoiceService {
             ];
 
             const existingItems = await this.getAllItems({});
+            logger.info(`Fetched ${existingItems.length} existing items from QBO.`);
 
             const existingItemNames = new Set(
                 existingItems.map(item => item.Name)
             );
 
             const itemsToCreate = qboServiceItemNames.filter(name => !existingItemNames.has(name));
-
-            logger.info(`Service items to create: ${itemsToCreate}`);
+            logger.info(`Service items to create: ${itemsToCreate.join(', ') || 'None'}`);
 
             for (const item of itemsToCreate) {
+                logger.info(`Creating service item: ${item}`);
                 await this.createServiceItem(item);
             }
 
+            logger.info("Finished checking/creating QBO service items.");
         } catch (error) {
-            logger.error("Error in checkOrCreateServiceItemsQBO:", error);
-            throw error;
+            const errorMsg = `Failed during check or creation of QBO service items: ${error.message}`;
+            logger.error(errorMsg, error);
+            throw new Error(errorMsg);
         }
     }
 
     async getAllItems(criteria) {
         try {
+            logger.info(`Fetching items from QBO with criteria: ${JSON.stringify(criteria)}`);
+
             const findItemsAsync = promisify(this.qb.findItems.bind(this.qb));
             const data = await findItemsAsync(criteria);
 
             return data.QueryResponse.Item;
         } catch (err) {
-            logger.error('Error fetching items ', err);
-            throw new Error(`Error fetching items : ${err.message}`);
+            const errorMsg = `Failed to fetch items from QuickBooks Online: ${err.message}`;
+            logger.error(errorMsg, err);
+            throw new Error(errorMsg);
         }
     }
 
-
     async createServiceItem(itemName) {
-        logger.info("Creating QBO service items");
+        logger.info(`Starting creation of QBO service item: ${itemName}`);
 
         const isLabor = itemName === qbOnlineConstant.itemConstatnts.LABORS;
         const isChild = itemName !== qbOnlineConstant.itemConstatnts.FIXY_QB;
@@ -747,6 +770,7 @@ class InvoiceService {
         const accountName = isLabor ? qbOnlineConstant.accounts.SERVICE_INCOME_ACCOUNT : qbOnlineConstant.accounts.PARTS_AND_MATERIALS_ACCOUNT;
 
         try {
+            logger.info(`Fetching account by name: ${accountName}`);
             const account = await this.getAccountIdByName(accountName);
             const taxCode = isChild ? await this.getSalesTaxCode(qbOnlineConstant.TAX_CODES.ZERO_SALES_TAX_CODE) : await this.getSalesTaxCode(qbOnlineConstant.TAX_CODES.ZERO_NON_SALES_TAX_CODE);
             if (account.length <= 0) {
@@ -757,6 +781,7 @@ class InvoiceService {
                 logger.error(`No tax code found with name: ${taxCode}`);
                 throw new Error(`No tax code found with name: ${taxCode}`);
             }
+
             const taxCodeId = taxCode[0].Id;
             const accountId = account[0].Id;
             const parentItemId = isChild ? await this.getItemIdByName(qbOnlineConstant.itemConstatnts.FIXY_QB) : null;
@@ -769,12 +794,12 @@ class InvoiceService {
                 });
             });
 
-            logger.info(`Created service item '${itemName}' in QBO`);
+            logger.info(`Successfully created service item '${itemName}' in QBO.`);
         } catch (err) {
-            logger.error(`Failed to create service item '${itemName}': ${err.message}`);
-            throw err;
+            const errorMsg = `Failed to create service item '${itemName}': ${err.message}`;
+            logger.error(errorMsg, err);
+            throw new Error(errorMsg);
         }
-
     }
 
 
