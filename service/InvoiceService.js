@@ -258,7 +258,7 @@ class InvoiceService {
         };
     }
 
-    addTaxDetailsIfNeeded(invoice, invoicePayload, saleTaxCode) {
+    addTaxDetailsIfNeeded(invoicePayload, saleTaxCode) {
         if (invoicePayload.partsTax && invoicePayload.partsTax.length > 0) {
             const { code, name, taxAmount } = invoicePayload.partsTax[0];
             invoice.TxnTaxDetail = {
@@ -381,11 +381,11 @@ class InvoiceService {
 
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
-            } else if (parseFloat(invTax.tax) !== parseFloat(qbTax.RateValue)) {
+            } else if (parseFloat(invTax.tax) !== parseFloat(qbTax.EffectiveTaxRate[0].RateValue  )) {
                 mismatches.push(this.createTaxMismatchObject(
                     invTax,
                     "Tax rate mismatch between FleetFixy and QuickBooks.",
-                    parseFloat(qbTax.RateValue).toFixed(2) + " %"
+                    parseFloat(qbTax.EffectiveTaxRate[0].RateValue).toFixed(2) + " %"
                 ));
             }
 
@@ -832,6 +832,7 @@ class InvoiceService {
 
         return lineItems;
     }
+
 
     // async validateTaxGroup(taxGroup) {
     //     const existingTaxGroup = await this.getSalesTaxByName(taxGroup);
