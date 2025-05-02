@@ -451,7 +451,7 @@ class InvoiceService {
         return invoiceTaxes.reduce((mismatches, invTax) => {
             logger.info(`Checking mismatched tax: ${invTax.name}, Tax Code: ${invTax.code}`);
     
-            const qbTax = qbTaxes.find(tax => tax.Name === invTax.name);
+            const qbTax = qbTaxes.find(tax => tax.Name === invTax.code);
     
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
@@ -961,8 +961,8 @@ class InvoiceService {
                 disposal.name = `${line.item} ${qbOnlineConstant.lineItemConstants.DISPOSAL_TAX} - ${disposal.name}`;
                 disposalTaxes.push(disposal);
             });
+            partTaxName = invoice.partsTax.map(partTax => partTax.code).join('-');
         });
-        partTaxName = invoice.partsTax.map(partTax => partTax.code).join('-');
         laboutTaxName = 'Labor Tax';
         return { parts, labors, miscCharges, disposalTaxes, partTaxName, laboutTaxName };
     }
