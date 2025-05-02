@@ -33,8 +33,8 @@ class RecordDao {
         return await Record.findOneAndUpdate(filter, update, options);
     }
 
-    async findOldInvoiceRecord(Id, qbCompanyConfigCode) {
-        const filter = { Id, qbCompanyConfigCode };
+    async findOldInvoiceRecord(DocNumber, qbCompanyConfigCode) {
+        const filter = { DocNumber, qbCompanyConfigCode };
         return await Record.findOne(filter);
     }
 
