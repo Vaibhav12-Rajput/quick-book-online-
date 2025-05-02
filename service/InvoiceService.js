@@ -241,7 +241,7 @@ class InvoiceService {
     async buildInvoiceObject(invoicePayload, customer, config, lineItems) {
         const terms = await this.getTermRef(config);
         logger.info(`Creating an Invoice payload`)
-        return {
+        let payload = {
             Line: lineItems,
             CustomerRef: { value: customer[0].Id },
             TxnDate: invoicePayload.invoiceDate,
@@ -254,9 +254,18 @@ class InvoiceService {
                 Country: invoicePayload.from.address.country
             },
             DueDate: invoicePayload.invoiceDate,
-            SalesTermRef: { value: terms }
-            ,
+            SalesTermRef: { value: terms },
         };
+        
+        if (invoicePayload.TxnTaxDetail) {
+            payload.TxnTaxDetail = {
+                TxnTaxCodeRef: {
+                    value: invoicePayload.TxnTaxDetail?.TxnTaxCodeRef?.value
+                }
+            };
+        }
+        return payload;
+        
     }
 
     addTaxDetailsIfNeeded(invoicePayload, saleTaxCode) {
@@ -264,7 +273,7 @@ class InvoiceService {
             const { code, name, taxAmount } = invoicePayload.partsTax[0];
             invoicePayload.TxnTaxDetail = {
                 TxnTaxCodeRef: { "value": saleTaxCode },
-                TotalTax: taxAmount
+                // TotalTax: taxAmount
             };
         }
     }
@@ -382,7 +391,7 @@ class InvoiceService {
 
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
-            } else if (parseFloat(invTax.tax) !== parseFloat(qbTax.EffectiveTaxRate[0].RateValue  )) {
+            } else if (parseFloat(invTax.tax) !== parseFloat(qbTax.RateValue)) {
                 mismatches.push(this.createTaxMismatchObject(
                     invTax,
                     "Tax rate mismatch between FleetFixy and QuickBooks.",
@@ -820,10 +829,10 @@ class InvoiceService {
         if (!invoice.laborTaxSameAsPart && labors.length) {
             const laboutTax = await this.getSalesTaxCode(laboutTaxName);
             let labourTaxId = laboutTax[0]?.Id;
-            if(country != 'CA'){
+            if (country != 'CA') {
                 labourTaxId = 'TAX';
             }
-            if(labourTaxId == null || labourTaxId == undefined){
+            if (labourTaxId == null || labourTaxId == undefined) {
                 logger.error("Tax code not found for labour");
                 throw Error("Tax code not found for labour");
             }
