@@ -36,7 +36,7 @@ class InvoiceService {
                 false,
                 quickbooks.realmId,
                 true,
-                true,
+                false,
                 null,
                 '2.0',
                 quickbooks.minorVersion || 65
@@ -276,7 +276,7 @@ class InvoiceService {
             const lineItems = await this.prepareLineItems(invoicePayload);
             const invoice = await this.buildInvoiceObject(invoicePayload, customer, config, lineItems);
 
-            if (config?.keepQBInvoiceNumber) {
+            if (!config?.keepQBInvoiceNumber) {
                 invoice.DocNumber = invoicePayload.workOrderId;
             }
             const createdInvoice = await this.createInvoiceInQuickBooks(invoice);
@@ -358,14 +358,21 @@ class InvoiceService {
 
     async validateOrCreateCustomer(customer) {
         try {
-            logger.info(`Validating Customer with ${customer.name}`)
+            logger.info(`Validating Customer with ${customer.name}`);
             const existingCustomer = await this.getCustomerByName(customer.name);
-            return existingCustomer || await this.createNewCustomer(customer);
+            if (existingCustomer) {
+                logger.info(`Customer ${customer.name} already exists`);
+                return existingCustomer;
+            }
+            const newCustomer = await this.createNewCustomer(customer);
+            logger.info(`Customer ${customer.name} created successfully`);
+            return [newCustomer]; // return as a list
         } catch (error) {
             logger.error("Error validating or creating customer:", error);
             throw new Error(`Failed to validate or create customer. ${error.message}`);
         }
     }
+    
 
     async getCustomerByName(customerName) {
         try {
@@ -619,7 +626,8 @@ class InvoiceService {
         const existingTaxRate = await this.getSalesTaxCode(taxCode);
         if (!existingTaxRate || existingTaxRate.length === 0) {
             logger.info(`Creating new TaxCode: ${taxCode}`);
-            return await this.createNewTaxCode(taxCode, config);
+            const taxCode = await this.createNewTaxCode(taxCode, config);
+            return [taxCode];
         }
         logger.info(`TaxCode '${taxCode}' already exists.`);
         return existingTaxRate[0].Id;
