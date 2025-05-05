@@ -372,7 +372,7 @@ class InvoiceService {
             throw new Error(`Failed to validate or create customer. ${error.message}`);
         }
     }
-    
+
 
     async getCustomerByName(customerName) {
         try {
@@ -463,9 +463,9 @@ class InvoiceService {
     findMismatchedTaxes(invoiceTaxes, qbTaxes) {
         return invoiceTaxes.reduce((mismatches, invTax) => {
             logger.info(`Checking mismatched tax: ${invTax.name}, Tax Code: ${invTax.code}`);
-    
+
             const qbTax = qbTaxes.find(tax => tax.Name === invTax.code);
-    
+
             if (!qbTax) {
                 mismatches.push(this.createTaxMismatchObject(invTax, `${invTax.code} not found in QuickBooks.`));
             } else {
@@ -601,13 +601,13 @@ class InvoiceService {
             logger.info("Deleting old invoice.")
             return await new Promise((resolve, reject) => {
                 this.qb.deleteInvoice(invoiceId, (err, data) => {
-                    if (err) reject(new Error(`Error deleting invoice in QBO: ${err.message}`));
+                    if (err) resolve({ status: 'delete_failed', error: err });
                     else resolve(data);
                 });
             });
         } catch (error) {
             logger.error("Error deleting invoice in QBO:", error);
-            throw new Error(`Error deleting invoice in QBO. ${error.message}`);
+            throw new Error(`Error deleting invoice in QBO. ${error?.message}`);
         }
     }
 
@@ -943,11 +943,23 @@ class InvoiceService {
             }
             await this.prepareLabor(labors, lineItems, labourTaxId);
         }
-
-
+        if (typeof invoice.discountPercentage === 'number' && isFinite(invoice.discountPercentage) && invoice.discountPercentage > 0) {
+            this.applyDiscount(lineItems, invoice);
+        }
         return lineItems;
     }
 
+
+    applyDiscount(lineItems, invoice) {
+        lineItems.push({
+            Amount: parseFloat(invoice.discountTotal) || 0,
+            DetailType: "DiscountLineDetail",
+            DiscountLineDetail: {
+                PercentBased: true,
+                DiscountPercent: invoice.discountPercentage
+            }
+        });
+    }
 
     async createTaxGroup(groupName) {
         try {
